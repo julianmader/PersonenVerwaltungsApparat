@@ -1,6 +1,8 @@
 ﻿namespace Gamadu.PVA.Shell
 {
+  using Gamadu.PVA.Shell.Views;
   using Prism.Ioc;
+  using Prism.Modularity;
   using Prism.Unity;
   using System.Windows;
 
@@ -9,21 +11,21 @@
   /// </summary>
   public partial class App : PrismApplication
   {
-    /// <summary>
-    /// Registers the types for dependency injection.
-    /// </summary>
-    /// <param name="containerRegistry"></param>
+    /// <inheritdoc/>
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
     }
 
-    /// <summary>
-    /// Creates the Shell window.
-    /// </summary>
-    /// <returns>The Shell window.</returns>
+    /// <inheritdoc/>
+    protected override IModuleCatalog CreateModuleCatalog()
+    {
+      return new DirectoryModuleCatalog() { ModulePath = @".\Modules" };
+    }
+
+    /// <inheritdoc/>
     protected override Window CreateShell()
     {
-      return Container.Resolve<Shell>();
+      return Container.Resolve<ShellView>();
     }
   }
 }
