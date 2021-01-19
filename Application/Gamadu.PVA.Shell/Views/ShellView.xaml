@@ -97,8 +97,11 @@
     </Grid>
 
     <dragablz:TabablzControl Grid.Row="1">
+      <dragablz:TabablzControl.InterTabController>
+        <dragablz:InterTabController />
+      </dragablz:TabablzControl.InterTabController>
       <TabItem Header="PERSONAL">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Hello World</TextBlock>
+        <ContentControl prism:RegionManager.RegionName="PersonalRegion" />
       </TabItem>
       <TabItem Header="ABTEILUNGEN">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>

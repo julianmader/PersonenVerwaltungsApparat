@@ -12,7 +12,7 @@ namespace Gamadu.PVA.Personal
     {
       this.RegionManager = containerProvider.Resolve<IRegionManager>();
 
-      this.RegionManager.RegisterViewWithRegion("PersonalModuleView", typeof(Views.PersonalView));
+      this.RegionManager.RegisterViewWithRegion("PersonalRegion", typeof(Views.PersonalView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
