@@ -1,16 +1,115 @@
-﻿<UserControl x:Class="Gamadu.PVA.Personal.Views.PersonalView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Gamadu.PVA.Personal.Views"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True" >
-    <Grid>
-        <TextBlock Text="{Binding Message}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center" />
+﻿<UserControl
+  x:Class="Gamadu.PVA.Personal.Views.PersonalView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="clr-namespace:Gamadu.PVA.Personal.Views"
+  xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:personal="clr-namespace:Gamadu.PVA.Personal"
+  xmlns:prism="http://prismlibrary.com/"
+  d:DesignHeight="600"
+  d:DesignWidth="600"
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  mc:Ignorable="d">
+
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Generic.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </UserControl.Resources>
+
+  <Grid>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="2*" />
+    </Grid.ColumnDefinitions>
+
+    <materialdesign:Card />
+    <materialdesign:Card Grid.Column="2" />
+
+    <Grid Grid.Column="2" Margin="5">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition Width="5" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="5" />
+      </Grid.RowDefinitions>
+
+      <materialdesign:Card>
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+          </Grid.ColumnDefinitions>
+
+          <materialdesign:PackIcon
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Kind="FormatListNumbered" />
+          <TextBox Grid.Column="3" materialdesign:HintAssist.Hint="Number" />
+
+        </Grid>
+      </materialdesign:Card>
+
+      <materialdesign:Card Grid.Row="2">
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+          </Grid.ColumnDefinitions>
+
+          <materialdesign:PackIcon
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Kind="FormatListNumbered" />
+          <TextBox Grid.Column="3" materialdesign:HintAssist.Hint="Number" />
+
+        </Grid>
+      </materialdesign:Card>
+
+      <materialdesign:Card Grid.Row="4">
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+          </Grid.ColumnDefinitions>
+
+          <materialdesign:PackIcon
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Kind="FormatListNumbered" />
+          <personal:IconTextBox Grid.Column="3" Text="Tst" />
+
+        </Grid>
+      </materialdesign:Card>
+
     </Grid>
+
+  </Grid>
 </UserControl>

@@ -101,7 +101,7 @@
         <dragablz:InterTabController />
       </dragablz:TabablzControl.InterTabController>
       <TabItem Header="PERSONAL">
-        <ContentControl prism:RegionManager.RegionName="PersonalRegion" />
+        <ContentControl Margin="5" prism:RegionManager.RegionName="PersonalRegion" />
       </TabItem>
       <TabItem Header="ABTEILUNGEN">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
