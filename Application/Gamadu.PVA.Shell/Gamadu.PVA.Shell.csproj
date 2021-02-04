@@ -107,5 +107,11 @@
       <Version>8.0.0.1909</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj">
+      <Project>{795d6cd2-6b0b-4adf-8409-bb504c2e15a8}</Project>
+      <Name>Gamadu.PVA.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
