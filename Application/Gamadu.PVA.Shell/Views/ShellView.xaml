@@ -25,13 +25,13 @@
       <TabItem Header="PERSONAL">
         <ContentControl Margin="5" prism:RegionManager.RegionName="PersonalRegion" />
       </TabItem>
-      <TabItem Header="ABTEILUNGEN">
+      <TabItem Header="DEPARTMENTS">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
       </TabItem>
-      <TabItem Header="POSITIONEN">
+      <TabItem Header="POSITIONS">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
       </TabItem>
-      <TabItem Header="EINSTELLUNGEN" />
+      <TabItem Header="SETTINGS" />
     </dragablz:TabablzControl>
 
   </Grid>
