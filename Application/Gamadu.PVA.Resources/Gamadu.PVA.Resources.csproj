@@ -49,6 +49,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\IconComboBox.cs" />
+    <Compile Include="Controls\IconDatePicker.cs" />
     <Compile Include="Controls\IconTextBox.cs" />
     <Compile Include="ResourcesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

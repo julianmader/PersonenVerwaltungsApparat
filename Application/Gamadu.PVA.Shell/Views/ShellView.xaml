@@ -4,99 +4,21 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-  xmlns:local="clr-namespace:Gamadu.PVA.Shell"
-  xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
-  Title="PersonenVerwaltungsApparat"
-  Width="1000"
-  Height="600"
+  Title="{Binding Title}"
+  MinWidth="500"
+  MinHeight="500"
   prism:ViewModelLocator.AutoWireViewModel="True"
-  AllowsTransparency="False"
   Background="{DynamicResource MaterialDesignPaper}"
   BorderBrush="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
-  StateChanged="On_Window_StateChanged"
+  SizeToContent="WidthAndHeight"
   WindowStartupLocation="CenterScreen"
-  WindowStyle="None"
   mc:Ignorable="d">
 
-  <WindowChrome.WindowChrome>
-    <WindowChrome CaptionHeight="32" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
-  </WindowChrome.WindowChrome>
-
   <Grid>
-
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto" />
-      <RowDefinition />
-    </Grid.RowDefinitions>
-
-    <Grid Grid.Row="0">
-
-      <Grid.RowDefinitions>
-        <RowDefinition Height="5" />
-        <RowDefinition Height="24" />
-        <RowDefinition Height="5" />
-      </Grid.RowDefinitions>
-
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="5" />
-        <ColumnDefinition />
-        <ColumnDefinition Width="5" />
-        <ColumnDefinition Width="auto" />
-        <ColumnDefinition Width="5" />
-        <ColumnDefinition Width="auto" />
-        <ColumnDefinition Width="5" />
-        <ColumnDefinition Width="auto" />
-        <ColumnDefinition Width="5" />
-      </Grid.ColumnDefinitions>
-
-      <TextBlock
-        Grid.Row="1"
-        Grid.Column="1"
-        VerticalAlignment="Center"
-        FontSize="20"
-        Foreground="White"
-        Text="{Binding Title}"
-        Typography.Capitals="AllSmallCaps" />
-
-      <Button
-        Grid.Row="1"
-        Grid.Column="3"
-        Width="24"
-        Height="24"
-        Click="On_Button_WindowMinimize_Click"
-        Style="{StaticResource MaterialDesignFloatingActionButton}"
-        WindowChrome.IsHitTestVisibleInChrome="True">
-        <materialdesign:PackIcon Kind="WindowMinimize" />
-      </Button>
-
-      <Button
-        Grid.Row="1"
-        Grid.Column="5"
-        Width="24"
-        Height="24"
-        Click="On_Button_WindowMaximize_Click"
-        Style="{StaticResource MaterialDesignFloatingActionButton}"
-        WindowChrome.IsHitTestVisibleInChrome="True">
-        <materialdesign:PackIcon Kind="WindowMaximize" />
-      </Button>
-
-      <Button
-        Grid.Row="1"
-        Grid.Column="7"
-        Width="24"
-        Height="24"
-        Click="On_Button_WindowClose_Click"
-        Style="{StaticResource MaterialDesignFloatingActionButton}"
-        WindowChrome.IsHitTestVisibleInChrome="True">
-        <materialdesign:PackIcon Kind="WindowClose" />
-      </Button>
-
-    </Grid>
-
-    <dragablz:TabablzControl Grid.Row="1">
+    <dragablz:TabablzControl>
       <dragablz:TabablzControl.InterTabController>
         <dragablz:InterTabController />
       </dragablz:TabablzControl.InterTabController>

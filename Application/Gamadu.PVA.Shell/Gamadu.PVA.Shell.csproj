@@ -111,6 +111,7 @@
     <ProjectReference Include="..\Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj">
       <Project>{795d6cd2-6b0b-4adf-8409-bb504c2e15a8}</Project>
       <Name>Gamadu.PVA.Resources</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

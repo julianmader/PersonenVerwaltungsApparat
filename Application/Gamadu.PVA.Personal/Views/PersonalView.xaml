@@ -8,8 +8,10 @@
   xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
-  d:DesignHeight="600"
-  d:DesignWidth="600"
+  MinWidth="900"
+  MinHeight="650"
+  d:DesignHeight="620"
+  d:DesignWidth="900"
   prism:ViewModelLocator.AutoWireViewModel="True"
   Foreground="AntiqueWhite"
   mc:Ignorable="d">
@@ -25,42 +27,163 @@
   <Grid>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="1*" />
+      <ColumnDefinition />
       <ColumnDefinition Width="5" />
-      <ColumnDefinition Width="2*" />
+      <ColumnDefinition MinWidth="100" MaxWidth="440" />
     </Grid.ColumnDefinitions>
 
     <materialdesign:Card />
-    <materialdesign:Card Grid.Column="2" />
 
-    <Grid Grid.Column="2" Margin="5">
+    <materialdesign:Card Grid.Column="2">
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition />
-        <ColumnDefinition Width="5" />
-        <ColumnDefinition />
-      </Grid.ColumnDefinitions>
+      <Grid Grid.Column="2" Margin="5">
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="auto" />
-        <RowDefinition Height="5" />
-        <RowDefinition Height="auto" />
-        <RowDefinition Height="5" />
-        <RowDefinition Height="auto" />
-        <RowDefinition Height="5" />
-      </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
-      <controls:IconTextBox
-        Grid.Row="0"
-        materialdesign:HintAssist.Hint="Number"
-        Icon="Numeric1BoxMultipleOutline" />
+        <Grid Grid.Row="0">
 
-      <controls:IconTextBox
-        Grid.Row="2"
-        materialdesign:HintAssist.Hint="Matchcode"
-        Icon="Barcode" />
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
 
-    </Grid>
+          <materialdesign:Card Grid.Column="0" Padding="5">
+            <Image Source="profile_picture_blank.png" />
+          </materialdesign:Card>
+
+          <materialdesign:Card Grid.Column="2" />
+
+        </Grid>
+
+        <controls:IconTextBox
+          Grid.Row="2"
+          materialdesign:HintAssist.Hint="Number"
+          Icon="Numeric1BoxMultipleOutline" />
+
+        <controls:IconTextBox
+          Grid.Row="4"
+          materialdesign:HintAssist.Hint="Matchcode"
+          Icon="Barcode" />
+
+        <controls:IconComboBox
+          Grid.Row="6"
+          materialdesign:HintAssist.Hint="Salutation"
+          Icon="GenderMaleFemale" />
+
+        <controls:IconTextBox
+          Grid.Row="8"
+          materialdesign:HintAssist.Hint="Forename"
+          Icon="AccountBoxOutline" />
+
+        <controls:IconTextBox
+          Grid.Row="10"
+          materialdesign:HintAssist.Hint="Surname"
+          Icon="AccountBox" />
+
+        <controls:IconDatePicker
+          Grid.Row="12"
+          materialdesign:HintAssist.Hint="Birth Date"
+          Icon="Cake"
+          SelectedDate="01.02." />
+
+        <controls:IconTextBox
+          Grid.Row="14"
+          materialdesign:HintAssist.Hint="Phone Number"
+          Icon="Phone" />
+
+        <Grid Grid.Row="16">
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+
+          <controls:IconTextBox
+            Grid.Column="0"
+            materialdesign:HintAssist.Hint="Street"
+            Icon="RoadVariant" />
+
+          <controls:IconTextBox
+            Grid.Column="2"
+            materialdesign:HintAssist.Hint="Num"
+            Icon="Numeric1BoxMultipleOutline" />
+
+        </Grid>
+
+        <Grid Grid.Row="18">
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+
+          <controls:IconTextBox
+            Grid.Column="0"
+            materialdesign:HintAssist.Hint="City"
+            Icon="City" />
+
+          <controls:IconTextBox
+            Grid.Column="2"
+            materialdesign:HintAssist.Hint="Postal Code"
+            Icon="Numeric1BoxMultipleOutline" />
+
+        </Grid>
+
+        <Grid Grid.Row="22">
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+          </Grid.ColumnDefinitions>
+
+          <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+            <materialdesign:PackIcon
+              Width="24"
+              Height="24"
+              Kind="ContentSave" />
+          </Button>
+
+          <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+            <materialdesign:PackIcon
+              Width="24"
+              Height="24"
+              Kind="Delete" />
+          </Button>
+        </Grid>
+
+      </Grid>
+
+    </materialdesign:Card>
 
   </Grid>
 </UserControl>
