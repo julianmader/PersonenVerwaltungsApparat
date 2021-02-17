@@ -4,7 +4,6 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:Gamadu.PVA.Resources.Controls;assembly=Gamadu.PVA.Resources"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:local="clr-namespace:Gamadu.PVA.Personal.Views"
   xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
@@ -22,7 +21,6 @@
     </ResourceDictionary>
   </UserControl.Resources>
 
-
   <Grid>
 
     <Grid.ColumnDefinitions>
@@ -31,30 +29,37 @@
       <ColumnDefinition Width="*" MinWidth="400" />
     </Grid.ColumnDefinitions>
 
-    <materialdesign:Card Background="{StaticResource MaterialDesignDarkBackground}">
+    <Grid Margin="0,5,0,0">
 
-      <Grid Margin="5">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
 
+      <materialdesign:Card Grid.Row="0">
+        <TextBlock Margin="5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">
+          Personal
+        </TextBlock>
+      </materialdesign:Card>
+
+      <materialdesign:Card Grid.Row="2">
         <TreeView />
+      </materialdesign:Card>
 
-      </Grid>
+    </Grid>
 
-    </materialdesign:Card>
+    <Grid Grid.Column="2">
 
-    <ScrollViewer
-      Grid.Column="2"
-      HorizontalScrollBarVisibility="Disabled"
-      VerticalScrollBarVisibility="Auto">
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="auto" />
+      </Grid.RowDefinitions>
 
-      <materialdesign:Card Background="{StaticResource MaterialDesignDarkBackground}">
+      <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 
-        <Grid Margin="5">
-
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="auto" />
-          </Grid.RowDefinitions>
+        <Grid>
 
           <Grid>
 
@@ -86,22 +91,23 @@
               <RowDefinition Height="auto" />
               <RowDefinition Height="5" />
               <RowDefinition Height="*" />
+              <RowDefinition Height="5" />
             </Grid.RowDefinitions>
 
-            <materialdesign:Card
-              Grid.Column="0"
-              Padding="5"
-              Background="{StaticResource MaterialDesignDarkBackground}">
-              <Image
-                MaxWidth="225"
-                MaxHeight="225"
-                Source="profile_picture_blank.png" />
-            </materialdesign:Card>
+            <ContentControl>
+              <materialdesign:Card HorizontalAlignment="Center">
+                <Image
+                  MaxWidth="225"
+                  MaxHeight="225"
+                  Margin="5"
+                  Source="profile_picture_blank.png" />
+              </materialdesign:Card>
+            </ContentControl>
 
             <controls:IconTextBox
               Grid.Row="2"
               materialdesign:HintAssist.Hint="Number"
-              Icon="Numeric1BoxMultipleOutline" />
+              Icon="FormatListNumbers" />
 
             <controls:IconTextBox
               Grid.Row="4"
@@ -189,7 +195,7 @@
               materialdesign:HintAssist.Hint="Contract"
               Icon="AlphaCBoxOutline" />
 
-            <materialdesign:Card Grid.Row="26" Background="{DynamicResource MaterialDesignDarkBackground}">
+            <materialdesign:Card Grid.Row="26">
               <Grid>
 
                 <Grid.ColumnDefinitions>
@@ -204,14 +210,17 @@
                   Grid.Column="1"
                   Width="24"
                   Height="24"
+                  Margin="5"
                   VerticalAlignment="Center"
                   Kind="Information" />
 
                 <Expander
                   Grid.Column="3"
                   Background="{DynamicResource MaterialDesignDarkBackground}"
-                  FontSize="16"
-                  Header="Additional Information">
+                  FontSize="16">
+                  <Expander.Header>
+                    <Label Content="Additional Information" />
+                  </Expander.Header>
                   <TextBox
                     Margin="5"
                     Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -219,40 +228,41 @@
                 </Expander>
 
               </Grid>
+
             </materialdesign:Card>
 
           </Grid>
 
-          <Grid Grid.Row="2">
-
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="5" />
-              <ColumnDefinition Width="auto" />
-              <ColumnDefinition Width="5" />
-              <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
-              <materialdesign:PackIcon
-                Width="24"
-                Height="24"
-                Kind="ContentSave" />
-            </Button>
-
-            <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
-              <materialdesign:PackIcon
-                Width="24"
-                Height="24"
-                Kind="Delete" />
-            </Button>
-          </Grid>
-
         </Grid>
 
-      </materialdesign:Card>
+      </ScrollViewer>
 
-    </ScrollViewer>
+      <Grid Grid.Row="2" Margin="5,0,5,5">
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+          <materialdesign:PackIcon
+            Width="24"
+            Height="24"
+            Kind="ContentSave" />
+        </Button>
+
+        <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+          <materialdesign:PackIcon
+            Width="24"
+            Height="24"
+            Kind="Delete" />
+        </Button>
+      </Grid>
+
+    </Grid>
 
   </Grid>
 
