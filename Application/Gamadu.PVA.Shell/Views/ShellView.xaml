@@ -26,9 +26,12 @@
         <ContentControl Margin="5" prism:RegionManager.RegionName="PersonalRegion" />
       </TabItem>
       <TabItem Header="DEPARTMENTS">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
+        <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />
       </TabItem>
       <TabItem Header="POSITIONS">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+      </TabItem>
+      <TabItem Header="CONTRACTS">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
       </TabItem>
       <TabItem Header="SETTINGS" />
