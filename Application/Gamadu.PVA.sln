@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Personal", "Gama
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Resources", "Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj", "{795D6CD2-6B0B-4ADF-8409-BB504C2E15A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Departments", "Gamadu.PVA.Departments\Gamadu.PVA.Departments.csproj", "{8E134F86-E024-436D-98E0-E138061E3180}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Contracts", "Gamadu.PVA.Contracts\Gamadu.PVA.Contracts.csproj", "{67C3186B-CAA4-4062-A797-BC97B7493080}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{795D6CD2-6B0B-4ADF-8409-BB504C2E15A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{795D6CD2-6B0B-4ADF-8409-BB504C2E15A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{795D6CD2-6B0B-4ADF-8409-BB504C2E15A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E134F86-E024-436D-98E0-E138061E3180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E134F86-E024-436D-98E0-E138061E3180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E134F86-E024-436D-98E0-E138061E3180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E134F86-E024-436D-98E0-E138061E3180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C3186B-CAA4-4062-A797-BC97B7493080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C3186B-CAA4-4062-A797-BC97B7493080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C3186B-CAA4-4062-A797-BC97B7493080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C3186B-CAA4-4062-A797-BC97B7493080}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
