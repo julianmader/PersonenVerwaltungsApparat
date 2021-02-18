@@ -90,12 +90,12 @@
             <controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
-              Icon="Barcode" />
+              Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Name"
-              Icon="Rename" />
+              Icon="Tag" />
 
             <controls:IconTextBox
               Grid.Row="8"
