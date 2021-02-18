@@ -1,0 +1,31 @@
+﻿<UserControl
+  x:Class="Gamadu.PVA.Views.Resources.Views.ResourcesView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:prism="http://prismlibrary.com/"
+  MinWidth="500"
+  MinHeight="500"
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  Background="{DynamicResource MaterialDesignPaper}"
+  BorderBrush="{DynamicResource MaterialDesignPaper}"
+  FontFamily="{DynamicResource MaterialDesignFont}"
+  mc:Ignorable="d">
+
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Gamadu.PVA.Resources;component/Themes/Generic.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </UserControl.Resources>
+
+  <dragablz:TabablzControl>
+    <TabItem Header="ROOMS">
+      <ContentControl Margin="5" prism:RegionManager.RegionName="RoomsRegion" />
+    </TabItem>
+  </dragablz:TabablzControl>
+
+</UserControl>
