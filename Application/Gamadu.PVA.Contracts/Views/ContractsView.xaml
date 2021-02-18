@@ -88,8 +88,8 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="Number"
-              Icon="FormatListNumbers" />
+              materialdesign:HintAssist.Hint="ID"
+              Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"

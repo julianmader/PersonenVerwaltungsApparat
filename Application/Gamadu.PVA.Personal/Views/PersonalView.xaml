@@ -90,6 +90,10 @@
               <RowDefinition Height="5" />
               <RowDefinition Height="auto" />
               <RowDefinition Height="5" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="5" />
               <RowDefinition Height="*" />
               <RowDefinition Height="5" />
             </Grid.RowDefinitions>
@@ -97,8 +101,8 @@
             <ContentControl>
               <materialdesign:Card HorizontalAlignment="Center">
                 <Image
-                  MaxWidth="225"
-                  MaxHeight="225"
+                  MaxWidth="150"
+                  MaxHeight="150"
                   Margin="5"
                   Source="profile_picture_blank.png" />
               </materialdesign:Card>
@@ -106,8 +110,8 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="Number"
-              Icon="FormatListNumbers" />
+              materialdesign:HintAssist.Hint="ID"
+              Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
@@ -140,7 +144,12 @@
               materialdesign:HintAssist.Hint="Phone Number"
               Icon="Phone" />
 
-            <Grid Grid.Row="16">
+            <controls:IconTextBox
+              Grid.Row="16"
+              materialdesign:HintAssist.Hint="E-Mail"
+              Icon="Email" />
+
+            <Grid Grid.Row="18">
 
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
@@ -156,11 +165,11 @@
               <controls:IconTextBox
                 Grid.Column="2"
                 materialdesign:HintAssist.Hint="Num"
-                Icon="Numeric1BoxMultipleOutline" />
+                Icon="Counter" />
 
             </Grid>
 
-            <Grid Grid.Row="18">
+            <Grid Grid.Row="20">
 
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*" />
@@ -176,26 +185,59 @@
               <controls:IconTextBox
                 Grid.Column="2"
                 materialdesign:HintAssist.Hint="Postal Code"
-                Icon="Numeric1BoxMultipleOutline" />
+                Icon="Counter" />
 
             </Grid>
 
-            <controls:IconTextBox
-              Grid.Row="20"
+            <controls:IconComboBox
+              Grid.Row="22"
               materialdesign:HintAssist.Hint="Department"
               Icon="AlphaDBoxOutline" />
 
-            <controls:IconTextBox
-              Grid.Row="22"
+            <controls:IconComboBox
+              Grid.Row="24"
               materialdesign:HintAssist.Hint="Position"
               Icon="AlphaPBoxOutline" />
 
-            <controls:IconTextBox
-              Grid.Row="24"
+            <controls:IconComboBox
+              Grid.Row="26"
               materialdesign:HintAssist.Hint="Contract"
               Icon="AlphaCBoxOutline" />
 
-            <materialdesign:Card Grid.Row="26">
+            <materialdesign:Card Grid.Row="28">
+              <Grid>
+
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="5" />
+                  <ColumnDefinition Width="auto" />
+                  <ColumnDefinition Width="5" />
+                  <ColumnDefinition />
+                  <ColumnDefinition Width="5" />
+                </Grid.ColumnDefinitions>
+
+                <materialdesign:PackIcon
+                  Grid.Column="1"
+                  Width="24"
+                  Height="24"
+                  Margin="5"
+                  VerticalAlignment="Center"
+                  Kind="AlphaRBoxOutline" />
+
+                <Expander
+                  Grid.Column="3"
+                  Background="{DynamicResource MaterialDesignDarkBackground}"
+                  FontSize="16">
+                  <Expander.Header>
+                    <Label Content="Rooms" />
+                  </Expander.Header>
+                  <ListBox />
+                </Expander>
+
+              </Grid>
+
+            </materialdesign:Card>
+
+            <materialdesign:Card Grid.Row="30">
               <Grid>
 
                 <Grid.ColumnDefinitions>
