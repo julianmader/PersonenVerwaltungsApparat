@@ -17,28 +17,26 @@
   WindowStartupLocation="CenterScreen"
   mc:Ignorable="d">
 
-  <Grid>
-    <dragablz:TabablzControl>
-      <dragablz:TabablzControl.InterTabController>
-        <dragablz:InterTabController />
-      </dragablz:TabablzControl.InterTabController>
-      <TabItem Header="PERSONAL">
-        <ContentControl Margin="5" prism:RegionManager.RegionName="PersonalRegion" />
-      </TabItem>
-      <TabItem Header="DEPARTMENTS">
-        <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />
-      </TabItem>
-      <TabItem Header="POSITIONS">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
-      </TabItem>
-      <TabItem Header="CONTRACTS">
-        <ContentControl Margin="5" prism:RegionManager.RegionName="ContractsRegion" />
-      </TabItem>
-      <TabItem Header="RESOURCES">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
-      </TabItem>
-      <TabItem Header="SETTINGS" />
-    </dragablz:TabablzControl>
+  <dragablz:TabablzControl>
+    <dragablz:TabablzControl.InterTabController>
+      <dragablz:InterTabController />
+    </dragablz:TabablzControl.InterTabController>
+    <TabItem Header="PERSONAL">
+      <ContentControl Margin="5" prism:RegionManager.RegionName="PersonalRegion" />
+    </TabItem>
+    <TabItem Header="DEPARTMENTS">
+      <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />
+    </TabItem>
+    <TabItem Header="POSITIONS">
+      <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+    </TabItem>
+    <TabItem Header="CONTRACTS">
+      <ContentControl Margin="5" prism:RegionManager.RegionName="ContractsRegion" />
+    </TabItem>
+    <TabItem Header="RESOURCES">
+      <ContentControl prism:RegionManager.RegionName="ResourcesRegion" />
+    </TabItem>
+    <TabItem Header="SETTINGS" />
+  </dragablz:TabablzControl>
 
-  </Grid>
 </Window>
