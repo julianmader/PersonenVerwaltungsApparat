@@ -116,7 +116,7 @@
             <controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
-              Icon="Barcode" />
+              Icon="Identifier" />
 
             <controls:IconComboBox
               Grid.Row="6"
