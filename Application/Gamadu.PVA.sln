@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Resources"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Rooms", "Gamadu.PVA.Views.Rooms\Gamadu.PVA.Views.Rooms.csproj", "{6DF19CDF-8EEB-4063-8F22-552D391DF294}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Positions", "Gamadu.PVA.Views.Positions\Gamadu.PVA.Views.Positions.csproj", "{D16B82F9-C4E7-4084-8701-141B3211CC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{6DF19CDF-8EEB-4063-8F22-552D391DF294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DF19CDF-8EEB-4063-8F22-552D391DF294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DF19CDF-8EEB-4063-8F22-552D391DF294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16B82F9-C4E7-4084-8701-141B3211CC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16B82F9-C4E7-4084-8701-141B3211CC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16B82F9-C4E7-4084-8701-141B3211CC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16B82F9-C4E7-4084-8701-141B3211CC8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

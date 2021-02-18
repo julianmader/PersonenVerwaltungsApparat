@@ -28,7 +28,7 @@
       <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />
     </TabItem>
     <TabItem Header="POSITIONS">
-      <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+      <ContentControl Margin="5" prism:RegionManager.RegionName="PositionsRegion" />
     </TabItem>
     <TabItem Header="CONTRACTS">
       <ContentControl Margin="5" prism:RegionManager.RegionName="ContractsRegion" />
