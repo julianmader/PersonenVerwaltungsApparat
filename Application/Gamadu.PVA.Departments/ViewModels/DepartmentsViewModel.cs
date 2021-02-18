@@ -1,6 +1,6 @@
 ﻿using Prism.Mvvm;
 
-namespace Gamadu.PVA.Departments.ViewModels
+namespace Gamadu.PVA.Views.Departments.ViewModels
 {
   public class DepartmentsViewModel : BindableBase
   {

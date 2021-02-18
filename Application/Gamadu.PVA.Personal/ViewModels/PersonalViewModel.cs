@@ -1,6 +1,6 @@
 ﻿using Prism.Mvvm;
 
-namespace Gamadu.PVA.Personal.ViewModels
+namespace Gamadu.PVA.Views.Personal.ViewModels
 {
   public class PersonalViewModel : BindableBase
   {

@@ -2,7 +2,7 @@
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace Gamadu.PVA.Personal
+namespace Gamadu.PVA.Views.Personal
 {
   public class PersonalModule : IModule
   {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gamadu.PVA.Contracts.ViewModels
+namespace Gamadu.PVA.Views.Contracts.ViewModels
 {
     public class ContractsViewModel : BindableBase
     {

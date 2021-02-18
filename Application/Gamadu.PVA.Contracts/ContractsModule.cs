@@ -2,7 +2,7 @@
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace Gamadu.PVA.Contracts
+namespace Gamadu.PVA.Views.Contracts
 {
   public class ContractsModule : IModule
   {

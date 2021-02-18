@@ -32,6 +32,9 @@
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
       </TabItem>
       <TabItem Header="CONTRACTS">
+        <ContentControl Margin="5" prism:RegionManager.RegionName="ContractsRegion" />
+      </TabItem>
+      <TabItem Header="RESOURCES">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
       </TabItem>
       <TabItem Header="SETTINGS" />

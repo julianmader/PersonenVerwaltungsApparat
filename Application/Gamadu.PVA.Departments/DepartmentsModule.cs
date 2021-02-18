@@ -2,7 +2,7 @@
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace Gamadu.PVA.Departments
+namespace Gamadu.PVA.Views.Departments
 {
   public class DepartmentsModule : IModule
   {

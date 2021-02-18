@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gamadu.PVA.Contracts.Views
+namespace Gamadu.PVA.Views.Contracts.Views
 {
   /// <summary>
   /// Interaction logic for ContractsView.xaml

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gamadu.PVA.Personal.Properties
+namespace Gamadu.PVA.Views.Personal.Properties
 {
     using System;
 
@@ -45,7 +45,7 @@ namespace Gamadu.PVA.Personal.Properties
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Gamadu.PVA.Personal.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Gamadu.PVA.Views.Personal.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

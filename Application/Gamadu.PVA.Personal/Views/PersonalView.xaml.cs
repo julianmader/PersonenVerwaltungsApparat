@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Gamadu.PVA.Personal.Views
+namespace Gamadu.PVA.Views.Personal.Views
 {
   /// <summary>
   /// Interaction logic for PersonalView.xaml

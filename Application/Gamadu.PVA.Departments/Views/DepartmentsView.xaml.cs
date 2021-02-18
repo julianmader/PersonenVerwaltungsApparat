@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Gamadu.PVA.Departments.Views
+namespace Gamadu.PVA.Views.Departments.Views
 {
   /// <summary>
   /// Interaction logic for DepartmentsView.xaml

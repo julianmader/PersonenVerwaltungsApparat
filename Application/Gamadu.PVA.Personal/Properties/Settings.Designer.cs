@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gamadu.PVA.Personal.Properties
+namespace Gamadu.PVA.Views.Personal.Properties
 {
 
 
