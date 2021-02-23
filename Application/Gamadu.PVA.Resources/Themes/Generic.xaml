@@ -16,6 +16,59 @@
 
   <Style BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" TargetType="{x:Type dragablz:TabablzControl}" />
 
+  <Style BasedOn="{StaticResource MaterialDesignDatePicker}" TargetType="{x:Type controls:IconCheckDatePicker}">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:IconCheckDatePicker">
+
+          <materialdesign:Card
+            Grid.Row="2"
+            Padding="5"
+            Background="{StaticResource MaterialDesignDarkBackground}">
+            <Grid>
+
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+              </Grid.ColumnDefinitions>
+
+              <materialdesign:PackIcon
+                Grid.Column="1"
+                Width="24"
+                Height="24"
+                VerticalAlignment="Top"
+                Foreground="{TemplateBinding Foreground}"
+                Kind="{TemplateBinding Icon}" />
+
+              <DatePicker
+                Grid.Column="3"
+                Margin="0,0,0,10"
+                materialdesign:HintAssist.HelperText="{TemplateBinding materialdesign:HintAssist.HelperText}"
+                FontSize="16"
+                Foreground="{TemplateBinding Foreground}"
+                IsEnabled="{TemplateBinding IsChecked}"
+                SelectedDate="{TemplateBinding SelectedDate}" />
+
+              <CheckBox
+                Grid.Column="5"
+                Content="{TemplateBinding CheckBoxText}"
+                FontSize="16"
+                Foreground="{TemplateBinding Foreground}"
+                IsChecked="{TemplateBinding IsChecked}" />
+
+            </Grid>
+          </materialdesign:Card>
+
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
   <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="{x:Type controls:IconTextBox}">
     <Setter Property="Template">
       <Setter.Value>
@@ -39,13 +92,14 @@
                 Grid.Column="1"
                 Width="24"
                 Height="24"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Foreground="{TemplateBinding Foreground}"
                 Kind="{TemplateBinding Icon}" />
 
               <TextBox
                 Grid.Column="3"
-                materialdesign:HintAssist.Hint="{TemplateBinding materialdesign:HintAssist.Hint}"
+                Margin="0,0,0,10"
+                materialdesign:HintAssist.HelperText="{TemplateBinding materialdesign:HintAssist.HelperText}"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
                 Text="{TemplateBinding Text}" />
@@ -81,12 +135,14 @@
                 Grid.Column="1"
                 Width="24"
                 Height="24"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Foreground="{TemplateBinding Foreground}"
                 Kind="{TemplateBinding Icon}" />
+
               <ComboBox
                 Grid.Column="3"
-                materialdesign:HintAssist.Hint="{TemplateBinding materialdesign:HintAssist.Hint}"
+                Margin="0,0,0,10"
+                materialdesign:HintAssist.HelperText="{TemplateBinding materialdesign:HintAssist.HelperText}"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
                 Text="{TemplateBinding Text}" />
@@ -122,12 +178,14 @@
                 Grid.Column="1"
                 Width="24"
                 Height="24"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Foreground="{TemplateBinding Foreground}"
                 Kind="{TemplateBinding Icon}" />
+
               <DatePicker
                 Grid.Column="3"
-                materialdesign:HintAssist.Hint="{TemplateBinding materialdesign:HintAssist.Hint}"
+                Margin="0,0,0,10"
+                materialdesign:HintAssist.HelperText="{TemplateBinding materialdesign:HintAssist.HelperText}"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
                 SelectedDate="{TemplateBinding SelectedDate}" />
