@@ -110,43 +110,43 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="ID"
+              materialdesign:HintAssist.HelperText="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.Hint="Matchcode"
+              materialdesign:HintAssist.HelperText="Matchcode"
               Icon="Identifier" />
 
             <controls:IconComboBox
               Grid.Row="6"
-              materialdesign:HintAssist.Hint="Salutation"
+              materialdesign:HintAssist.HelperText="Gender"
               Icon="GenderMaleFemale" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.Hint="Forename"
+              materialdesign:HintAssist.HelperText="Forename"
               Icon="AccountBoxOutline" />
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.Hint="Surname"
+              materialdesign:HintAssist.HelperText="Surname"
               Icon="AccountBox" />
 
             <controls:IconDatePicker
               Grid.Row="12"
-              materialdesign:HintAssist.Hint="Birth Date"
+              materialdesign:HintAssist.HelperText="Birth Date"
               Icon="Cake"
               SelectedDate="01.02." />
 
             <controls:IconTextBox
               Grid.Row="14"
-              materialdesign:HintAssist.Hint="Phone Number"
+              materialdesign:HintAssist.HelperText="Phone Number"
               Icon="Phone" />
 
             <controls:IconTextBox
               Grid.Row="16"
-              materialdesign:HintAssist.Hint="E-Mail"
+              materialdesign:HintAssist.HelperText="E-Mail"
               Icon="Email" />
 
             <Grid Grid.Row="18">
@@ -159,12 +159,12 @@
 
               <controls:IconTextBox
                 Grid.Column="0"
-                materialdesign:HintAssist.Hint="Street"
+                materialdesign:HintAssist.HelperText="Street"
                 Icon="RoadVariant" />
 
               <controls:IconTextBox
                 Grid.Column="2"
-                materialdesign:HintAssist.Hint="Num"
+                materialdesign:HintAssist.HelperText="Num"
                 Icon="Counter" />
 
             </Grid>
@@ -179,29 +179,29 @@
 
               <controls:IconTextBox
                 Grid.Column="0"
-                materialdesign:HintAssist.Hint="City"
+                materialdesign:HintAssist.HelperText="City"
                 Icon="City" />
 
               <controls:IconTextBox
                 Grid.Column="2"
-                materialdesign:HintAssist.Hint="Postal Code"
+                materialdesign:HintAssist.HelperText="Postal Code"
                 Icon="Counter" />
 
             </Grid>
 
             <controls:IconComboBox
               Grid.Row="22"
-              materialdesign:HintAssist.Hint="Department"
+              materialdesign:HintAssist.HelperText="Department"
               Icon="AlphaDBoxOutline" />
 
             <controls:IconComboBox
               Grid.Row="24"
-              materialdesign:HintAssist.Hint="Position"
+              materialdesign:HintAssist.HelperText="Position"
               Icon="AlphaPBoxOutline" />
 
             <controls:IconComboBox
               Grid.Row="26"
-              materialdesign:HintAssist.Hint="Contract"
+              materialdesign:HintAssist.HelperText="Contract"
               Icon="AlphaCBoxOutline" />
 
             <materialdesign:Card Grid.Row="28">

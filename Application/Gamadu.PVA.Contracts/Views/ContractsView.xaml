@@ -82,51 +82,66 @@
               <RowDefinition Height="5" />
               <RowDefinition Height="auto" />
               <RowDefinition Height="5" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="5" />
               <RowDefinition Height="*" />
               <RowDefinition Height="5" />
             </Grid.RowDefinitions>
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="ID"
+              materialdesign:HintAssist.HelperText="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.Hint="Matchcode"
+              materialdesign:HintAssist.HelperText="Matchcode"
               Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
-              materialdesign:HintAssist.Hint="Name"
+              materialdesign:HintAssist.HelperText="Name"
               Icon="Tag" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.Hint="Work Time"
+              materialdesign:HintAssist.HelperText="Work Time"
               Icon="Timer" />
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.Hint="Holidays"
+              materialdesign:HintAssist.HelperText="Holidays"
               Icon="WeatherSunny" />
 
             <controls:IconTextBox
               Grid.Row="12"
-              materialdesign:HintAssist.Hint="Salary"
+              materialdesign:HintAssist.HelperText="Salary"
               Icon="CashCheck" />
 
-            <controls:IconTextBox
+            <controls:IconDatePicker
               Grid.Row="14"
-              materialdesign:HintAssist.Hint="Trail Period"
-              Icon="TimerSand" />
+              materialdesign:HintAssist.HelperText="Start"
+              Icon="ClockStart" />
 
-            <controls:IconTextBox
+            <controls:IconCheckDatePicker
               Grid.Row="16"
-              materialdesign:HintAssist.Hint="Employee"
+              materialdesign:HintAssist.HelperText="End"
+              CheckBoxText="Limited"
+              Icon="ClockEnd" />
+
+            <controls:IconDatePicker
+              Grid.Row="18"
+              materialdesign:HintAssist.HelperText="Trail End"
+              Icon="TickAll" />
+
+            <controls:IconComboBox
+              Grid.Row="20"
+              materialdesign:HintAssist.HelperText="Employee"
               Icon="Person" />
 
-            <materialdesign:Card Grid.Row="18" Background="{DynamicResource MaterialDesignDarkBackground}">
+            <materialdesign:Card Grid.Row="22">
               <Grid>
 
                 <Grid.ColumnDefinitions>

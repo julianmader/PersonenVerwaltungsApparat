@@ -86,32 +86,32 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="ID"
+              materialdesign:HintAssist.HelperText="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.Hint="Matchcode"
+              materialdesign:HintAssist.HelperText="Matchcode"
               Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
-              materialdesign:HintAssist.Hint="Name"
+              materialdesign:HintAssist.HelperText="Name"
               Icon="Tag" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.Hint="Room Number"
+              materialdesign:HintAssist.HelperText="Room Number"
               Icon="FormatListNumbered" />
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.Hint="Floor"
+              materialdesign:HintAssist.HelperText="Floor"
               Icon="FloorPlan" />
 
             <controls:IconTextBox
               Grid.Row="12"
-              materialdesign:HintAssist.Hint="Size"
+              materialdesign:HintAssist.HelperText="Size"
               Icon="ImageSizeSelectSmall" />
 
             <materialdesign:Card Grid.Row="14" Background="{DynamicResource MaterialDesignDarkBackground}">

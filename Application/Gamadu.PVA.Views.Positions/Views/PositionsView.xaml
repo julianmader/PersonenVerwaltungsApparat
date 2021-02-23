@@ -80,17 +80,17 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="ID"
+              materialdesign:HintAssist.HelperText="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.Hint="Matchcode"
+              materialdesign:HintAssist.HelperText="Matchcode"
               Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
-              materialdesign:HintAssist.Hint="Name"
+              materialdesign:HintAssist.HelperText="Name"
               Icon="Tag" />
 
             <materialdesign:Card Grid.Row="8" Background="{DynamicResource MaterialDesignDarkBackground}">

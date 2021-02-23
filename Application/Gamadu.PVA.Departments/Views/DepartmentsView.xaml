@@ -84,27 +84,27 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.Hint="ID"
+              materialdesign:HintAssist.HelperText="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.Hint="Matchcode"
+              materialdesign:HintAssist.HelperText="Matchcode"
               Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
-              materialdesign:HintAssist.Hint="Name"
+              materialdesign:HintAssist.HelperText="Name"
               Icon="Tag" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.Hint="Cost Center"
+              materialdesign:HintAssist.HelperText="Cost Center"
               Icon="FormatListNumbered" />
 
             <controls:IconComboBox
               Grid.Row="10"
-              materialdesign:HintAssist.Hint="Manager"
+              materialdesign:HintAssist.HelperText="Manager"
               Icon="Person" />
 
             <materialdesign:Card Grid.Row="12" Background="{DynamicResource MaterialDesignDarkBackground}">
