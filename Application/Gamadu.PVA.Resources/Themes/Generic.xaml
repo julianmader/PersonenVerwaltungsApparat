@@ -51,10 +51,12 @@
                 materialdesign:HintAssist.HelperText="{TemplateBinding materialdesign:HintAssist.HelperText}"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                IsEnabled="{TemplateBinding IsChecked}"
+                IsEnabled="{Binding ElementName=IsEnabledCheckBox,
+                                    Path=IsChecked}"
                 SelectedDate="{TemplateBinding SelectedDate}" />
 
               <CheckBox
+                Name="IsEnabledCheckBox"
                 Grid.Column="5"
                 Content="{TemplateBinding CheckBoxText}"
                 FontSize="16"
