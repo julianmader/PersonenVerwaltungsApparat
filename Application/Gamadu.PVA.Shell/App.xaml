@@ -6,6 +6,7 @@
   <prism:PrismApplication.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
+
         <ResourceDictionary Source="pack://application:,,,/Gamadu.PVA.Resources;component/Themes/Generic.xaml" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
