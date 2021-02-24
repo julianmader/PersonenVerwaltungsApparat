@@ -41,10 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Gender.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Interfaces\IIdentifiable.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Interfaces\IAddress.cs" />
+    <Compile Include="Interfaces\IContract.cs" />
+    <Compile Include="Models\IdentifiableBase.cs" />
+    <Compile Include="Interfaces\IDepartment.cs" />
+    <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IPosition.cs" />
+    <Compile Include="Interfaces\IRoom.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Room.cs" />
@@ -55,8 +63,6 @@
       <Version>8.0.0.1909</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

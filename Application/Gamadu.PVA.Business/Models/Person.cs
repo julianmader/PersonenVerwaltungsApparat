@@ -1,22 +1,13 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
-  using Gamadu.PVA.Business.Data;
-  using Prism.Mvvm;
+  using Gamadu.PVA.Business.Enums;
+  using Gamadu.PVA.Business.Interfaces;
   using System;
+  using System.Collections.Generic;
 
-  public class Person : BindableBase
+  public class Person : IdentifiableBase, IPerson
   {
     #region Backing Fields
-
-    /// <summary>
-    /// Backing field for <see cref="ID"/>.
-    /// </summary>
-    private int id;
-
-    /// <summary>
-    /// Backing field for <see cref="Matchcode"/>.
-    /// </summary>
-    private string matchcode;
 
     /// <summary>
     /// Backing field for <see cref="Gender"/>.
@@ -46,7 +37,7 @@
     /// <summary>
     /// Backing field for <see cref="Address"/>.
     /// </summary>
-    private Address address;
+    private IAddress address;
 
     /// <summary>
     /// Backing field for <see cref="PhoneNumber"/>.
@@ -56,22 +47,22 @@
     /// <summary>
     /// Backing field for <see cref="Department"/>.
     /// </summary>
-    private Department department;
+    private IDepartment department;
 
     /// <summary>
     /// Backing field for <see cref="Position"/>.
     /// </summary>
-    private Position position;
+    private IPosition position;
 
     /// <summary>
     /// Backing field for <see cref="Contract"/>.
     /// </summary>
-    private Contract contract;
+    private IContract contract;
 
     /// <summary>
     /// Backing field for <see cref="Rooms"/>.
     /// </summary>
-    private Room rooms;
+    private IEnumerable<IRoom> rooms;
 
     /// <summary>
     /// Backing field for <see cref="AdditionalInformation"/>.
@@ -82,126 +73,84 @@
 
     #region Properties
 
-    /// <summary>
-    /// Gets or sets the value for the ID.
-    /// </summary>
-    public int ID
-    {
-      get { return this.id; }
-      set { this.SetProperty(ref this.id, value); }
-    }
-
-    /// <summary>
-    /// Gets or sets the value for the Matchcode.
-    /// </summary>
-    public string Matchcode
-    {
-      get { return this.matchcode; }
-      set { this.SetProperty(ref this.matchcode, value); }
-    }
-
-    /// <summary>
-    /// Gets or sets the value for the Gender.
-    /// </summary>
+    /// <inheritdoc/>
     public Gender Gender
     {
       get { return this.gender; }
       set { this.SetProperty(ref this.gender, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Forename.
-    /// </summary>
+    /// <inheritdoc/>
     public string Forename
     {
       get { return this.forename; }
       set { this.SetProperty(ref this.forename, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Surname.
-    /// </summary>
+    /// <inheritdoc/>
     public string Surname
     {
       get { return this.surname; }
       set { this.SetProperty(ref this.surname, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Birth.
-    /// </summary>
+    /// <inheritdoc/>
     public DateTime Birth
     {
       get { return this.birth; }
       set { this.SetProperty(ref this.birth, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the PhoneNumber.
-    /// </summary>
+    /// <inheritdoc/>
     public string PhoneNumber
     {
       get { return this.phoneNumber; }
       set { this.SetProperty(ref this.phoneNumber, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Email.
-    /// </summary>
+    /// <inheritdoc/>
     public string Email
     {
       get { return this.email; }
       set { this.SetProperty(ref this.email, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Address.
-    /// </summary>
-    public Address Address
+    /// <inheritdoc/>
+    public IAddress Address
     {
       get { return this.address; }
       set { this.SetProperty(ref this.address, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Department.
-    /// </summary>
-    public Department Department
+    /// <inheritdoc/>
+    public IDepartment Department
     {
       get { return this.department; }
       set { this.SetProperty(ref this.department, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Position.
-    /// </summary>
-    public Position Position
+    /// <inheritdoc/>
+    public IPosition Position
     {
       get { return this.position; }
       set { this.SetProperty(ref this.position, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Contract.
-    /// </summary>
-    public Contract Contract
+    /// <inheritdoc/>
+    public IContract Contract
     {
       get { return this.contract; }
       set { this.SetProperty(ref this.contract, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Rooms.
-    /// </summary>
-    public Room Rooms
+    /// <inheritdoc/>
+    public IEnumerable<IRoom> Rooms
     {
       get { return this.rooms; }
       set { this.SetProperty(ref this.rooms, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the AdditionalInformation.
-    /// </summary>
+    /// <inheritdoc/>
     public string AdditionalInformation
     {
       get { return this.additionalInformation; }

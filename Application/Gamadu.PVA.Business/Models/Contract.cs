@@ -1,21 +1,11 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
-  using Prism.Mvvm;
+  using Gamadu.PVA.Business.Interfaces;
   using System;
 
-  public class Contract : BindableBase
+  public class Contract : IdentifiableBase, IContract
   {
     #region Backing Fields
-
-    /// <summary>
-    /// Backing field for <see cref="ID"/>.
-    /// </summary>
-    private int id;
-
-    /// <summary>
-    /// Backing field for <see cref="Matchcode"/>.
-    /// </summary>
-    private string matchcode;
 
     /// <summary>
     /// Backing field for <see cref="Name"/>.
@@ -55,7 +45,7 @@
     /// <summary>
     /// Backing field for <see cref="Employee"/>.
     /// </summary>
-    private Person employee;
+    private IPerson employee;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
@@ -66,99 +56,63 @@
 
     #region Properties
 
-    /// <summary>
-    /// Gets or sets the value for the ID.
-    /// </summary>
-    public int ID
-    {
-      get { return this.id; }
-      set { this.SetProperty(ref this.id, value); }
-    }
-
-    /// <summary>
-    /// Gets or sets the value for the Matchcode.
-    /// </summary>
-    public string Matchcode
-    {
-      get { return this.matchcode; }
-      set { this.SetProperty(ref this.matchcode, value); }
-    }
-
-    /// <summary>
-    /// Gets or sets the value for the Name.
-    /// </summary>
+    /// <inheritdoc/>
     public string Name
     {
       get { return this.name; }
       set { this.SetProperty(ref this.name, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the WorkTime.
-    /// </summary>
+    /// <inheritdoc/>
     public int WorkTime
     {
       get { return this.workTime; }
       set { this.SetProperty(ref this.workTime, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Holidays.
-    /// </summary>
+    /// <inheritdoc/>
     public int Holidays
     {
       get { return this.holidays; }
       set { this.SetProperty(ref this.holidays, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Salary.
-    /// </summary>
+    /// <inheritdoc/>
     public int Salary
     {
       get { return this.salary; }
       set { this.SetProperty(ref this.salary, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Start.
-    /// </summary>
+    /// <inheritdoc/>
     public DateTime Start
     {
       get { return this.start; }
       set { this.SetProperty(ref this.start, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the End.
-    /// </summary>
+    /// <inheritdoc/>
     public DateTime End
     {
       get { return this.end; }
       set { this.SetProperty(ref this.end, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the TrailEnd.
-    /// </summary>
+    /// <inheritdoc/>
     public DateTime TrailEnd
     {
       get { return this.trailEnd; }
       set { this.SetProperty(ref this.trailEnd, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Employee.
-    /// </summary>
-    public Person Employee
+    /// <inheritdoc/>
+    public IPerson Employee
     {
       get { return this.employee; }
       set { this.SetProperty(ref this.employee, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the Description.
-    /// </summary>
+    /// <inheritdoc/>
     public string Description
     {
       get { return this.description; }

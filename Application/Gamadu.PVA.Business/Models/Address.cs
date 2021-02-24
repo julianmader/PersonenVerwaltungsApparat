@@ -1,8 +1,10 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
+  using Gamadu.PVA.Business.Interfaces;
   using Prism.Mvvm;
+  using System;
 
-  public class Address : BindableBase
+  public class Address : BindableBase, IEquatable<Address>, IAddress
   {
     #region Backing Fields
 
@@ -30,36 +32,28 @@
 
     #region Properties
 
-    /// <summary>
-    /// Gets or sets the value for the Street.
-    /// </summary>
+    /// <inheritdoc/>
     public string Street
     {
       get { return this.street; }
       set { this.SetProperty(ref this.street, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the StreetNumber.
-    /// </summary>
+    /// <inheritdoc/>
     public string StreetNumber
     {
       get { return this.streetNumber; }
       set { this.SetProperty(ref this.streetNumber, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the City.
-    /// </summary>
+    /// <inheritdoc/>
     public string City
     {
       get { return this.city; }
       set { this.SetProperty(ref this.city, value); }
     }
 
-    /// <summary>
-    /// Gets or sets the value for the PostalCode.
-    /// </summary>
+    /// <inheritdoc/>
     public string PostalCode
     {
       get { return this.postalCode; }
@@ -67,5 +61,18 @@
     }
 
     #endregion Properties
+
+    #region Methods
+
+    /// <inheritdoc/>
+    public bool Equals(Address other)
+    {
+      return this.Street.Equals(other.Street, StringComparison.OrdinalIgnoreCase)
+        && this.StreetNumber.Equals(other.StreetNumber, StringComparison.OrdinalIgnoreCase)
+        && this.City.Equals(other.City, StringComparison.OrdinalIgnoreCase)
+        && this.PostalCode.Equals(other.PostalCode, StringComparison.OrdinalIgnoreCase);
+    }
+
+    #endregion Methods
   }
 }
