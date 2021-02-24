@@ -86,106 +86,47 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.HelperText="ID"
+              materialdesign:HintAssist.Hint="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.HelperText="Matchcode"
+              materialdesign:HintAssist.Hint="Matchcode"
               Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
-              materialdesign:HintAssist.HelperText="Name"
+              materialdesign:HintAssist.Hint="Name"
               Icon="Tag" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.HelperText="Room Number"
+              materialdesign:HintAssist.Hint="Room Number"
               Icon="FormatListNumbered" />
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.HelperText="Floor"
+              materialdesign:HintAssist.Hint="Floor"
               Icon="FloorPlan" />
 
             <controls:IconTextBox
               Grid.Row="12"
-              materialdesign:HintAssist.HelperText="Size"
+              materialdesign:HintAssist.Hint="Size"
               Icon="ImageSizeSelectSmall" />
 
-            <materialdesign:Card Grid.Row="14" Background="{DynamicResource MaterialDesignDarkBackground}">
-              <Grid>
+            <controls:IconExpander
+              Grid.Row="14"
+              Header="Description"
+              Icon="Information">
+              <TextBox />
+            </controls:IconExpander>
 
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition Width="auto" />
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="5" />
-                </Grid.ColumnDefinitions>
-
-                <materialdesign:PackIcon
-                  Grid.Column="1"
-                  Width="24"
-                  Height="24"
-                  Margin="5"
-                  VerticalAlignment="Center"
-                  Kind="Information" />
-
-                <Expander
-                  Grid.Column="3"
-                  Background="{DynamicResource MaterialDesignDarkBackground}"
-                  FontSize="16">
-                  <Expander.Header>
-                    <Label
-                      HorizontalAlignment="Left"
-                      Content="Employees"
-                      Foreground="AntiqueWhite" />
-                  </Expander.Header>
-                  <ListBox />
-                </Expander>
-
-              </Grid>
-            </materialdesign:Card>
-
-            <materialdesign:Card Grid.Row="16" Background="{DynamicResource MaterialDesignDarkBackground}">
-              <Grid>
-
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition Width="auto" />
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="5" />
-                </Grid.ColumnDefinitions>
-
-                <materialdesign:PackIcon
-                  Grid.Column="1"
-                  Width="24"
-                  Height="24"
-                  Margin="5"
-                  VerticalAlignment="Center"
-                  Kind="Information" />
-
-                <Expander
-                  Grid.Column="3"
-                  Background="{DynamicResource MaterialDesignDarkBackground}"
-                  FontSize="16">
-                  <Expander.Header>
-                    <Label
-                      HorizontalAlignment="Left"
-                      Content="Additional Information"
-                      Foreground="AntiqueWhite" />
-                  </Expander.Header>
-                  <TextBox
-                    Margin="5"
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    TextWrapping="Wrap" />
-                </Expander>
-
-              </Grid>
-            </materialdesign:Card>
+            <controls:IconExpander
+              Grid.Row="16"
+              Header="Employees"
+              Icon="People">
+              <ListBox />
+            </controls:IconExpander>
 
           </Grid>
 
