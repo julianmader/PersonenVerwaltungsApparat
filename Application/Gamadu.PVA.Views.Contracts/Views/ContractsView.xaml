@@ -142,7 +142,7 @@
 
             <controls:IconExpander
               Grid.Row="22"
-              Header="Additional Information"
+              Header="Description"
               Icon="Information">
               <TextBox />
             </controls:IconExpander>

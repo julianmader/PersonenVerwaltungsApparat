@@ -58,9 +58,9 @@
     private Person employee;
 
     /// <summary>
-    /// Backing field for <see cref="AdditionalInformation"/>.
+    /// Backing field for <see cref="Description"/>.
     /// </summary>
-    private string additionalInformation;
+    private string description;
 
     #endregion Backing Fields
 
@@ -157,12 +157,12 @@
     }
 
     /// <summary>
-    /// Gets or sets the value for the AdditionalInformation.
+    /// Gets or sets the value for the Description.
     /// </summary>
-    public string AdditionalInformation
+    public string Description
     {
-      get { return this.additionalInformation; }
-      set { this.SetProperty(ref this.additionalInformation, value); }
+      get { return this.description; }
+      set { this.SetProperty(ref this.description, value); }
     }
 
     #endregion Properties
