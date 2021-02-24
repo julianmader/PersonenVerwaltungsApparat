@@ -1,4 +1,4 @@
-﻿namespace Gamadu.PVA.Business.Data
+﻿namespace Gamadu.PVA.Business.Enums
 {
   public enum Gender
   {
