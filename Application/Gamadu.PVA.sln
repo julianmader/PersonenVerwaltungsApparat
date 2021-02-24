@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Shell", "Gamadu.PVA.Shell\Gamadu.PVA.Shell.csproj", "{B5B5B529-AA59-4884-AD8C-770426B5BE5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Personal", "Gamadu.PVA.Personal\Gamadu.PVA.Views.Personal.csproj", "{9910FA14-A793-4AD0-867A-0E9A2F850F7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Personal", "Gamadu.PVA.Views.Personal\Gamadu.PVA.Views.Personal.csproj", "{9910FA14-A793-4AD0-867A-0E9A2F850F7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Resources", "Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj", "{795D6CD2-6B0B-4ADF-8409-BB504C2E15A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Departments", "Gamadu.PVA.Departments\Gamadu.PVA.Views.Departments.csproj", "{8E134F86-E024-436D-98E0-E138061E3180}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Departments", "Gamadu.PVA.Views.Departments\Gamadu.PVA.Views.Departments.csproj", "{8E134F86-E024-436D-98E0-E138061E3180}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Contracts", "Gamadu.PVA.Contracts\Gamadu.PVA.Views.Contracts.csproj", "{67C3186B-CAA4-4062-A797-BC97B7493080}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Contracts", "Gamadu.PVA.Views.Contracts\Gamadu.PVA.Views.Contracts.csproj", "{67C3186B-CAA4-4062-A797-BC97B7493080}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Resources", "Gamadu.PVA.Views.Resources\Gamadu.PVA.Views.Resources.csproj", "{51CABFC3-D69C-4C5F-B883-3E52F9FBAF97}"
 EndProject
