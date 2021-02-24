@@ -14,7 +14,6 @@
   BorderBrush="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   SizeToContent="WidthAndHeight"
-  WindowStartupLocation="CenterScreen"
   WindowState="Maximized"
   mc:Ignorable="d">
 
