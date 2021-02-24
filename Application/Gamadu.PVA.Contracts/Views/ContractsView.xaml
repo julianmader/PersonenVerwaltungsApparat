@@ -7,7 +7,6 @@
   xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
-  d:DesignWidth="900"
   prism:ViewModelLocator.AutoWireViewModel="True"
   FontFamily="{DynamicResource MaterialDesignFont}"
   Foreground="AntiqueWhite"
@@ -24,7 +23,7 @@
   <Grid>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="2*" />
+      <ColumnDefinition Width="2*" MinWidth="400" />
       <ColumnDefinition Width="5" />
       <ColumnDefinition Width="*" MinWidth="400" />
     </Grid.ColumnDefinitions>
@@ -92,92 +91,61 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.HelperText="ID"
+              materialdesign:HintAssist.Hint="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.HelperText="Matchcode"
+              materialdesign:HintAssist.Hint="Matchcode"
               Icon="Identifier" />
 
             <controls:IconTextBox
               Grid.Row="6"
-              materialdesign:HintAssist.HelperText="Name"
+              materialdesign:HintAssist.Hint="Name"
               Icon="Tag" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.HelperText="Work Time"
+              materialdesign:HintAssist.Hint="Work Time"
               Icon="Timer" />
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.HelperText="Holidays"
+              materialdesign:HintAssist.Hint="Holidays"
               Icon="WeatherSunny" />
 
             <controls:IconTextBox
               Grid.Row="12"
-              materialdesign:HintAssist.HelperText="Salary"
+              materialdesign:HintAssist.Hint="Salary"
               Icon="CashCheck" />
 
             <controls:IconDatePicker
               Grid.Row="14"
-              materialdesign:HintAssist.HelperText="Start"
+              materialdesign:HintAssist.Hint="Start"
               Icon="ClockStart" />
 
             <controls:IconCheckDatePicker
               Grid.Row="16"
-              materialdesign:HintAssist.HelperText="End"
+              materialdesign:HintAssist.Hint="End"
               CheckBoxText="Limited"
               Icon="ClockEnd" />
 
             <controls:IconDatePicker
               Grid.Row="18"
-              materialdesign:HintAssist.HelperText="Trail End"
+              materialdesign:HintAssist.Hint="Trail End"
               Icon="TickAll" />
 
             <controls:IconComboBox
               Grid.Row="20"
-              materialdesign:HintAssist.HelperText="Employee"
+              materialdesign:HintAssist.Hint="Employee"
               Icon="Person" />
 
-            <materialdesign:Card Grid.Row="22">
-              <Grid>
-
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition Width="auto" />
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="5" />
-                </Grid.ColumnDefinitions>
-
-                <materialdesign:PackIcon
-                  Grid.Column="1"
-                  Width="24"
-                  Height="24"
-                  Margin="5"
-                  VerticalAlignment="Center"
-                  Kind="Information" />
-
-                <Expander
-                  Grid.Column="3"
-                  Background="{DynamicResource MaterialDesignDarkBackground}"
-                  FontSize="16">
-                  <Expander.Header>
-                    <Label
-                      HorizontalAlignment="Left"
-                      Content="Additional Information"
-                      Foreground="AntiqueWhite" />
-                  </Expander.Header>
-                  <TextBox
-                    Margin="5"
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    TextWrapping="Wrap" />
-                </Expander>
-
-              </Grid>
-            </materialdesign:Card>
+            <controls:IconExpander
+              Grid.Row="22"
+              Header="Additional Information"
+              Icon="Information">
+              <TextBox />
+            </controls:IconExpander>
 
           </Grid>
 

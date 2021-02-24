@@ -54,6 +54,7 @@
     <Compile Include="Controls\IconComboBox.cs" />
     <Compile Include="Controls\IconDatePicker.cs" />
     <Compile Include="Controls\IconCheckDatePicker.cs" />
+    <Compile Include="Controls\IconExpander.cs" />
     <Compile Include="Controls\IconTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

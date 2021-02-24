@@ -110,43 +110,43 @@
 
             <controls:IconTextBox
               Grid.Row="2"
-              materialdesign:HintAssist.HelperText="ID"
+              materialdesign:HintAssist.Hint="ID"
               Icon="SqlPrimaryKey" />
 
             <controls:IconTextBox
               Grid.Row="4"
-              materialdesign:HintAssist.HelperText="Matchcode"
+              materialdesign:HintAssist.Hint="Matchcode"
               Icon="Identifier" />
 
             <controls:IconComboBox
               Grid.Row="6"
-              materialdesign:HintAssist.HelperText="Gender"
+              materialdesign:HintAssist.Hint="Gender"
               Icon="GenderMaleFemale" />
 
             <controls:IconTextBox
               Grid.Row="8"
-              materialdesign:HintAssist.HelperText="Forename"
+              materialdesign:HintAssist.Hint="Forename"
               Icon="AccountBoxOutline" />
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.HelperText="Surname"
+              materialdesign:HintAssist.Hint="Surname"
               Icon="AccountBox" />
 
             <controls:IconDatePicker
               Grid.Row="12"
-              materialdesign:HintAssist.HelperText="Birth Date"
+              materialdesign:HintAssist.Hint="Birth Date"
               Icon="Cake"
               SelectedDate="01.02." />
 
             <controls:IconTextBox
               Grid.Row="14"
-              materialdesign:HintAssist.HelperText="Phone Number"
+              materialdesign:HintAssist.Hint="Phone Number"
               Icon="Phone" />
 
             <controls:IconTextBox
               Grid.Row="16"
-              materialdesign:HintAssist.HelperText="E-Mail"
+              materialdesign:HintAssist.Hint="E-Mail"
               Icon="Email" />
 
             <Grid Grid.Row="18">
@@ -159,12 +159,12 @@
 
               <controls:IconTextBox
                 Grid.Column="0"
-                materialdesign:HintAssist.HelperText="Street"
+                materialdesign:HintAssist.Hint="Street"
                 Icon="RoadVariant" />
 
               <controls:IconTextBox
                 Grid.Column="2"
-                materialdesign:HintAssist.HelperText="Num"
+                materialdesign:HintAssist.Hint="Num"
                 Icon="Counter" />
 
             </Grid>
@@ -179,99 +179,44 @@
 
               <controls:IconTextBox
                 Grid.Column="0"
-                materialdesign:HintAssist.HelperText="City"
+                materialdesign:HintAssist.Hint="City"
                 Icon="City" />
 
               <controls:IconTextBox
                 Grid.Column="2"
-                materialdesign:HintAssist.HelperText="Postal Code"
+                materialdesign:HintAssist.Hint="Postal Code"
                 Icon="Counter" />
 
             </Grid>
 
             <controls:IconComboBox
               Grid.Row="22"
-              materialdesign:HintAssist.HelperText="Department"
+              materialdesign:HintAssist.Hint="Department"
               Icon="AlphaDBoxOutline" />
 
             <controls:IconComboBox
               Grid.Row="24"
-              materialdesign:HintAssist.HelperText="Position"
+              materialdesign:HintAssist.Hint="Position"
               Icon="AlphaPBoxOutline" />
 
             <controls:IconComboBox
               Grid.Row="26"
-              materialdesign:HintAssist.HelperText="Contract"
+              materialdesign:HintAssist.Hint="Contract"
               Icon="AlphaCBoxOutline" />
 
-            <materialdesign:Card Grid.Row="28">
-              <Grid>
+            <controls:IconExpander
+              Grid.Row="28"
+              Header="Rooms"
+              Icon="AlphaRBoxOutline">
+              <ListBox />
+            </controls:IconExpander>
 
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition Width="auto" />
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="5" />
-                </Grid.ColumnDefinitions>
-
-                <materialdesign:PackIcon
-                  Grid.Column="1"
-                  Width="24"
-                  Height="24"
-                  Margin="5"
-                  VerticalAlignment="Center"
-                  Kind="AlphaRBoxOutline" />
-
-                <Expander
-                  Grid.Column="3"
-                  Background="{DynamicResource MaterialDesignDarkBackground}"
-                  FontSize="16">
-                  <Expander.Header>
-                    <Label Content="Rooms" />
-                  </Expander.Header>
-                  <ListBox />
-                </Expander>
-
-              </Grid>
-
-            </materialdesign:Card>
-
-            <materialdesign:Card Grid.Row="30">
-              <Grid>
-
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition Width="auto" />
-                  <ColumnDefinition Width="5" />
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="5" />
-                </Grid.ColumnDefinitions>
-
-                <materialdesign:PackIcon
-                  Grid.Column="1"
-                  Width="24"
-                  Height="24"
-                  Margin="5"
-                  VerticalAlignment="Center"
-                  Kind="Information" />
-
-                <Expander
-                  Grid.Column="3"
-                  Background="{DynamicResource MaterialDesignDarkBackground}"
-                  FontSize="16">
-                  <Expander.Header>
-                    <Label Content="Additional Information" />
-                  </Expander.Header>
-                  <TextBox
-                    Margin="5"
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    TextWrapping="Wrap" />
-                </Expander>
-
-              </Grid>
-
-            </materialdesign:Card>
+            <controls:IconExpander
+              Grid.Row="30"
+              Header="Additional Information"
+              Icon="Information">
+              <TextBox />
+            </controls:IconExpander>
 
           </Grid>
 
