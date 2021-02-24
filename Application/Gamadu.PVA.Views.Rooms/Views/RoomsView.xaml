@@ -106,7 +106,7 @@
 
             <controls:IconTextBox
               Grid.Row="10"
-              materialdesign:HintAssist.Hint="Floor"
+              materialdesign:HintAssist.Hint="Floor Number"
               Icon="FloorPlan" />
 
             <controls:IconTextBox
