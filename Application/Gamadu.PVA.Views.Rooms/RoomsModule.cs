@@ -17,7 +17,6 @@ namespace Gamadu.PVA.Views.Rooms
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
-
     }
   }
 }
