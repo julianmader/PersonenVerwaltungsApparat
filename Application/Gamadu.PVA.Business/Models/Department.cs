@@ -1,5 +1,4 @@
-﻿using Gamadu.PVA.Business.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Gamadu.PVA.Business.Models
 {
@@ -46,15 +45,15 @@ namespace Gamadu.PVA.Business.Models
     /// <inheritdoc/>
     public string CostCenter
     {
-      get { return costCenter; }
-      set { SetProperty(ref costCenter, value); }
+      get { return this.costCenter; }
+      set { this.SetProperty(ref this.costCenter, value); }
     }
 
     /// <inheritdoc/>
     public IPerson Manager
     {
-      get { return manager; }
-      set { SetProperty(ref manager, value); }
+      get { return this.manager; }
+      set { this.SetProperty(ref this.manager, value); }
     }
 
     /// <inheritdoc/>
@@ -67,8 +66,8 @@ namespace Gamadu.PVA.Business.Models
     /// <inheritdoc/>
     public IEnumerable<IPerson> Employees
     {
-      get { return employees; }
-      set { SetProperty(ref employees, value); }
+      get { return this.employees; }
+      set { this.SetProperty(ref this.employees, value); }
     }
 
     #endregion Properties

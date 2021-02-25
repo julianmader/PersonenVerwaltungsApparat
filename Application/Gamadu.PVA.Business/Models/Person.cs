@@ -1,7 +1,6 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
   using Gamadu.PVA.Business.Enums;
-  using Gamadu.PVA.Business.Interfaces;
   using System;
   using System.Collections.Generic;
 

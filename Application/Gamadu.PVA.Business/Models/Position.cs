@@ -1,6 +1,5 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
-  using Gamadu.PVA.Business.Interfaces;
   using System.Collections.Generic;
 
   public class Position : IdentifiableBase, IPosition
@@ -43,8 +42,8 @@
     /// <inheritdoc/>
     public IEnumerable<IPerson> Employees
     {
-      get { return employees; }
-      set { SetProperty(ref employees, value); }
+      get { return this.employees; }
+      set { this.SetProperty(ref this.employees, value); }
     }
 
     #endregion Properties

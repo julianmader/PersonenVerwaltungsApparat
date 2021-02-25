@@ -1,6 +1,5 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
-  using Gamadu.PVA.Business.Interfaces;
   using Prism.Mvvm;
   using System;
 

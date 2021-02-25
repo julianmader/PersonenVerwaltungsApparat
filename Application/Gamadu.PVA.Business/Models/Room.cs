@@ -1,6 +1,5 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
-  using Gamadu.PVA.Business.Interfaces;
   using System.Collections.Generic;
 
   public class Room : IdentifiableBase, IRoom
@@ -51,22 +50,22 @@
     /// <inheritdoc/>
     public int RoomNumber
     {
-      get { return roomNumber; }
-      set { SetProperty(ref roomNumber, value); }
+      get { return this.roomNumber; }
+      set { this.SetProperty(ref this.roomNumber, value); }
     }
 
     /// <inheritdoc/>
     public int FloorNumber
     {
-      get { return floorNumber; }
-      set { SetProperty(ref floorNumber, value); }
+      get { return this.floorNumber; }
+      set { this.SetProperty(ref this.floorNumber, value); }
     }
 
     /// <inheritdoc/>
     public int Size
     {
-      get { return size; }
-      set { SetProperty(ref size, value); }
+      get { return this.size; }
+      set { this.SetProperty(ref this.size, value); }
     }
 
     /// <inheritdoc/>
@@ -79,8 +78,8 @@
     /// <inheritdoc/>
     public IEnumerable<IPerson> Employees
     {
-      get { return employees; }
-      set { SetProperty(ref employees, value); }
+      get { return this.employees; }
+      set { this.SetProperty(ref this.employees, value); }
     }
 
     #endregion Properties
