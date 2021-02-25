@@ -1,25 +1,19 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prism.Mvvm;
 
 namespace Gamadu.PVA.Views.Resources.ViewModels
 {
-    public class ResourcesViewModel : BindableBase
+  public class ResourcesViewModel : BindableBase
     {
         private string _message;
         public string Message
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
+            get { return this._message; }
+            set { this.SetProperty(ref this._message, value); }
         }
 
         public ResourcesViewModel()
         {
-            Message = "View A from your Prism Module";
+      this.Message = "View A from your Prism Module";
         }
     }
 }

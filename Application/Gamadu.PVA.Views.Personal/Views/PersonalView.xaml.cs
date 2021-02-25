@@ -9,7 +9,7 @@ namespace Gamadu.PVA.Views.Personal.Views
   {
     public PersonalView()
     {
-      InitializeComponent();
+      this.InitializeComponent();
     }
   }
 }

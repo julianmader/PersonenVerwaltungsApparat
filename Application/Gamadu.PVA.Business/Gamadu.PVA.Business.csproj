@@ -41,18 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\IContractDataAccess.cs" />
+    <Compile Include="DataAccess\IAllDataAccess.cs" />
+    <Compile Include="DataAccess\IDepartmentDataAccess.cs" />
+    <Compile Include="DataAccess\IRoomDataAccess.cs" />
+    <Compile Include="DataAccess\IPositionDataAccess.cs" />
+    <Compile Include="DataAccess\IPersonDataAccess.cs" />
     <Compile Include="Enums\Gender.cs" />
-    <Compile Include="Interfaces\IIdentifiable.cs" />
+    <Compile Include="Models\IIdentifiable.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Department.cs" />
-    <Compile Include="Interfaces\IAddress.cs" />
-    <Compile Include="Interfaces\IContract.cs" />
+    <Compile Include="Models\IAddress.cs" />
+    <Compile Include="Models\IContract.cs" />
     <Compile Include="Models\IdentifiableBase.cs" />
-    <Compile Include="Interfaces\IDepartment.cs" />
-    <Compile Include="Interfaces\IPerson.cs" />
-    <Compile Include="Interfaces\IPosition.cs" />
-    <Compile Include="Interfaces\IRoom.cs" />
+    <Compile Include="Models\IDepartment.cs" />
+    <Compile Include="Models\IPerson.cs" />
+    <Compile Include="Models\IPosition.cs" />
+    <Compile Include="Models\IRoom.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Room.cs" />

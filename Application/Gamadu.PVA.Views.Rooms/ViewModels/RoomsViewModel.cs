@@ -7,13 +7,13 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     private string _message;
     public string Message
     {
-      get { return _message; }
-      set { SetProperty(ref _message, value); }
+      get { return this._message; }
+      set { this.SetProperty(ref this._message, value); }
     }
 
     public RoomsViewModel()
     {
-      Message = "View A from your Prism Module";
+      this.Message = "View A from your Prism Module";
     }
   }
 }

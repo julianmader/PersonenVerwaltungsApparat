@@ -7,13 +7,13 @@ namespace Gamadu.PVA.Views.Personal.ViewModels
     private string _message;
     public string Message
     {
-      get { return _message; }
-      set { SetProperty(ref _message, value); }
+      get { return this._message; }
+      set { this.SetProperty(ref this._message, value); }
     }
 
     public PersonalViewModel()
     {
-      Message = "PersonalView from your Prism Module";
+      this.Message = "PersonalView from your Prism Module";
     }
   }
 }

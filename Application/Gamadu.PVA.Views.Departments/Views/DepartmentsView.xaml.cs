@@ -9,7 +9,7 @@ namespace Gamadu.PVA.Views.Departments.Views
   {
     public DepartmentsView()
     {
-      InitializeComponent();
+      this.InitializeComponent();
     }
   }
 }

@@ -9,7 +9,7 @@ namespace Gamadu.PVA.Views.Positions.Views
   {
     public PositionsView()
     {
-      InitializeComponent();
+      this.InitializeComponent();
     }
   }
 }

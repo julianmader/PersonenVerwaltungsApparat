@@ -13,8 +13,8 @@
 
     public PackIconKind Icon
     {
-      get { return (PackIconKind)GetValue(IconProperty); }
-      set { SetValue(IconProperty, value); }
+      get { return (PackIconKind)this.GetValue(IconProperty); }
+      set { this.SetValue(IconProperty, value); }
     }
 
     // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...

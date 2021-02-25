@@ -9,7 +9,7 @@
   {
     public ShellView()
     {
-      InitializeComponent();
+      this.InitializeComponent();
     }
   }
 }

@@ -25,7 +25,7 @@
     /// <inheritdoc/>
     protected override Window CreateShell()
     {
-      return Container.Resolve<ShellView>();
+      return this.Container.Resolve<ShellView>();
     }
   }
 }

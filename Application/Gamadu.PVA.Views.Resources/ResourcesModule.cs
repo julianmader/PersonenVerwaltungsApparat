@@ -1,11 +1,10 @@
-﻿using Gamadu.PVA.Views.Resources.Views;
-using Prism.Ioc;
+﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
 namespace Gamadu.PVA.Views.Resources
 {
-    public class ResourcesModule : IModule
+  public class ResourcesModule : IModule
     {
     public IRegionManager RegionManager { get; set; }
 
@@ -18,7 +17,6 @@ namespace Gamadu.PVA.Views.Resources
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
-
     }
   }
 }
