@@ -1,4 +1,4 @@
-﻿namespace Gamadu.PVA.Business.Interfaces
+﻿namespace Gamadu.PVA.Business.Models
 {
   public interface IIdentifiable
   {

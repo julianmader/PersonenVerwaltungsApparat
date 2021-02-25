@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Gamadu.PVA.Business.Interfaces
+namespace Gamadu.PVA.Business.Models
 {
   public interface IPerson
   {

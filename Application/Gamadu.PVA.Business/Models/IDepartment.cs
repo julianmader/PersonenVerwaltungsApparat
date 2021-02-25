@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace Gamadu.PVA.Business.Interfaces
+namespace Gamadu.PVA.Business.Models
 {
-  public interface IRoom
+  public interface IDepartment
   {
+    /// <summary>
+    /// Gets or sets the value for the Cost Center
+    /// </summary>
+    string CostCenter { get; set; }
+
     /// <summary>
     /// Gets or sets the value for the Description.
     /// </summary>
@@ -15,23 +20,13 @@ namespace Gamadu.PVA.Business.Interfaces
     IEnumerable<IPerson> Employees { get; set; }
 
     /// <summary>
-    /// Gets or sets the value for the FloorNumber.
+    /// Gets or sets the value for the Manager
     /// </summary>
-    int FloorNumber { get; set; }
+    IPerson Manager { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Name.
     /// </summary>
     string Name { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the RoomNumber.
-    /// </summary>
-    int RoomNumber { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the Size.
-    /// </summary>
-    int Size { get; set; }
   }
 }
