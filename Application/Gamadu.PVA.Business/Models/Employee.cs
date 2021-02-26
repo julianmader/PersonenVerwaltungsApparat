@@ -4,7 +4,7 @@
   using System;
   using System.Collections.Generic;
 
-  public class Person : IdentifiableBase, IPerson
+  public class Employee : IdentifiableBase, IEmployee
   {
     #region Backing Fields
 

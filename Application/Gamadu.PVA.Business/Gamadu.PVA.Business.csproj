@@ -56,10 +56,10 @@
     <Compile Include="Models\IContract.cs" />
     <Compile Include="Models\IdentifiableBase.cs" />
     <Compile Include="Models\IDepartment.cs" />
-    <Compile Include="Models\IPerson.cs" />
+    <Compile Include="Models\IEmployee.cs" />
     <Compile Include="Models\IPosition.cs" />
     <Compile Include="Models\IRoom.cs" />
-    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

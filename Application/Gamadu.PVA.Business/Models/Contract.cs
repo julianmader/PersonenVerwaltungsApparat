@@ -42,9 +42,14 @@
     private DateTime end;
 
     /// <summary>
+    /// Backing field for <see cref="HasEnd"/>.
+    /// </summary>
+    private bool hasEnd;
+
+    /// <summary>
     /// Backing field for <see cref="Employee"/>.
     /// </summary>
-    private IPerson employee;
+    private IEmployee employee;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
@@ -98,6 +103,13 @@
     }
 
     /// <inheritdoc/>
+    public bool HasEnd
+    {
+      get { return this.hasEnd; }
+      set { this.SetProperty(ref this.hasEnd, value); }
+    }
+
+    /// <inheritdoc/>
     public DateTime TrailEnd
     {
       get { return this.trailEnd; }
@@ -105,7 +117,7 @@
     }
 
     /// <inheritdoc/>
-    public IPerson Employee
+    public IEmployee Employee
     {
       get { return this.employee; }
       set { this.SetProperty(ref this.employee, value); }

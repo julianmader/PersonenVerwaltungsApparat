@@ -3,7 +3,7 @@
   /// <summary>
   /// Interface for the data access for all objects.
   /// </summary>
-  public interface IAllDataAccess : IPersonDataAccess, IContractDataAccess, IDepartmentDataAccess, IPositionDataAccess, IRoomDataAccess
+  public interface IAllDataAccess : IEmployeeDataAccess, IContractDataAccess, IDepartmentDataAccess, IPositionDataAccess, IRoomDataAccess
   {
 
   }

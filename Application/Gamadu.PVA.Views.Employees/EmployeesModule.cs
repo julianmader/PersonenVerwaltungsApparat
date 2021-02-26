@@ -2,9 +2,9 @@
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace Gamadu.PVA.Views.Personal
+namespace Gamadu.PVA.Views.Employees
 {
-  public class PersonalModule : IModule
+  public class EmployeesModule : IModule
   {
     public IRegionManager RegionManager { get; set; }
 
@@ -12,7 +12,7 @@ namespace Gamadu.PVA.Views.Personal
     {
       this.RegionManager = containerProvider.Resolve<IRegionManager>();
 
-      this.RegionManager.RegisterViewWithRegion("PersonalRegion", typeof(Views.PersonalView));
+      this.RegionManager.RegisterViewWithRegion("EmployeesRegion", typeof(Views.EmployeesView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

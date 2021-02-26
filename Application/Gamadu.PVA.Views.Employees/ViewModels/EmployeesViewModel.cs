@@ -1,8 +1,8 @@
 ﻿using Prism.Mvvm;
 
-namespace Gamadu.PVA.Views.Personal.ViewModels
+namespace Gamadu.PVA.Views.Employees.ViewModels
 {
-  public class PersonalViewModel : BindableBase
+  public class EmployeesViewModel : BindableBase
   {
     private string _message;
     public string Message
@@ -11,9 +11,9 @@ namespace Gamadu.PVA.Views.Personal.ViewModels
       set { this.SetProperty(ref this._message, value); }
     }
 
-    public PersonalViewModel()
+    public EmployeesViewModel()
     {
-      this.Message = "PersonalView from your Prism Module";
+      this.Message = "EmployeesView from your Prism Module";
     }
   }
 }

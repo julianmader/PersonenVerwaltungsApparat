@@ -19,7 +19,7 @@
     /// <summary>
     /// Backing field for <see cref="Employees"/>.
     /// </summary>
-    private IEnumerable<IPerson> employees;
+    private IEnumerable<IEmployee> employees;
 
     #endregion Backing Fields
 
@@ -40,7 +40,7 @@
     }
 
     /// <inheritdoc/>
-    public IEnumerable<IPerson> Employees
+    public IEnumerable<IEmployee> Employees
     {
       get { return this.employees; }
       set { this.SetProperty(ref this.employees, value); }

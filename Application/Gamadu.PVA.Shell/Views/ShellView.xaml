@@ -21,8 +21,8 @@
     <dragablz:TabablzControl.InterTabController>
       <dragablz:InterTabController />
     </dragablz:TabablzControl.InterTabController>
-    <TabItem Header="PERSONAL">
-      <ContentControl Margin="5" prism:RegionManager.RegionName="PersonalRegion" />
+    <TabItem Header="EMPLOYEES">
+      <ContentControl Margin="5" prism:RegionManager.RegionName="EmployeesRegion" />
     </TabItem>
     <TabItem Header="DEPARTMENTS">
       <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />

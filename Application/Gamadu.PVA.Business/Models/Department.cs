@@ -19,7 +19,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Backing field for <see cref="Manager"/>
     /// </summary>
-    private IPerson manager;
+    private IEmployee manager;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
@@ -29,7 +29,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Backing field for <see cref="Employees"/>.
     /// </summary>
-    private IEnumerable<IPerson> employees;
+    private IEnumerable<IEmployee> employees;
 
     #endregion Backing Fields
 
@@ -50,7 +50,7 @@ namespace Gamadu.PVA.Business.Models
     }
 
     /// <inheritdoc/>
-    public IPerson Manager
+    public IEmployee Manager
     {
       get { return this.manager; }
       set { this.SetProperty(ref this.manager, value); }
@@ -64,7 +64,7 @@ namespace Gamadu.PVA.Business.Models
     }
 
     /// <inheritdoc/>
-    public IEnumerable<IPerson> Employees
+    public IEnumerable<IEmployee> Employees
     {
       get { return this.employees; }
       set { this.SetProperty(ref this.employees, value); }

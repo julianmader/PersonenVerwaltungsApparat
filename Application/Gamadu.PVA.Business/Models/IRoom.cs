@@ -12,7 +12,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Employees.
     /// </summary>
-    IEnumerable<IPerson> Employees { get; set; }
+    IEnumerable<IEmployee> Employees { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the FloorNumber.
