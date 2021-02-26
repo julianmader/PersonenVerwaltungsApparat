@@ -45,9 +45,9 @@
 
     public int SavePerson(IPerson person)
     {
-      string sql = $"INSERT INTO { PersonsTable} ()";
+      string sql = $"INSERT INTO {this.PersonsTable} ()";
 
-      using (IDbConnection connection = GetDbConnection())
+      using (IDbConnection connection = this.GetDbConnection())
       {
         int affectedRows = connection.Execute(sql, new { });
       }

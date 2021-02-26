@@ -54,7 +54,8 @@
                 Grid.Column="3"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                IsEnabled="{Binding ElementName=IsEnabledCheckBox, Path=IsChecked}"
+                IsEnabled="{Binding ElementName=IsEnabledCheckBox,
+                                    Path=IsChecked}"
                 SelectedDate="{TemplateBinding SelectedDate}" />
 
               <CheckBox
