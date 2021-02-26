@@ -1,9 +1,9 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 
-namespace Gamadu.PVA.Business.DataAccess.SQLite
+namespace Gamadu.PVA.Business.DataAccess.MySQL
 {
-  public class SQLiteModule : IModule
+  public class MySQLModule : IModule
   {
     public void OnInitialized(IContainerProvider containerProvider)
     {

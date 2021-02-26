@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Shell", "Gamadu.PVA.Shell\Gamadu.PVA.Shell.csproj", "{B5B5B529-AA59-4884-AD8C-770426B5BE5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Personal", "Gamadu.PVA.Views.Personal\Gamadu.PVA.Views.Personal.csproj", "{9910FA14-A793-4AD0-867A-0E9A2F850F7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Employees", "Gamadu.PVA.Views.Employees\Gamadu.PVA.Views.Employees.csproj", "{9910FA14-A793-4AD0-867A-0E9A2F850F7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Resources", "Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj", "{795D6CD2-6B0B-4ADF-8409-BB504C2E15A8}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Positions"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Business", "Gamadu.PVA.Business\Gamadu.PVA.Business.csproj", "{656BCE80-AB8A-4DD3-806D-578C3BBAE98B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Business.DataAccess.SQLite", "Gamadu.PVA.Business.DataAccess.SQLite\Gamadu.PVA.Business.DataAccess.SQLite.csproj", "{A1477FF8-577E-48C3-9C33-9B1F43D2189D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Business.DataAccess.MySQL", "Gamadu.PVA.Business.DataAccess.MySQL\Gamadu.PVA.Business.DataAccess.MySQL.csproj", "{A1477FF8-577E-48C3-9C33-9B1F43D2189D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

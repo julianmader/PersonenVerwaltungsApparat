@@ -1,38 +1,69 @@
-﻿namespace Gamadu.PVA.Business.DataAccess.SQLite
+﻿namespace Gamadu.PVA.Business.DataAccess.MySQL
 {
   using Dapper;
   using Gamadu.PVA.Business.Models;
-  using Microsoft.Data.Sqlite;
+  using MySqlConnector;
   using System;
   using System.Collections.Generic;
   using System.Data;
-  using System.IO;
 
-  public class SQLiteDataAccess : IAllDataAccess
+  public class MySQLDataAccess : IAllDataAccess
   {
-    private string PersonsTable => "TB_Employees";
-    private string ContractsTable => "TB_Contracts";
-    private string DepartmentsTable => "TB_Departments";
-    private string PositionsTable => "TB_Positions";
-    private string RoomsTable => "TB_Rooms";
+    private string AddressesTable => "tb_addresses";
+    private string EmployeesTable => "tb_employees";
+    private string EmployeesAddressesTable => "tb_employeesaddresses";
+    private string ContractsTable => "tb_contracts";
+    private string DepartmentsTable => "tb_departments";
+    private string DepartmentsEmployeesTable => "tb_departmentsemployees";
+    private string PositionsTable => "tb_positions";
+    private string PositionsEmployeesTable => "tb_positionsemployees";
+    private string RoomsTable => "tb_rooms";
+    private string RoomsEmployeesTable => "tb_roomsemployees";
 
     /// <summary>
-    /// Backing field for <see cref="File"/>.
+    /// The connection string.
     /// </summary>
-    private FileInfo file;
+    private string connectionString;
 
     /// <summary>
-    /// Gets or sets the value for the SQLite file.
+    /// Initializes a new MySQL data access instance.
     /// </summary>
-    public FileInfo File { get; set; }
-
-    /// <summary>
-    /// Initializes a new SQLite data access instance.
-    /// </summary>
-    /// <param name="filePath">The path of the SQLite file.</param>
-    public SQLiteDataAccess(string filePath)
+    /// <param name="server">The server hostname.</param>
+    /// <param name="database">The database name.</param>
+    /// <param name="user">The user ID.</param>
+    /// <param name="password">The user password.</param>
+    public MySQLDataAccess(string server, string database, string user, string password)
     {
-      this.File = new FileInfo(filePath);
+      this.DefineConnection(server, database, user, password);
+    }
+
+    /// <summary>
+    /// Initializes a new MySQL data access instance.
+    /// </summary>
+    public MySQLDataAccess()
+    {
+
+    }
+
+    /// <summary>
+    /// Defines the connection credentials.
+    /// </summary>
+    /// <param name="server">The server hostname.</param>
+    /// <param name="database">The database name.</param>
+    /// <param name="user">The user ID.</param>
+    /// <param name="password">The user password.</param>
+    public void DefineConnection(string server, string database, string user, string password)
+    {
+      MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+      {
+        Server = server,
+        Database = database,
+        UserID = user,
+        Password = password,
+        ConnectionTimeout = 10
+      };
+
+      this.connectionString = builder.ConnectionString;
     }
 
     /// <summary>
@@ -40,12 +71,12 @@
     /// </summary>
     private IDbConnection GetDbConnection()
     {
-      return new SqliteConnection(this.File.FullName);
+      return new MySqlConnection(this.connectionString);
     }
 
-    public int SavePerson(IPerson person)
+    public int SaveEmployee(IEmployee person)
     {
-      string sql = $"INSERT INTO {this.PersonsTable} ()";
+      string sql = $"INSERT INTO {this.EmployeesTable} ()";
 
       using (IDbConnection connection = this.GetDbConnection())
       {
@@ -55,67 +86,67 @@
       throw new NotImplementedException();
     }
 
-    public int UpdatePerson(IPerson person)
+    public int UpdateEmployee(IEmployee person)
     {
       throw new NotImplementedException();
     }
 
-    public int DeletePerson(IIdentifiable id)
+    public int DeleteEmployee(IIdentifiable id)
     {
       throw new NotImplementedException();
     }
 
-    public IPerson GetPerson(IIdentifiable id)
+    public IEmployee GetEmployee(IIdentifiable id)
     {
       throw new NotImplementedException();
     }
 
-    public int DeletePerson(int id)
+    public int DeleteEmployee(int id)
     {
       throw new NotImplementedException();
     }
 
-    public IPerson GetPerson(int id)
+    public IEmployee GetEmployee(int id)
     {
       throw new NotImplementedException();
     }
 
-    public int SavePersons(IEnumerable<IPerson> persons)
+    public int SaveEmployees(IEnumerable<IEmployee> persons)
     {
       throw new NotImplementedException();
     }
 
-    public int UpdatePersons(IEnumerable<IPerson> persons)
+    public int UpdateEmployees(IEnumerable<IEmployee> persons)
     {
       throw new NotImplementedException();
     }
 
-    public int DeletePersons(IEnumerable<IIdentifiable> ids)
+    public int DeleteEmployees(IEnumerable<IIdentifiable> ids)
     {
       throw new NotImplementedException();
     }
 
-    public IEnumerable<IPerson> GetPersons(IEnumerable<IIdentifiable> ids)
+    public IEnumerable<IEmployee> GetEmployees(IEnumerable<IIdentifiable> ids)
     {
       throw new NotImplementedException();
     }
 
-    public int DeletePersons(IEnumerable<int> ids)
+    public int DeleteEmployees(IEnumerable<int> ids)
     {
       throw new NotImplementedException();
     }
 
-    public IEnumerable<IPerson> GetPersons(IEnumerable<int> ids)
+    public IEnumerable<IEmployee> GetEmployees(IEnumerable<int> ids)
     {
       throw new NotImplementedException();
     }
 
-    public int DeletePersons()
+    public int DeleteEmployees()
     {
       throw new NotImplementedException();
     }
 
-    public IEnumerable<IPerson> GetPersons()
+    public IEnumerable<IEmployee> GetEmployees()
     {
       throw new NotImplementedException();
     }
