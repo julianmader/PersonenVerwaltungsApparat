@@ -48,6 +48,7 @@
     <Compile Include="DataAccess\IPositionDataAccess.cs" />
     <Compile Include="DataAccess\IPersonDataAccess.cs" />
     <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Models\IMatchable.cs" />
     <Compile Include="Models\IIdentifiable.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contract.cs" />
