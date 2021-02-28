@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IEmployee : IIdentifiable
+  public interface IEmployee : IIdentifiable, IMatchable
   {
     /// <summary>
     /// Gets or sets the value for the AdditionalInformation.

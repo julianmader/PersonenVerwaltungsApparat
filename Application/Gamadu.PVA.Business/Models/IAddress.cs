@@ -1,6 +1,8 @@
-﻿namespace Gamadu.PVA.Business.Models
+﻿using System;
+
+namespace Gamadu.PVA.Business.Models
 {
-  public interface IAddress
+  public interface IAddress : IIdentifiable, IEquatable<IAddress>
   {
     /// <summary>
     /// Gets or sets the value for the City.

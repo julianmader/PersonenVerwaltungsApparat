@@ -2,7 +2,7 @@
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IPosition : IIdentifiable
+  public interface IPosition : IIdentifiable, IMatchable
   {
     /// <summary>
     /// Gets or sets the value for the Description.

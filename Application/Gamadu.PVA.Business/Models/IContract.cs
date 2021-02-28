@@ -2,7 +2,7 @@
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IContract : IIdentifiable
+  public interface IContract : IIdentifiable, IMatchable
   {
     /// <summary>
     /// Gets or sets the value for the Description.

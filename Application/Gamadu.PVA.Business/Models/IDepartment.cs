@@ -2,7 +2,7 @@
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IDepartment : IIdentifiable
+  public interface IDepartment : IIdentifiable, IMatchable
   {
     /// <summary>
     /// Gets or sets the value for the Cost Center

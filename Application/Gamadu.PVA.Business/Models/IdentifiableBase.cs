@@ -3,7 +3,7 @@
   using Prism.Mvvm;
   using System;
 
-  public abstract class IdentifiableBase : BindableBase, IEquatable<IdentifiableBase>, IComparable<IdentifiableBase>, IIdentifiable
+  public abstract class IdentifiableBase : BindableBase, IEquatable<IIdentifiable>, IComparable<IIdentifiable>, IIdentifiable, IMatchable
   {
     /// <summary>
     /// Backing field for <see cref="ID"/>.
@@ -30,7 +30,7 @@
     }
 
     /// <inheritdoc/>
-    public int CompareTo(IdentifiableBase other)
+    public int CompareTo(IIdentifiable other)
     {
       if (this.ID < other.ID)
       {
@@ -41,7 +41,7 @@
     }
 
     /// <inheritdoc/>
-    public bool Equals(IdentifiableBase other)
+    public bool Equals(IIdentifiable other)
     {
       return this.ID == other.ID;
     }

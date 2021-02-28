@@ -3,9 +3,14 @@
   using Prism.Mvvm;
   using System;
 
-  public class Address : BindableBase, IEquatable<Address>, IAddress
+  public class Address : BindableBase, IAddress
   {
     #region Backing Fields
+
+    /// <summary>
+    /// Backing field for <see cref="ID"/>.
+    /// </summary>
+    private int id;
 
     /// <summary>
     /// Backing field for <see cref="Street"/>.
@@ -30,6 +35,13 @@
     #endregion Backing Fields
 
     #region Properties
+
+    /// <inheritdoc/>
+    public int ID
+    {
+      get { return this.id; }
+      set { this.SetProperty(ref this.id, value); }
+    }
 
     /// <inheritdoc/>
     public string Street
@@ -64,7 +76,7 @@
     #region Methods
 
     /// <inheritdoc/>
-    public bool Equals(Address other)
+    public bool Equals(IAddress other)
     {
       return this.Street.Equals(other.Street, StringComparison.OrdinalIgnoreCase)
         && this.StreetNumber.Equals(other.StreetNumber, StringComparison.OrdinalIgnoreCase)
