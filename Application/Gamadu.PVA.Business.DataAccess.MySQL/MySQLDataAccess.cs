@@ -2,7 +2,7 @@
 {
   using Dapper;
   using Gamadu.PVA.Business.Models;
-  using MySqlConnector;
+  using MySql.Data.MySqlClient;
   using System;
   using System.Collections.Generic;
   using System.Data;
@@ -74,19 +74,36 @@
       return new MySqlConnection(this.connectionString);
     }
 
-    public int SaveEmployee(IEmployee person)
+    public int SaveEmployee(IEmployee employee)
     {
-      string sql = $"INSERT INTO {this.EmployeesTable} ()";
+      string sql = "SaveEmployee";
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql, new { });
+        int affectedRows = connection.Execute(sql,
+          new
+          {
+            Matchcode = employee.Matchcode?.ToUpper(),
+            Gender = employee.Gender,
+            Forename = employee.Forename?.Trim(),
+            Surname = employee.Surname?.Trim(),
+            Birth = employee.Birth,
+            PhoneNumber = employee.PhoneNumber?.Trim(),
+            Email = employee.Email?.Trim(),
+            Department = employee.Department?.ID,
+            Position = employee.Position?.ID,
+            Contract = employee.Contract?.ID,
+            AdditionalInformation = employee.AdditionalInformation?.Trim(),
+            Street = employee.Address?.Street?.Trim(),
+            StreetNumber = employee.Address?.StreetNumber?.Trim(),
+            City = employee.Address?.City?.Trim(),
+            PostalCode = employee.Address?.PostalCode?.Trim()
+          }, commandType: CommandType.StoredProcedure);
+        return affectedRows;
       }
-
-      throw new NotImplementedException();
     }
 
-    public int UpdateEmployee(IEmployee person)
+    public int UpdateEmployee(IEmployee employee)
     {
       throw new NotImplementedException();
     }
