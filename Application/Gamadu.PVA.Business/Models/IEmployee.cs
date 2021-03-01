@@ -24,12 +24,12 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Contract.
     /// </summary>
-    IContract Contract { get; set; }
+    int Contract { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Department.
     /// </summary>
-    IDepartment Department { get; set; }
+    int Department { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Email.
@@ -54,12 +54,12 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Position.
     /// </summary>
-    IPosition Position { get; set; }
+    int Position { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Rooms.
     /// </summary>
-    IEnumerable<IRoom> Rooms { get; set; }
+    IEnumerable<int> Rooms { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Surname.

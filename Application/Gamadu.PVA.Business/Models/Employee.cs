@@ -46,22 +46,22 @@
     /// <summary>
     /// Backing field for <see cref="Department"/>.
     /// </summary>
-    private IDepartment department;
+    private int department;
 
     /// <summary>
     /// Backing field for <see cref="Position"/>.
     /// </summary>
-    private IPosition position;
+    private int position;
 
     /// <summary>
     /// Backing field for <see cref="Contract"/>.
     /// </summary>
-    private IContract contract;
+    private int contract;
 
     /// <summary>
     /// Backing field for <see cref="Rooms"/>.
     /// </summary>
-    private IEnumerable<IRoom> rooms;
+    private IEnumerable<int> rooms;
 
     /// <summary>
     /// Backing field for <see cref="AdditionalInformation"/>.
@@ -122,28 +122,28 @@
     }
 
     /// <inheritdoc/>
-    public IDepartment Department
+    public int Department
     {
       get { return this.department; }
       set { this.SetProperty(ref this.department, value); }
     }
 
     /// <inheritdoc/>
-    public IPosition Position
+    public int Position
     {
       get { return this.position; }
       set { this.SetProperty(ref this.position, value); }
     }
 
     /// <inheritdoc/>
-    public IContract Contract
+    public int Contract
     {
       get { return this.contract; }
       set { this.SetProperty(ref this.contract, value); }
     }
 
     /// <inheritdoc/>
-    public IEnumerable<IRoom> Rooms
+    public IEnumerable<int> Rooms
     {
       get { return this.rooms; }
       set { this.SetProperty(ref this.rooms, value); }

@@ -49,7 +49,7 @@
     /// <summary>
     /// Backing field for <see cref="Employee"/>.
     /// </summary>
-    private IEmployee employee;
+    private int employee;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
@@ -117,7 +117,7 @@
     }
 
     /// <inheritdoc/>
-    public IEmployee Employee
+    public int Employee
     {
       get { return this.employee; }
       set { this.SetProperty(ref this.employee, value); }

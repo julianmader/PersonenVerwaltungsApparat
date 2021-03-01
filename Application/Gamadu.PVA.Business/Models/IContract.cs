@@ -12,7 +12,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Employee.
     /// </summary>
-    IEmployee Employee { get; set; }
+    int Employee { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the End.

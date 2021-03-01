@@ -12,7 +12,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Employees.
     /// </summary>
-    IEnumerable<IEmployee> Employees { get; set; }
+    IEnumerable<int> Employees { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Name.
