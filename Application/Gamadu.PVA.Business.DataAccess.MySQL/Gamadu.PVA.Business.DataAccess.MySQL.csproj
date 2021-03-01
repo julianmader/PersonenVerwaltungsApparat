@@ -42,6 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MySQLDataAccess.cs" />
+    <Compile Include="MySQLDataAccess_Contract.cs" />
+    <Compile Include="MySQLDataAccess_Department.cs" />
+    <Compile Include="MySQLDataAccess_Employee.cs" />
+    <Compile Include="MySQLDataAccess_Position.cs" />
+    <Compile Include="MySQLDataAccess_Room.cs" />
     <Compile Include="MySQLModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
