@@ -12,72 +12,184 @@
 
     public int SavePosition(IPosition position)
     {
-      throw new NotImplementedException();
+      string sql = "SavePosition";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        int affectedRows = connection.Execute(sql,
+          new
+          {
+            Matchcode = position.Matchcode?.ToUpper(),
+            Name = position.Name,
+            Description = position.Description
+          }, commandType: CommandType.StoredProcedure);
+        return affectedRows;
+      }
     }
 
     public int UpdatePosition(IPosition position)
     {
-      throw new NotImplementedException();
+      string sql = "UpdatePosition";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        int affectedRows = connection.Execute(sql,
+          new
+          {
+            P_ID = position.ID,
+            Matchcode = position.Matchcode?.ToUpper(),
+            Name = position.Name,
+            Description = position.Description
+          }, commandType: CommandType.StoredProcedure);
+        return affectedRows;
+      }
     }
 
     public int DeletePosition(IIdentifiable id)
     {
-      throw new NotImplementedException();
+      return this.DeletePosition(id.ID);
     }
 
     public IPosition GetPosition(IIdentifiable id)
     {
-      throw new NotImplementedException();
+      return this.GetPosition(id.ID);
     }
 
     public int DeletePosition(int id)
     {
-      throw new NotImplementedException();
+      string sql = "DeletePosition";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        int affectedRows = connection.Execute(sql,
+          new
+          {
+            P_ID = id
+          }, commandType: CommandType.StoredProcedure);
+        return affectedRows;
+      }
     }
 
     public IPosition GetPosition(int id)
     {
-      throw new NotImplementedException();
+      string sql = "GetPosition";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        IPosition position = connection.QueryFirst<Position>(sql,
+          new
+          {
+            P_ID = id
+          }, commandType: CommandType.StoredProcedure);
+
+        return position;
+      }
     }
 
     public int SavePositions(IEnumerable<IPosition> positions)
     {
-      throw new NotImplementedException();
+      int affectedRows = 0;
+
+      foreach (IPosition position in positions)
+      {
+        affectedRows += this.SavePosition(position);
+      }
+
+      return affectedRows;
     }
 
     public int UpdatePositions(IEnumerable<IPosition> positions)
     {
-      throw new NotImplementedException();
+      int affectedRows = 0;
+
+      foreach (IPosition position in positions)
+      {
+        affectedRows += this.UpdatePosition(position);
+      }
+
+      return affectedRows;
     }
 
     public int DeletePositions(IEnumerable<IIdentifiable> ids)
     {
-      throw new NotImplementedException();
+      int affectedRows = 0;
+
+      foreach (IIdentifiable id in ids)
+      {
+        affectedRows += this.DeletePosition(id);
+      }
+
+      return affectedRows;
     }
 
     public IEnumerable<IPosition> GetPositions(IEnumerable<IIdentifiable> ids)
     {
-      throw new NotImplementedException();
+      List<IPosition> positions = new List<IPosition>();
+
+      foreach (IIdentifiable id in ids)
+      {
+        IPosition position = this.GetPosition(id);
+
+        if (position != null)
+        {
+          positions.Add(position);
+        }
+      }
+
+      return positions;
     }
 
     public int DeletePositions(IEnumerable<int> ids)
     {
-      throw new NotImplementedException();
+      int affectedRows = 0;
+
+      foreach (int id in ids)
+      {
+        affectedRows += this.DeletePosition(id);
+      }
+
+      return affectedRows;
     }
 
     public IEnumerable<IPosition> GetPositions(IEnumerable<int> ids)
     {
-      throw new NotImplementedException();
+      List<IPosition> positions = new List<IPosition>();
+
+      foreach (int id in ids)
+      {
+        IPosition position = this.GetPosition(id);
+
+        if (position != null)
+        {
+          positions.Add(position);
+        }
+      }
+
+      return positions;
     }
 
     public int DeletePositions()
     {
-      throw new NotImplementedException();
+      string sql = "DeleteAllPositions";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        int affectedRows = connection.Execute(sql, commandType: CommandType.StoredProcedure);
+
+        return affectedRows;
+      }
     }
 
     public IEnumerable<IPosition> GetPositions()
     {
-      throw new NotImplementedException();
+      string sql = "GetAllPositions";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        IEnumerable<IPosition> positions = connection.Query<Position>(sql, commandType: CommandType.StoredProcedure);
+
+        return positions;
+      }
     }
 
     #endregion Position
