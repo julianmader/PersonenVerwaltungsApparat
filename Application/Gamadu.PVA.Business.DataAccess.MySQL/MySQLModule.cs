@@ -11,6 +11,7 @@ namespace Gamadu.PVA.Business.DataAccess.MySQL
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
+      containerRegistry.Register<IAllDataAccess, MySQLDataAccess>("MySQL");
     }
   }
 }
