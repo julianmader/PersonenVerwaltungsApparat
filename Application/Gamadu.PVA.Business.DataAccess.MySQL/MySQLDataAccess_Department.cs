@@ -9,6 +9,7 @@
   {
     #region Department
 
+    /// <inheritdoc/>
     public int SaveDepartment(IDepartment department)
     {
       string sql = "SaveDepartment";
@@ -19,15 +20,16 @@
           new
           {
             Matchcode = department.Matchcode?.ToUpper(),
-            Name = department.Name,
-            CostCenter = department.CostCenter,
+            Name = department.Name?.Trim(),
+            CostCenter = department.CostCenter?.Trim(),
             Manager = department.Manager,
-            Description = department.Description
+            Description = department.Description?.Trim()
           }, commandType: CommandType.StoredProcedure);
         return affectedRows;
       }
     }
 
+    /// <inheritdoc/>
     public int UpdateDepartment(IDepartment department)
     {
       string sql = "UpdateDepartment";
@@ -48,16 +50,19 @@
       }
     }
 
+    /// <inheritdoc/>
     public int DeleteDepartment(IIdentifiable id)
     {
       return this.DeleteDepartment(id.ID);
     }
 
+    /// <inheritdoc/>
     public IDepartment GetDepartment(IIdentifiable id)
     {
       return this.GetDepartment(id.ID);
     }
 
+    /// <inheritdoc/>
     public int DeleteDepartment(int id)
     {
       string sql = "DeleteDepartment";
@@ -73,6 +78,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public IDepartment GetDepartment(int id)
     {
       string sql = "GetDepartment";
@@ -89,6 +95,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public int SaveDepartments(IEnumerable<IDepartment> departments)
     {
       int affectedRows = 0;
@@ -101,6 +108,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public int UpdateDepartments(IEnumerable<IDepartment> departments)
     {
       int affectedRows = 0;
@@ -113,6 +121,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public int DeleteDepartments(IEnumerable<IIdentifiable> ids)
     {
       int affectedRows = 0;
@@ -125,6 +134,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IDepartment> GetDepartments(IEnumerable<IIdentifiable> ids)
     {
       List<IDepartment> departments = new List<IDepartment>();
@@ -142,6 +152,7 @@
       return departments;
     }
 
+    /// <inheritdoc/>
     public int DeleteDepartments(IEnumerable<int> ids)
     {
       int affectedRows = 0;
@@ -154,6 +165,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IDepartment> GetDepartments(IEnumerable<int> ids)
     {
       List<IDepartment> departments = new List<IDepartment>();
@@ -171,6 +183,7 @@
       return departments;
     }
 
+    /// <inheritdoc/>
     public int DeleteDepartments()
     {
       string sql = "DeleteAllDepartments";
@@ -183,6 +196,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IDepartment> GetDepartments()
     {
       string sql = "GetAllDepartments";

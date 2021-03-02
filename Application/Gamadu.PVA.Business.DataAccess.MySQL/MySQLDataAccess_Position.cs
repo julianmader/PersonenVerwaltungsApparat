@@ -10,6 +10,7 @@
   {
     #region Position
 
+    /// <inheritdoc/>
     public int SavePosition(IPosition position)
     {
       string sql = "SavePosition";
@@ -27,6 +28,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public int UpdatePosition(IPosition position)
     {
       string sql = "UpdatePosition";
@@ -45,16 +47,19 @@
       }
     }
 
+    /// <inheritdoc/>
     public int DeletePosition(IIdentifiable id)
     {
       return this.DeletePosition(id.ID);
     }
 
+    /// <inheritdoc/>
     public IPosition GetPosition(IIdentifiable id)
     {
       return this.GetPosition(id.ID);
     }
 
+    /// <inheritdoc/>
     public int DeletePosition(int id)
     {
       string sql = "DeletePosition";
@@ -70,6 +75,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public IPosition GetPosition(int id)
     {
       string sql = "GetPosition";
@@ -86,6 +92,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public int SavePositions(IEnumerable<IPosition> positions)
     {
       int affectedRows = 0;
@@ -98,6 +105,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public int UpdatePositions(IEnumerable<IPosition> positions)
     {
       int affectedRows = 0;
@@ -110,6 +118,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public int DeletePositions(IEnumerable<IIdentifiable> ids)
     {
       int affectedRows = 0;
@@ -122,6 +131,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IPosition> GetPositions(IEnumerable<IIdentifiable> ids)
     {
       List<IPosition> positions = new List<IPosition>();
@@ -139,6 +149,7 @@
       return positions;
     }
 
+    /// <inheritdoc/>
     public int DeletePositions(IEnumerable<int> ids)
     {
       int affectedRows = 0;
@@ -151,6 +162,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IPosition> GetPositions(IEnumerable<int> ids)
     {
       List<IPosition> positions = new List<IPosition>();
@@ -168,6 +180,7 @@
       return positions;
     }
 
+    /// <inheritdoc/>
     public int DeletePositions()
     {
       string sql = "DeleteAllPositions";
@@ -180,6 +193,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IPosition> GetPositions()
     {
       string sql = "GetAllPositions";

@@ -9,6 +9,7 @@
   {
     #region Contract
 
+    /// <inheritdoc/>
     public int SaveContract(IContract contract)
     {
       string sql = "SaveContract";
@@ -34,6 +35,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public int UpdateContract(IContract contract)
     {
       string sql = "UpdateContract";
@@ -60,16 +62,19 @@
       }
     }
 
+    /// <inheritdoc/>
     public int DeleteContract(IIdentifiable id)
     {
       return this.DeleteContract(id.ID);
     }
 
+    /// <inheritdoc/>
     public IContract GetContract(IIdentifiable id)
     {
       return this.GetContract(id.ID);
     }
 
+    /// <inheritdoc/>
     public int DeleteContract(int id)
     {
       string sql = "DeleteContract";
@@ -86,6 +91,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public IContract GetContract(int id)
     {
       string sql = "GetContract";
@@ -102,6 +108,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public int SaveContracts(IEnumerable<IContract> contracts)
     {
       int affectedRows = 0;
@@ -114,6 +121,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public int UpdateContracts(IEnumerable<IContract> contracts)
     {
       int affectedRows = 0;
@@ -126,6 +134,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public int DeleteContracts(IEnumerable<IIdentifiable> ids)
     {
       int affectedRows = 0;
@@ -138,6 +147,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IContract> GetContracts(IEnumerable<IIdentifiable> ids)
     {
       List<IContract> contracts = new List<IContract>();
@@ -155,6 +165,7 @@
       return contracts;
     }
 
+    /// <inheritdoc/>
     public int DeleteContracts(IEnumerable<int> ids)
     {
       int affectedRows = 0;
@@ -167,6 +178,7 @@
       return affectedRows;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IContract> GetContracts(IEnumerable<int> ids)
     {
       List<IContract> contracts = new List<IContract>();
@@ -184,6 +196,7 @@
       return contracts;
     }
 
+    /// <inheritdoc/>
     public IEnumerable<IContract> GetContracts()
     {
       string sql = "GetAllContracts";
@@ -196,6 +209,7 @@
       }
     }
 
+    /// <inheritdoc/>
     public int DeleteContracts()
     {
       string sql = "DeleteAllContracts";
