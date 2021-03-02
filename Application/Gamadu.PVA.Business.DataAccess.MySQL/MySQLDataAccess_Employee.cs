@@ -30,10 +30,10 @@
             Position = employee.Position,
             Contract = employee.Contract,
             AdditionalInformation = employee.AdditionalInformation?.Trim(),
-            Street = employee.Address?.Street?.Trim(),
-            StreetNumber = employee.Address?.StreetNumber?.Trim(),
-            City = employee.Address?.City?.Trim(),
-            PostalCode = employee.Address?.PostalCode?.Trim()
+            Street = employee.Street?.Trim(),
+            StreetNumber = employee.StreetNumber?.Trim(),
+            City = employee.City?.Trim(),
+            PostalCode = employee.PostalCode?.Trim()
           }, commandType: CommandType.StoredProcedure);
         return affectedRows;
       }
@@ -61,10 +61,10 @@
             Position = employee.Position,
             Contract = employee.Contract,
             AdditionalInformation = employee.AdditionalInformation?.Trim(),
-            Street = employee.Address?.Street?.Trim(),
-            StreetNumber = employee.Address?.StreetNumber?.Trim(),
-            City = employee.Address?.City?.Trim(),
-            PostalCode = employee.Address?.PostalCode?.Trim()
+            Street = employee.Street?.Trim(),
+            StreetNumber = employee.StreetNumber?.Trim(),
+            City = employee.City?.Trim(),
+            PostalCode = employee.PostalCode?.Trim()
           }, commandType: CommandType.StoredProcedure);
         return affectedRows;
       }
