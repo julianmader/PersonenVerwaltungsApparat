@@ -41,17 +41,17 @@
     /// <summary>
     /// Backing field for <see cref="Department"/>.
     /// </summary>
-    private int department;
+    private int? department;
 
     /// <summary>
     /// Backing field for <see cref="Position"/>.
     /// </summary>
-    private int position;
+    private int? position;
 
     /// <summary>
     /// Backing field for <see cref="Contract"/>.
     /// </summary>
-    private int contract;
+    private int? contract;
 
     /// <summary>
     /// Backing field for <see cref="Rooms"/>.
@@ -130,21 +130,21 @@
     }
 
     /// <inheritdoc/>
-    public int Department
+    public int? Department
     {
       get { return this.department; }
       set { this.SetProperty(ref this.department, value); }
     }
 
     /// <inheritdoc/>
-    public int Position
+    public int? Position
     {
       get { return this.position; }
       set { this.SetProperty(ref this.position, value); }
     }
 
     /// <inheritdoc/>
-    public int Contract
+    public int? Contract
     {
       get { return this.contract; }
       set { this.SetProperty(ref this.contract, value); }

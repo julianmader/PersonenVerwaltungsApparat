@@ -39,12 +39,12 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Contract.
     /// </summary>
-    int Contract { get; set; }
+    int? Contract { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Department.
     /// </summary>
-    int Department { get; set; }
+    int? Department { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Email.
@@ -69,7 +69,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Position.
     /// </summary>
-    int Position { get; set; }
+    int? Position { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Rooms.
