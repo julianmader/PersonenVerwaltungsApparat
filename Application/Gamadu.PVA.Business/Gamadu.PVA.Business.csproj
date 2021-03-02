@@ -50,10 +50,8 @@
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Models\IMatchable.cs" />
     <Compile Include="Models\IIdentifiable.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\IAddress.cs" />
     <Compile Include="Models\IContract.cs" />
     <Compile Include="Models\IdentifiableBase.cs" />
     <Compile Include="Models\IDepartment.cs" />
