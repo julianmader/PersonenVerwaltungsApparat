@@ -11,9 +11,13 @@
     {
       IAllDataAccess dataAccess = new MySQLDataAccess("localhost", "db_pva", "root", string.Empty);
 
+      SaveEmployee(dataAccess);
+      //DeleteEmployee(dataAccess);
+
       //GetEmployee(dataAccess);
       GetAllEmployees(dataAccess);
 
+      DeleteAllEmployees(dataAccess);
 
       System.Console.ReadLine();
     }
@@ -22,8 +26,8 @@
     {
       IEmployee employee = new Employee()
       {
-        Matchcode = "Test3",
-        Forename = "Sven"
+        Matchcode = "Test1",
+        Gender = Gamadu.PVA.Business.Enums.Gender.Male
       };
 
       System.Console.WriteLine(dataAccess.SaveEmployee(employee));
@@ -42,12 +46,12 @@
 
     static void DeleteEmployee(IAllDataAccess dataAccess)
     {
-      IEmployee employee = new Employee()
-      {
-        ID = 7
-      };
+      System.Console.WriteLine(dataAccess.DeleteEmployee(10));
+    }
 
-      System.Console.WriteLine(dataAccess.DeleteEmployee(employee));
+    static void DeleteAllEmployees(IAllDataAccess dataAccess)
+    {
+      System.Console.WriteLine(dataAccess.DeleteEmployees());
     }
 
     static void GetAllEmployees(IAllDataAccess dataAccess)
@@ -56,6 +60,7 @@
 
       foreach (IEmployee employee in employees)
       {
+        System.Console.WriteLine(employee.ID);
         System.Console.WriteLine(employee.Matchcode);
       }
     }
