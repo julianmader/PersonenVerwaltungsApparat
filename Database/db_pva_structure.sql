@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Mrz 2021 um 11:19
+-- Erstellungszeit: 03. Mrz 2021 um 13:22
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -38,6 +38,7 @@ DROP PROCEDURE IF EXISTS `DeleteAllContracts`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAllContracts` ()  BEGIN
 
 	DELETE FROM tb_contracts;
+    ALTER TABLE tb_contracts AUTO_INCREMENT = 1;
     
 END$$
 
@@ -45,28 +46,28 @@ DROP PROCEDURE IF EXISTS `DeleteAllDepartments`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAllDepartments` ()  BEGIN
 
 	DELETE FROM tb_departments;
-    
+    ALTER TABLE tb_departments AUTO_INCREMENT = 1;
 END$$
 
 DROP PROCEDURE IF EXISTS `DeleteAllEmployees`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAllEmployees` ()  BEGIN
 
 	DELETE FROM tb_employees;
-    
+    ALTER TABLE tb_employees AUTO_INCREMENT = 1;
 END$$
 
 DROP PROCEDURE IF EXISTS `DeleteAllPositions`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAllPositions` ()  BEGIN
 
 	DELETE FROM tb_positions;
-    
+    ALTER TABLE tb_positions AUTO_INCREMENT = 1;    
 END$$
 
 DROP PROCEDURE IF EXISTS `DeleteAllRooms`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAllRooms` ()  BEGIN
 
 	DELETE FROM tb_rooms;
-    
+    ALTER TABLE tb_rooms AUTO_INCREMENT = 1;    
 END$$
 
 DROP PROCEDURE IF EXISTS `DeleteContract`$$
@@ -112,40 +113,41 @@ END$$
 DROP PROCEDURE IF EXISTS `GetAllContracts`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllContracts` ()  BEGIN
 
-	SELECT * FROM tb_contracts;
+	SELECT C_ID AS ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd FROM tb_contracts;
     
 END$$
 
 DROP PROCEDURE IF EXISTS `GetAllDepartments`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllDepartments` ()  BEGIN
 
-	SELECT * FROM tb_departments;
+	SELECT D_ID AS ID, Matchcode, Name, CostCenter, Manager, Description FROM tb_departments;
+    ALTER TABLE tb_departments AUTO_INCREMENT = 1;
     
 END$$
 
 DROP PROCEDURE IF EXISTS `GetAllEmployees`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllEmployees` ()  BEGIN
-		SELECT * FROM tb_employees;
+		SELECT E_ID AS ID, Matchcode, Gender, Forename, Surname, Birth, PhoneNumber, Email, Department, Position, Contract, AdditionalInformation, Street, StreetNumber, City, PostalCode FROM tb_employees;
 END$$
 
 DROP PROCEDURE IF EXISTS `GetAllPositions`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllPositions` ()  BEGIN
 
-	SELECT * FROM tb_positions;
+	SELECT P_ID AS ID, Matchcode, Name, Description FROM tb_positions;
     
 END$$
 
 DROP PROCEDURE IF EXISTS `GetAllRooms`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllRooms` ()  BEGIN
 
-	SELECT * FROM tb_rooms;
-    
+	SELECT R_ID AS ID, Matchcode, Name, RoomNumber, FloorNumber, Size, Description FROM tb_rooms;
+
 END$$
 
 DROP PROCEDURE IF EXISTS `GetContract`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetContract` (IN `C_ID` INT)  BEGIN
 
-	SELECT * FROM tb_contracts
+	SELECT C_ID AS ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd FROM tb_contracts
     WHERE tb_contracts.C_ID = C_ID;
     
 END$$
@@ -153,7 +155,7 @@ END$$
 DROP PROCEDURE IF EXISTS `GetDepartment`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDepartment` (IN `D_ID` INT)  BEGIN
 
-	SELECT * FROM tb_departments
+	SELECT D_ID AS ID, Matchcode, Name, CostCenter, Manager, Description FROM tb_departments
     WHERE tb_departments.D_ID = D_ID;
     
 END$$
@@ -161,14 +163,15 @@ END$$
 DROP PROCEDURE IF EXISTS `GetEmployee`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEmployee` (IN `E_ID` INT)  BEGIN
 
-	SELECT * WHERE tb_employees.E_ID = E_ID;
+	SELECT E_ID AS ID, Matchcode, Gender, Forename, Surname, Birth, PhoneNumber, Email, Department, Position, Contract, AdditionalInformation, Street, StreetNumber, City, PostalCode 
+            WHERE tb_employees.E_ID = E_ID;
     
 END$$
 
 DROP PROCEDURE IF EXISTS `GetPosition`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPosition` (IN `P_ID` INT)  BEGIN
 
-	SELECT * FROM tb_positions
+	SELECT P_ID AS ID, Matchcode, Name, Description FROM tb_positions
     WHERE tb_positions.P_ID = P_ID;
     
 END$$
@@ -342,7 +345,7 @@ DROP TABLE IF EXISTS `tb_employees`;
 CREATE TABLE `tb_employees` (
   `E_ID` int(11) NOT NULL,
   `Matchcode` varchar(255) DEFAULT NULL,
-  `Gender` int(11) NOT NULL DEFAULT 0 COMMENT '0: Male\r\n1: Female',
+  `Gender` int(11) NOT NULL DEFAULT 0 COMMENT '0: Neutral\r\n1: Male\r\n2: Female',
   `Forename` varchar(255) DEFAULT NULL,
   `Surname` varchar(255) DEFAULT NULL,
   `Birth` date DEFAULT NULL,
