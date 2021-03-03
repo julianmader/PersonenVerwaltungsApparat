@@ -61,6 +61,7 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="BusinessModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
