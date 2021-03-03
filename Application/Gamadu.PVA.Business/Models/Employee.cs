@@ -193,5 +193,14 @@
     }
 
     #endregion Properties
+
+    #region Methods
+
+    public override string ToString()
+    {
+      return $"{this.Matchcode} - {this.Forename} {this.Surname}";
+    }
+
+    #endregion Methods
   }
 }
