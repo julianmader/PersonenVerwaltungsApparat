@@ -2,7 +2,6 @@
 {
   using Dapper;
   using Gamadu.PVA.Business.Models;
-  using System;
   using System.Collections.Generic;
   using System.Data;
 

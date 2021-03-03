@@ -1,9 +1,12 @@
-﻿using Prism.Ioc;
+﻿using Gamadu.PVA.Views.Employees.Views;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
 namespace Gamadu.PVA.Views.Employees
 {
+  [Module(ModuleName = "EmployeesModule")]
+  [ModuleDependency("MySQLModule")]
   public class EmployeesModule : IModule
   {
     public IRegionManager RegionManager { get; set; }
@@ -12,7 +15,7 @@ namespace Gamadu.PVA.Views.Employees
     {
       this.RegionManager = containerProvider.Resolve<IRegionManager>();
 
-      this.RegionManager.RegisterViewWithRegion("EmployeesRegion", typeof(Views.EmployeesView));
+      this.RegionManager.RegisterViewWithRegion("EmployeesRegion", typeof(EmployeesView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

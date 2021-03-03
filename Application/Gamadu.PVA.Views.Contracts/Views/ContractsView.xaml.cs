@@ -6,10 +6,10 @@ namespace Gamadu.PVA.Views.Contracts.Views
   /// Interaction logic for ContractsView.xaml
   /// </summary>
   public partial class ContractsView : UserControl
+  {
+    public ContractsView()
     {
-        public ContractsView()
-        {
       this.InitializeComponent();
-        }
     }
+  }
 }

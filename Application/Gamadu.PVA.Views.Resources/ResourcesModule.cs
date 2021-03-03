@@ -5,7 +5,7 @@ using Prism.Regions;
 namespace Gamadu.PVA.Views.Resources
 {
   public class ResourcesModule : IModule
-    {
+  {
     public IRegionManager RegionManager { get; set; }
 
     public void OnInitialized(IContainerProvider containerProvider)

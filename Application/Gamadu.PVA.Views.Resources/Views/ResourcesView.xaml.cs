@@ -6,10 +6,10 @@ namespace Gamadu.PVA.Views.Resources.Views
   /// Interaction logic for ResourcesView.xaml
   /// </summary>
   public partial class ResourcesView : UserControl
+  {
+    public ResourcesView()
     {
-        public ResourcesView()
-        {
       this.InitializeComponent();
-        }
     }
+  }
 }
