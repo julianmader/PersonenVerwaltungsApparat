@@ -49,23 +49,44 @@
       </Grid.RowDefinitions>
 
       <materialdesign:Card Grid.Row="0">
-        <TextBlock Margin="5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-          Employees
-        </TextBlock>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+          </Grid.ColumnDefinitions>
+
+          <TextBlock
+            Margin="5"
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Employees" />
+
+          <Button
+            Grid.Column="2"
+            Margin="5"
+            materialdesign:ButtonProgressAssist.IsIndeterminate="True"
+            materialdesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsRefreshing}"
+            materialdesign:ButtonProgressAssist.Value="0"
+            Command="{Binding RefreshCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+            <materialdesign:PackIcon
+              Width="24"
+              Height="24"
+              Kind="Refresh" />
+          </Button>
+
+        </Grid>
+
       </materialdesign:Card>
 
       <materialdesign:Card Grid.Row="2">
-        <ListBox ItemsSource="{Binding AvailableEmployees}">
-          <ListBox.ItemTemplate>
-            <DataTemplate DataType="{x:Type models:Employee}">
-              <StackPanel Orientation="Horizontal">
-                <Label Content="{Binding Matchcode}" />
-                <Label Content="{Binding Forename}" />
-                <Label Content="{Binding Surname}" />
-              </StackPanel>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
+        <ListBox
+          Foreground="AntiqueWhite"
+          ItemsSource="{Binding AvailableEmployees}"
+          SelectedItem="{Binding SelectedEmployee}" />
       </materialdesign:Card>
 
     </Grid>
@@ -133,44 +154,52 @@
               Grid.Row="2"
               materialdesign:HintAssist.Hint="ID"
               Icon="SqlPrimaryKey"
-              IsHitTestVisible="False" />
+              IsHitTestVisible="False"
+              Text="{Binding SelectedEmployee.ID}" />
 
             <controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
-              Icon="Identifier" />
+              Icon="Identifier"
+              Text="{Binding SelectedEmployee.Matchcode}" />
 
             <controls:IconComboBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Gender"
               Icon="GenderMaleFemale"
-              ItemsSource="{Binding Source={StaticResource GenderEnum}}" />
+              ItemsSource="{Binding Source={StaticResource GenderEnum}}"
+              SelectedItem="{Binding SelectedEmployee.Gender}" />
 
             <controls:IconTextBox
               Grid.Row="8"
               materialdesign:HintAssist.Hint="Forename"
-              Icon="AccountBoxOutline" />
+              Icon="AccountBoxOutline"
+              Text="{Binding SelectedEmployee.Forename}" />
 
             <controls:IconTextBox
               Grid.Row="10"
               materialdesign:HintAssist.Hint="Surname"
-              Icon="AccountBox" />
+              Icon="AccountBox"
+              Text="{Binding SelectedEmployee.Surname}" />
 
             <controls:IconDatePicker
               Grid.Row="12"
               materialdesign:HintAssist.Hint="Birth Date"
               Icon="Cake"
-              SelectedDate="01.02." />
+              SelectedDate="01.02."
+              Text="{Binding SelectedEmployee.Birth}" />
 
             <controls:IconTextBox
               Grid.Row="14"
               materialdesign:HintAssist.Hint="Phone Number"
-              Icon="Phone" />
+              Icon="Phone"
+              Text="{Binding SelectedEmployee.PhoneNumber}" />
 
             <controls:IconTextBox
               Grid.Row="16"
               materialdesign:HintAssist.Hint="E-Mail"
-              Icon="Email" />
+              Icon="Email"
+              Text="{Binding SelectedEmployee.Email}" />
 
             <Grid Grid.Row="18">
 
@@ -183,12 +212,14 @@
               <controls:IconTextBox
                 Grid.Column="0"
                 materialdesign:HintAssist.Hint="Street"
-                Icon="RoadVariant" />
+                Icon="RoadVariant"
+                Text="{Binding SelectedEmployee.Street}" />
 
               <controls:IconTextBox
                 Grid.Column="2"
-                materialdesign:HintAssist.Hint="Num"
-                Icon="Counter" />
+                materialdesign:HintAssist.Hint="Number"
+                Icon="Counter"
+                Text="{Binding SelectedEmployee.StreetNumber}" />
 
             </Grid>
 
@@ -203,42 +234,77 @@
               <controls:IconTextBox
                 Grid.Column="0"
                 materialdesign:HintAssist.Hint="City"
-                Icon="City" />
+                Icon="City"
+                Text="{Binding SelectedEmployee.City}" />
 
               <controls:IconTextBox
                 Grid.Column="2"
                 materialdesign:HintAssist.Hint="Postal Code"
-                Icon="Counter" />
+                Icon="Counter"
+                Text="{Binding SelectedEmployee.PostalCode}" />
 
             </Grid>
 
             <controls:IconComboBox
               Grid.Row="22"
               materialdesign:HintAssist.Hint="Department"
-              Icon="AlphaDBoxOutline" />
+              DisplayMemberPath="Name"
+              Icon="AlphaDBoxOutline"
+              ItemsSource="{Binding AvailableDepartments}"
+              SelectedValue="{Binding SelectedEmployee.Department}"
+              SelectedValuePath="ID" />
 
             <controls:IconComboBox
               Grid.Row="24"
               materialdesign:HintAssist.Hint="Position"
-              Icon="AlphaPBoxOutline" />
+              DisplayMemberPath="Name"
+              Icon="AlphaPBoxOutline"
+              ItemsSource="{Binding AvailablePositions}"
+              SelectedValue="{Binding SelectedEmployee.Position}"
+              SelectedValuePath="ID" />
 
             <controls:IconComboBox
               Grid.Row="26"
               materialdesign:HintAssist.Hint="Contract"
-              Icon="AlphaCBoxOutline" />
+              DisplayMemberPath="Name"
+              Icon="AlphaCBoxOutline"
+              ItemsSource="{Binding AvailableContracts}"
+              SelectedValue="{Binding SelectedEmployee.Contract}"
+              SelectedValuePath="ID" />
 
             <controls:IconExpander
               Grid.Row="28"
               Header="Rooms"
               Icon="AlphaRBoxOutline">
-              <ListBox />
+              <Grid>
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="5" />
+                  <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <ListBox Foreground="AntiqueWhite" ItemsSource="{Binding AvailableRooms}" />
+
+                <Button
+                  Grid.Row="2"
+                  Margin="5"
+                  HorizontalAlignment="Right"
+                  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                  <materialdesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Edit" />
+                </Button>
+
+              </Grid>
             </controls:IconExpander>
 
             <controls:IconExpander
               Grid.Row="30"
               Header="Additional Information"
               Icon="Information">
-              <TextBox />
+              <TextBox Foreground="AntiqueWhite" Text="{Binding SelectedEmployee.AdditionalInformation}" />
             </controls:IconExpander>
 
           </Grid>
@@ -255,16 +321,25 @@
           <ColumnDefinition Width="auto" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
         <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
-            Kind="ContentSave" />
+            Kind="AddBox" />
         </Button>
 
         <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+          <materialdesign:PackIcon
+            Width="24"
+            Height="24"
+            Kind="ContentSave" />
+        </Button>
+
+        <Button Grid.Column="6" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
