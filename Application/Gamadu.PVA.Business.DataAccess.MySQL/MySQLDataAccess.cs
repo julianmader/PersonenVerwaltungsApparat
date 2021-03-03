@@ -1,10 +1,7 @@
 ﻿namespace Gamadu.PVA.Business.DataAccess.MySQL
 {
-  using Dapper;
-  using Gamadu.PVA.Business.Models;
   using MySql.Data.MySqlClient;
-  using System;
-  using System.Collections.Generic;
+  using System.Configuration;
   using System.Data;
 
   public partial class MySQLDataAccess : IAllDataAccess
@@ -31,7 +28,7 @@
     /// </summary>
     public MySQLDataAccess()
     {
-
+      this.connectionString = ConfigurationManager.ConnectionStrings["MySQL"].ConnectionString;
     }
 
     /// <summary>
