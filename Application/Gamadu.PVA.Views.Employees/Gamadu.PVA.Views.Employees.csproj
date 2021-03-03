@@ -97,6 +97,10 @@
     <Resource Include="Views\profile_picture_blank.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gamadu.PVA.Business\Gamadu.PVA.Business.csproj">
+      <Project>{656bce80-ab8a-4dd3-806d-578c3bbae98b}</Project>
+      <Name>Gamadu.PVA.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj">
       <Project>{795d6cd2-6b0b-4adf-8409-bb504c2e15a8}</Project>
       <Name>Gamadu.PVA.Resources</Name>

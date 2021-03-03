@@ -4,9 +4,12 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:Gamadu.PVA.Resources.Controls;assembly=Gamadu.PVA.Resources"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:enums="clr-namespace:Gamadu.PVA.Business.Enums;assembly=Gamadu.PVA.Business"
   xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:models="clr-namespace:Gamadu.PVA.Business.Models;assembly=Gamadu.PVA.Business"
   xmlns:prism="http://prismlibrary.com/"
+  xmlns:system="clr-namespace:System;assembly=mscorlib"
   d:DesignWidth="900"
   prism:ViewModelLocator.AutoWireViewModel="True"
   FontFamily="{DynamicResource MaterialDesignFont}"
@@ -18,6 +21,14 @@
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Gamadu.PVA.Resources;component/Themes/Generic.xaml" />
       </ResourceDictionary.MergedDictionaries>
+      <ObjectDataProvider
+        x:Key="GenderEnum"
+        MethodName="GetValues"
+        ObjectType="{x:Type system:Enum}">
+        <ObjectDataProvider.MethodParameters>
+          <x:Type TypeName="enums:Gender" />
+        </ObjectDataProvider.MethodParameters>
+      </ObjectDataProvider>
     </ResourceDictionary>
   </UserControl.Resources>
 
@@ -44,7 +55,17 @@
       </materialdesign:Card>
 
       <materialdesign:Card Grid.Row="2">
-        <TreeView />
+        <ListBox ItemsSource="{Binding AvailableEmployees}">
+          <ListBox.ItemTemplate>
+            <DataTemplate DataType="{x:Type models:Employee}">
+              <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Matchcode}" />
+                <Label Content="{Binding Forename}" />
+                <Label Content="{Binding Surname}" />
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
       </materialdesign:Card>
 
     </Grid>
@@ -111,7 +132,8 @@
             <controls:IconTextBox
               Grid.Row="2"
               materialdesign:HintAssist.Hint="ID"
-              Icon="SqlPrimaryKey" />
+              Icon="SqlPrimaryKey"
+              IsHitTestVisible="False" />
 
             <controls:IconTextBox
               Grid.Row="4"
@@ -121,7 +143,8 @@
             <controls:IconComboBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Gender"
-              Icon="GenderMaleFemale" />
+              Icon="GenderMaleFemale"
+              ItemsSource="{Binding Source={StaticResource GenderEnum}}" />
 
             <controls:IconTextBox
               Grid.Row="8"
