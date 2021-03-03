@@ -18,9 +18,6 @@
   mc:Ignorable="d">
 
   <dragablz:TabablzControl>
-    <dragablz:TabablzControl.InterTabController>
-      <dragablz:InterTabController />
-    </dragablz:TabablzControl.InterTabController>
     <TabItem Header="EMPLOYEES">
       <ContentControl Margin="5" prism:RegionManager.RegionName="EmployeesRegion" />
     </TabItem>
