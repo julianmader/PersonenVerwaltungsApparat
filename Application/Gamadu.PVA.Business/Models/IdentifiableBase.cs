@@ -8,10 +8,10 @@
     /// <summary>
     /// Backing field for <see cref="ID"/>.
     /// </summary>
-    private int id;
+    private int? id;
 
     /// <inheritdoc/>
-    public int ID
+    public int? ID
     {
       get { return this.id; }
       set { this.SetProperty(ref this.id, value); }

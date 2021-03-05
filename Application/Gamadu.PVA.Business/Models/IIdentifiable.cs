@@ -5,6 +5,6 @@
     /// <summary>
     /// Gets or sets the value for the ID.
     /// </summary>
-    int ID { get; set; }
+    int? ID { get; set; }
   }
 }
