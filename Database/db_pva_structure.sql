@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 03. Mrz 2021 um 13:22
+-- Erstellungszeit: 05. Mrz 2021 um 15:29
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -113,7 +113,7 @@ END$$
 DROP PROCEDURE IF EXISTS `GetAllContracts`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllContracts` ()  BEGIN
 
-	SELECT C_ID AS ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd FROM tb_contracts;
+	SELECT C_ID AS ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Description, HasEnd FROM tb_contracts;
     
 END$$
 
@@ -147,7 +147,7 @@ END$$
 DROP PROCEDURE IF EXISTS `GetContract`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetContract` (IN `C_ID` INT)  BEGIN
 
-	SELECT C_ID AS ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd FROM tb_contracts
+	SELECT C_ID AS ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Description, HasEnd FROM tb_contracts
     WHERE tb_contracts.C_ID = C_ID;
     
 END$$
@@ -201,10 +201,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SaveAddress` (IN `E_ID` INT, IN `St
 END$$
 
 DROP PROCEDURE IF EXISTS `SaveContract`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SaveContract` (IN `Matchcode` VARCHAR(255), IN `Name` VARCHAR(255), IN `WorkTime` INT, IN `Holidays` INT, IN `Salary` INT, IN `Start` DATE, IN `End` DATE, IN `TrailEnd` DATE, IN `Employee` INT, IN `Description` VARCHAR(255), IN `HasEnd` BOOLEAN)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SaveContract` (IN `Matchcode` VARCHAR(255), IN `Name` VARCHAR(255), IN `WorkTime` INT, IN `Holidays` INT, IN `Salary` INT, IN `Start` DATE, IN `End` DATE, IN `TrailEnd` DATE, IN `Description` VARCHAR(255), IN `HasEnd` BOOLEAN)  BEGIN
 
-	INSERT INTO tb_contracts (Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd)
-    VALUES (Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd);
+	INSERT INTO tb_contracts (Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Description, HasEnd)
+    VALUES (Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Description, HasEnd);
     
 END$$
 
@@ -248,12 +248,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SaveRoomEmployees` (IN `R_ID` INT, 
 END$$
 
 DROP PROCEDURE IF EXISTS `UpdateContract`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateContract` (IN `C_ID` INT, IN `Matchcode` VARCHAR(255), IN `Name` VARCHAR(255), IN `WorkTime` INT, IN `Holidays` INT, IN `Salary` INT, IN `Start` DATE, IN `End` DATE, IN `TrailEnd` DATE, IN `Employee` INT, IN `Description` VARCHAR(255), IN `HasEnd` BOOLEAN)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateContract` (IN `C_ID` INT, IN `Matchcode` VARCHAR(255), IN `Name` VARCHAR(255), IN `WorkTime` INT, IN `Holidays` INT, IN `Salary` INT, IN `Start` DATE, IN `End` DATE, IN `TrailEnd` DATE, IN `Description` VARCHAR(255), IN `HasEnd` BOOLEAN)  BEGIN
 
 	CALL DeleteContract(C_ID);
 
-	INSERT INTO tb_contracts (C_ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd)
-    VALUES (C_ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Employee, Description, HasEnd);
+	INSERT INTO tb_contracts (C_ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Description, HasEnd)
+    VALUES (C_ID, Matchcode, Name, WorkTime, Holidays, Salary, Start, End, TrailEnd, Description, HasEnd);
     
 END$$
 
@@ -314,7 +314,6 @@ CREATE TABLE `tb_contracts` (
   `Start` date DEFAULT NULL,
   `End` date DEFAULT NULL,
   `TrailEnd` date DEFAULT NULL,
-  `Employee` int(11) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `HasEnd` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -349,12 +348,12 @@ CREATE TABLE `tb_employees` (
   `Forename` varchar(255) DEFAULT NULL,
   `Surname` varchar(255) DEFAULT NULL,
   `Birth` date DEFAULT NULL,
-  `PhoneNumber` varchar(255) DEFAULT 'NULL',
+  `PhoneNumber` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Department` int(11) DEFAULT NULL,
   `Position` int(11) DEFAULT NULL,
   `Contract` int(11) DEFAULT NULL,
-  `AdditionalInformation` varchar(255) DEFAULT 'NULL',
+  `AdditionalInformation` varchar(255) DEFAULT NULL,
   `Street` varchar(255) DEFAULT NULL,
   `StreetNumber` varchar(255) DEFAULT NULL,
   `City` varchar(255) DEFAULT NULL,
@@ -413,8 +412,7 @@ CREATE TABLE `tb_roomsemployees` (
 --
 ALTER TABLE `tb_contracts`
   ADD PRIMARY KEY (`C_ID`),
-  ADD UNIQUE KEY `Matchcode` (`Matchcode`),
-  ADD KEY `Employee` (`Employee`);
+  ADD UNIQUE KEY `Matchcode` (`Matchcode`);
 
 --
 -- Indizes für die Tabelle `tb_departments`
@@ -492,12 +490,6 @@ ALTER TABLE `tb_rooms`
 --
 -- Constraints der exportierten Tabellen
 --
-
---
--- Constraints der Tabelle `tb_contracts`
---
-ALTER TABLE `tb_contracts`
-  ADD CONSTRAINT `tb_contracts_ibfk_1` FOREIGN KEY (`Employee`) REFERENCES `tb_employees` (`E_ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `tb_departments`
