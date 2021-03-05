@@ -26,11 +26,6 @@ namespace Gamadu.PVA.Business.Models
     /// </summary>
     private string description;
 
-    /// <summary>
-    /// Backing field for <see cref="Employees"/>.
-    /// </summary>
-    private IEnumerable<int> employees;
-
     #endregion Backing Fields
 
     #region Properties
@@ -61,13 +56,6 @@ namespace Gamadu.PVA.Business.Models
     {
       get { return this.description; }
       set { this.SetProperty(ref this.description, value); }
-    }
-
-    /// <inheritdoc/>
-    public IEnumerable<int> Employees
-    {
-      get { return this.employees; }
-      set { this.SetProperty(ref this.employees, value); }
     }
 
     #endregion Properties

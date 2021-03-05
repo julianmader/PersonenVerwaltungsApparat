@@ -1,6 +1,7 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
   using System;
+  using System.Collections.Generic;
 
   public class Contract : IdentifiableBase, IContract
   {
@@ -45,11 +46,6 @@
     /// Backing field for <see cref="HasEnd"/>.
     /// </summary>
     private bool hasEnd;
-
-    /// <summary>
-    /// Backing field for <see cref="Employee"/>.
-    /// </summary>
-    private int employee;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
@@ -114,13 +110,6 @@
     {
       get { return this.trailEnd; }
       set { this.SetProperty(ref this.trailEnd, value); }
-    }
-
-    /// <inheritdoc/>
-    public int Employee
-    {
-      get { return this.employee; }
-      set { this.SetProperty(ref this.employee, value); }
     }
 
     /// <inheritdoc/>

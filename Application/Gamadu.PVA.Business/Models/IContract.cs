@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Gamadu.PVA.Business.Models
 {
@@ -8,11 +9,6 @@ namespace Gamadu.PVA.Business.Models
     /// Gets or sets the value for the Description.
     /// </summary>
     string Description { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the Employee.
-    /// </summary>
-    int Employee { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the End.

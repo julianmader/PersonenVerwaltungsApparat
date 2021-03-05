@@ -27,7 +27,6 @@
             Start = contract.Start,
             End = contract.End,
             TrailEnd = contract.TrailEnd,
-            Employee = contract.Employee,
             Description = contract.Description,
             HasEnd = contract.HasEnd
           }, commandType: CommandType.StoredProcedure);
@@ -54,7 +53,6 @@
             Start = contract.Start,
             End = contract.End,
             TrailEnd = contract.TrailEnd,
-            Employee = contract.Employee,
             Description = contract.Description,
             HasEnd = contract.HasEnd
           }, commandType: CommandType.StoredProcedure);

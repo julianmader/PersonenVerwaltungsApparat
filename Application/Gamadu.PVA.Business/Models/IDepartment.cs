@@ -15,11 +15,6 @@ namespace Gamadu.PVA.Business.Models
     string Description { get; set; }
 
     /// <summary>
-    /// Gets or sets the value for the Employees.
-    /// </summary>
-    IEnumerable<int> Employees { get; set; }
-
-    /// <summary>
     /// Gets or sets the value for the Manager
     /// </summary>
     int Manager { get; set; }
