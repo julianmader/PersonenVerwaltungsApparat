@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Extensions.cs" />
     <Compile Include="DataAccess\IContractDataAccess.cs" />
     <Compile Include="DataAccess\IAllDataAccess.cs" />
     <Compile Include="DataAccess\IDepartmentDataAccess.cs" />
