@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 04. Mrz 2021 um 00:13
+-- Erstellungszeit: 05. Mrz 2021 um 15:30
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -25,8 +25,8 @@ SET time_zone = "+00:00";
 -- Daten für Tabelle `tb_contracts`
 --
 
-INSERT INTO `tb_contracts` (`C_ID`, `Matchcode`, `Name`, `WorkTime`, `Holidays`, `Salary`, `Start`, `End`, `TrailEnd`, `Employee`, `Description`, `HasEnd`) VALUES
-(1, 'CONT1', 'Nicer Vertrag', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `tb_contracts` (`C_ID`, `Matchcode`, `Name`, `WorkTime`, `Holidays`, `Salary`, `Start`, `End`, `TrailEnd`, `Description`, `HasEnd`) VALUES
+(1, 'CONT1', 'Nicer Vertrag', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Daten für Tabelle `tb_departments`
