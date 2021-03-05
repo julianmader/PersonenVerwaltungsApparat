@@ -63,13 +63,13 @@
     /// <inheritdoc/>
     public int DeleteContract(IIdentifiable id)
     {
-      return this.DeleteContract(id.ID);
+      return this.DeleteContract((int)id.ID);
     }
 
     /// <inheritdoc/>
     public IContract GetContract(IIdentifiable id)
     {
-      return this.GetContract(id.ID);
+      return this.GetContract((int)id.ID);
     }
 
     /// <inheritdoc/>

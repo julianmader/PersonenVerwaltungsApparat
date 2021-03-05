@@ -53,13 +53,13 @@
     /// <inheritdoc/>
     public int DeleteDepartment(IIdentifiable id)
     {
-      return this.DeleteDepartment(id.ID);
+      return this.DeleteDepartment((int)id.ID);
     }
 
     /// <inheritdoc/>
     public IDepartment GetDepartment(IIdentifiable id)
     {
-      return this.GetDepartment(id.ID);
+      return this.GetDepartment((int)id.ID);
     }
 
     /// <inheritdoc/>

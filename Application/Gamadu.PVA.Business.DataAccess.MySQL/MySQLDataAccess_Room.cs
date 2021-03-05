@@ -31,7 +31,7 @@
           }, commandType: CommandType.StoredProcedure);
       }
 
-      affectedRows += SaveRoomEmployees(room);
+      affectedRows += this.SaveRoomEmployees(room);
 
       return affectedRows;
     }
@@ -129,13 +129,13 @@
     /// <inheritdoc/>
     public int DeleteRoom(IIdentifiable id)
     {
-      return this.DeleteRoom(id.ID);
+      return this.DeleteRoom((int)id.ID);
     }
 
     /// <inheritdoc/>
     public IRoom GetRoom(IIdentifiable id)
     {
-      return this.GetRoom(id.ID);
+      return this.GetRoom((int)id.ID);
     }
 
     /// <inheritdoc/>

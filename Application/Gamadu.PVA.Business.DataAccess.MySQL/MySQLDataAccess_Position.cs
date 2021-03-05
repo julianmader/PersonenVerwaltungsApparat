@@ -49,13 +49,13 @@
     /// <inheritdoc/>
     public int DeletePosition(IIdentifiable id)
     {
-      return this.DeletePosition(id.ID);
+      return this.DeletePosition((int)id.ID);
     }
 
     /// <inheritdoc/>
     public IPosition GetPosition(IIdentifiable id)
     {
-      return this.GetPosition(id.ID);
+      return this.GetPosition((int)id.ID);
     }
 
     /// <inheritdoc/>

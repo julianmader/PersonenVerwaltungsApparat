@@ -73,13 +73,13 @@
     /// <inheritdoc/>
     public int DeleteEmployee(IIdentifiable id)
     {
-      return this.DeleteEmployee(id.ID);
+      return this.DeleteEmployee((int)id.ID);
     }
 
     /// <inheritdoc/>
     public IEmployee GetEmployee(IIdentifiable id)
     {
-      return this.GetEmployee(id.ID);
+      return this.GetEmployee((int)id.ID);
     }
 
     /// <inheritdoc/>
