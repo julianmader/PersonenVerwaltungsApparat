@@ -31,11 +31,23 @@
 
     // Using a DependencyProperty as the backing store for CheckBoxText.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty CheckBoxTextProperty =
-        DependencyProperty.Register("CheckBoxText", typeof(string), typeof(IconCheckDatePicker), new PropertyMetadata(null));
+        DependencyProperty.Register("CheckBoxText", typeof(string), typeof(IconCheckDatePicker), new PropertyMetadata(null, CheckBoxTextChangedCallback));
+
+    private static void CheckBoxTextChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      IconCheckDatePicker input = (IconCheckDatePicker)d;
+      input.SetValue(CheckBoxTextProperty, e.NewValue);
+    }
 
     // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty IsCheckedProperty =
-        DependencyProperty.Register("IsChecked", typeof(bool), typeof(IconCheckDatePicker), new PropertyMetadata(true));
+        DependencyProperty.Register("IsChecked", typeof(bool), typeof(IconCheckDatePicker), new PropertyMetadata(true, IsCheckedChangedCallback));
+
+    private static void IsCheckedChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      IconCheckDatePicker input = (IconCheckDatePicker)d;
+      input.SetValue(IsCheckedProperty, e.NewValue);
+    }
 
     // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty IconProperty =
