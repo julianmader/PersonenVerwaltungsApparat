@@ -62,7 +62,7 @@
                 Grid.Column="5"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                IsChecked="{TemplateBinding IsChecked}">
+                IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock Opacity="0.5" Text="{TemplateBinding CheckBoxText}" />
               </CheckBox>
 
@@ -110,7 +110,7 @@
                 Grid.Column="3"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                Text="{TemplateBinding Text}" />
+                Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
 
             </Grid>
           </materialdesign:Card>
@@ -158,9 +158,10 @@
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
                 ItemsSource="{TemplateBinding ItemsSource}"
-                SelectedItem="{TemplateBinding SelectedItem}"
-                SelectedValuePath="{TemplateBinding SelectedValuePath}"
-                Text="{TemplateBinding Text}" />
+                SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                SelectedValue="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedValue, UpdateSourceTrigger=PropertyChanged}"
+                SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedValuePath, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
 
             </Grid>
           </materialdesign:Card>
@@ -206,7 +207,7 @@
                 Grid.Column="3"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                SelectedDate="{TemplateBinding SelectedDate}" />
+                SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedDate, UpdateSourceTrigger=PropertyChanged}" />
 
             </Grid>
           </materialdesign:Card>
