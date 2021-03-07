@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Mrz 2021 um 15:29
+-- Erstellungszeit: 07. Mrz 2021 um 23:06
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -27,13 +27,6 @@ DELIMITER $$
 --
 -- Prozeduren
 --
-DROP PROCEDURE IF EXISTS `DeleteAddress`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAddress` (IN `E_ID` INT)  BEGIN
-
-	DELETE FROM tb_addresses WHERE tb_addresses.E_ID = E_ID;
-    
-END$$
-
 DROP PROCEDURE IF EXISTS `DeleteAllContracts`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAllContracts` ()  BEGIN
 
@@ -88,8 +81,6 @@ END$$
 
 DROP PROCEDURE IF EXISTS `DeleteEmployee`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteEmployee` (IN `E_ID` INT)  BEGIN
-	CALL DeleteAddress(E_ID);
-
 	DELETE FROM tb_employees
     WHERE tb_employees.E_ID = E_ID;
 END$$
@@ -190,14 +181,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetRoomID` (IN `Matchcode` VARCHAR(
 	SELECT tb_rooms.R_ID FROM tb_rooms
     WHERE tb_rooms.Matchcode = Matchcode;
     
-END$$
-
-DROP PROCEDURE IF EXISTS `SaveAddress`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SaveAddress` (IN `E_ID` INT, IN `Street` VARCHAR(255), IN `StreetNumber` VARCHAR(255), IN `City` VARCHAR(255), IN `PostalCode` VARCHAR(255))  BEGIN
-	CALL DeleteAddress(E_ID);
-    
-	INSERT INTO tb_addresses
-	VALUES (E_ID, Street, StreetNumber, City, 			PostalCode);
 END$$
 
 DROP PROCEDURE IF EXISTS `SaveContract`$$
@@ -343,7 +326,7 @@ CREATE TABLE `tb_departments` (
 DROP TABLE IF EXISTS `tb_employees`;
 CREATE TABLE `tb_employees` (
   `E_ID` int(11) NOT NULL,
-  `Matchcode` varchar(255) DEFAULT NULL,
+  `Matchcode` varchar(255) NOT NULL,
   `Gender` int(11) NOT NULL DEFAULT 0 COMMENT '0: Neutral\r\n1: Male\r\n2: Female',
   `Forename` varchar(255) DEFAULT NULL,
   `Surname` varchar(255) DEFAULT NULL,
