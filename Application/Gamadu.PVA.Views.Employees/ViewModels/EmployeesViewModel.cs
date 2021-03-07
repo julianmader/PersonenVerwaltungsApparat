@@ -3,6 +3,7 @@ using Gamadu.PVA.Business.Models;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -74,6 +75,9 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     public EmployeesViewModel(IContainerProvider container)
     {
       this.ContainerProvider = container;
+
+      this.PropertyChanged += this.EmployeesViewModel_PropertyChanged;
+
       this.InitializeCommands();
 
       this.SetDataAccess("MySQL");
@@ -103,7 +107,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
       this.DeleteCommand = new DelegateCommand(this.OnDeleteCommand, this.CanDeleteCommand);
 
-      this.NewCommand = new DelegateCommand(this.OnNewCommand, this.CanNewCommand);
+      this.NewCommand = new DelegateCommand(this.OnNewCommand);
     }
 
     #region Refresh Data Methods
@@ -167,6 +171,31 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     #endregion Refresh Data Methods
 
+    #region Refresh Commands Methods
+
+    /// <summary>
+    /// Updates the commands can execute status.
+    /// </summary>
+    private void RefreshCommands()
+    {
+      this.SaveCommand.RaiseCanExecuteChanged();
+      this.DeleteCommand.RaiseCanExecuteChanged();
+    }
+
+    #endregion Refresh Commands Methods
+
+    #region Event Handler
+
+    private void EmployeesViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName.Equals(nameof(this.SelectedEmployee), System.StringComparison.OrdinalIgnoreCase))
+      {
+        this.RefreshCommands();
+      }
+    }
+
+    #endregion Event Handler
+
     #endregion Methods
 
     #region Commands
@@ -192,12 +221,12 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     private async void OnSaveCommand()
     {
-      await Task.Run(() => this.DataAccess.SaveEmployee(this.SelectedEmployee));
+      await Task.Run(() => this.DataAccess.SaveOrUpdateEmployee(this.SelectedEmployee));
     }
 
     private bool CanSaveCommand()
     {
-      return true;
+      return this.SelectedEmployee != null;
     }
 
     #endregion SaveCommand
@@ -213,7 +242,9 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     private bool CanDeleteCommand()
     {
-      return true;
+      if (this.SelectedEmployee == null) return false;
+
+      return this.SelectedEmployee.ID != null;
     }
 
     #endregion DeleteCommand
@@ -225,11 +256,8 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     private async void OnNewCommand()
     {
       await Task.Run(() => this.SelectedEmployee = this.ContainerProvider.Resolve<IEmployee>());
-    }
 
-    private bool CanNewCommand()
-    {
-      return true;
+      this.SelectedEmployee.Birth = DateTime.Now;
     }
 
     #endregion NewCommand
