@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Mrz 2021 um 15:30
+-- Erstellungszeit: 07. Mrz 2021 um 23:06
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -40,7 +40,8 @@ INSERT INTO `tb_departments` (`D_ID`, `Matchcode`, `Name`, `CostCenter`, `Manage
 --
 
 INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`, `Birth`, `PhoneNumber`, `Email`, `Department`, `Position`, `Contract`, `AdditionalInformation`, `Street`, `StreetNumber`, `City`, `PostalCode`) VALUES
-(1, 'JG', 1, 'Jeremy', 'Gassner', '2000-04-20', '0800 1234', 'jeremy@nice.de', 1, NULL, NULL, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415');
+(1, 'JGA', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-04-20', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
+(4, 'JMA', 1, 'Julian', 'Mader', '2021-03-05', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Daten für Tabelle `tb_positions`
@@ -56,13 +57,6 @@ INSERT INTO `tb_positions` (`P_ID`, `Matchcode`, `Name`, `Description`) VALUES
 INSERT INTO `tb_rooms` (`R_ID`, `Matchcode`, `Name`, `RoomNumber`, `FloorNumber`, `Size`, `Description`) VALUES
 (1, 'ROOM1', 'Nicer Room', NULL, NULL, NULL, NULL),
 (2, 'ROOM2', 'Nicer zweiter Room', NULL, NULL, NULL, NULL);
-
---
--- Daten für Tabelle `tb_roomsemployees`
---
-
-INSERT INTO `tb_roomsemployees` (`R_ID`, `E_ID`) VALUES
-(1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
