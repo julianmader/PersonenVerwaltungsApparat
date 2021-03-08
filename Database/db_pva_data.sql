@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mrz 2021 um 23:06
+-- Erstellungszeit: 08. Mrz 2021 um 17:03
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `db_pva`
 --
+CREATE DATABASE IF NOT EXISTS `db_pva` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_pva`;
 
 --
 -- Daten für Tabelle `tb_contracts`
@@ -36,20 +38,19 @@ INSERT INTO `tb_departments` (`D_ID`, `Matchcode`, `Name`, `CostCenter`, `Manage
 (1, 'DEP1', 'NiceDepartment', '1000', NULL, 'Beste');
 
 --
+-- Daten für Tabelle `tb_employees`
+--
+
+INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`, `Birth`, `PhoneNumber`, `Email`, `Department`, `Position`, `Contract`, `AdditionalInformation`, `Street`, `StreetNumber`, `City`, `PostalCode`) VALUES
+(1, 'JGA', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-01-01', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
+(4, 'JMA', 1, 'Julian', 'Mader', '2000-07-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+--
 -- Daten für Tabelle `tb_positions`
 --
 
 INSERT INTO `tb_positions` (`P_ID`, `Matchcode`, `Name`, `Description`) VALUES
 (1, 'POS1', 'BestePosition', '1 nice Position');
-
---
--- Daten für Tabelle `tb_employees`
---
-
-INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`, `Birth`, `PhoneNumber`, `Email`, `Department`, `Position`, `Contract`, `AdditionalInformation`, `Street`, `StreetNumber`, `City`, `PostalCode`) VALUES
-(1, 'JGA', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-04-20', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
-(4, 'JMA', 1, 'Julian', 'Mader', '2021-03-05', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 
 --
 -- Daten für Tabelle `tb_rooms`
@@ -58,6 +59,13 @@ INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`
 INSERT INTO `tb_rooms` (`R_ID`, `Matchcode`, `Name`, `RoomNumber`, `FloorNumber`, `Size`, `Description`) VALUES
 (1, 'ROOM1', 'Nicer Room', NULL, NULL, NULL, NULL),
 (2, 'ROOM2', 'Nicer zweiter Room', NULL, NULL, NULL, NULL);
+
+--
+-- Daten für Tabelle `tb_roomsemployees`
+--
+
+INSERT INTO `tb_roomsemployees` (`R_ID`, `E_ID`) VALUES
+(2, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
