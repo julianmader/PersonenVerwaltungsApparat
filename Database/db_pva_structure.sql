@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mrz 2021 um 23:06
+-- Erstellungszeit: 08. Mrz 2021 um 17:01
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -159,6 +159,22 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEmployee` (IN `E_ID` INT)  BEGIN
     
 END$$
 
+DROP PROCEDURE IF EXISTS `GetEmployeeID`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEmployeeID` (IN `Matchcode` VARCHAR(255))  BEGIN
+
+	SELECT tb_employees.E_ID FROM tb_employees
+    WHERE tb_employees.Matchcode = Matchcode;
+    
+END$$
+
+DROP PROCEDURE IF EXISTS `GetEmployeeRooms`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEmployeeRooms` (IN `E_ID` INT)  BEGIN
+
+	SELECT R_ID FROM tb_roomsemployees
+    WHERE tb_roomsemployees.E_ID = E_ID;
+    
+END$$
+
 DROP PROCEDURE IF EXISTS `GetPosition`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPosition` (IN `P_ID` INT)  BEGIN
 
@@ -172,6 +188,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetRoom` (IN `R_ID` INT)  BEGIN
 
 	SELECT * FROM tb_rooms
     WHERE tb_rooms.R_ID = R_ID;
+    
+END$$
+
+DROP PROCEDURE IF EXISTS `GetRoomEmployees`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetRoomEmployees` (IN `R_ID` INT)  BEGIN
+
+	SELECT E_ID FROM tb_roomsemployees
+    WHERE tb_roomsemployees.R_ID = R_ID;
     
 END$$
 
