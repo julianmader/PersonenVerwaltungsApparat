@@ -47,8 +47,9 @@
     <Compile Include="DataAccess\IDepartmentDataAccess.cs" />
     <Compile Include="DataAccess\IRoomDataAccess.cs" />
     <Compile Include="DataAccess\IPositionDataAccess.cs" />
-    <Compile Include="DataAccess\IPersonDataAccess.cs" />
+    <Compile Include="DataAccess\IEmployeeDataAccess.cs" />
     <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Models\CheckableRoom.cs" />
     <Compile Include="Models\IMatchable.cs" />
     <Compile Include="Models\IIdentifiable.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Models\IPosition.cs" />
     <Compile Include="Models\IRoom.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\ICheckable.cs" />
+    <Compile Include="Models\ICheckableRoom.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="BusinessModule.cs" />
@@ -70,6 +73,5 @@
       <Version>8.0.0.1909</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
