@@ -1,0 +1,62 @@
+﻿<UserControl
+  x:Class="Gamadu.PVA.Views.Dialogs.Views.SelectRoomsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:prism="http://prismlibrary.com/"
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  Foreground="AntiqueWhite"
+  mc:Ignorable="d">
+
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Gamadu.PVA.Resources;component/Themes/Generic.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </UserControl.Resources>
+
+  <materialdesign:Card>
+
+    <Grid Margin="5">
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock
+        Margin="5"
+        VerticalAlignment="Center"
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+        Text="Rooms" />
+
+      <DataGrid Grid.Row="2" />
+
+      <Grid Grid.Row="4">
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="ACCEPT" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+        <Button
+          Grid.Column="2"
+          Content="CANCEL"
+          Style="{DynamicResource MaterialDesignFlatButton}" />
+
+      </Grid>
+
+    </Grid>
+
+  </materialdesign:Card>
+
+</UserControl>
