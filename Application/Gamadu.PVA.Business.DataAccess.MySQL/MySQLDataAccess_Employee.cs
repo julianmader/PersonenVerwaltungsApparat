@@ -4,6 +4,7 @@
   using Gamadu.PVA.Business.Models;
   using System.Collections.Generic;
   using System.Data;
+  using System.Linq;
 
   public partial class MySQLDataAccess
   {
@@ -13,10 +14,11 @@
     public int SaveEmployee(IEmployee employee)
     {
       string sql = "SaveEmployee";
+      int affectedRows = 0;
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql,
+        affectedRows = connection.Execute(sql,
           new
           {
             Matchcode = employee.Matchcode?.ToUpper(),
@@ -34,9 +36,75 @@
             StreetNumber = employee.StreetNumber?.Trim(),
             City = employee.City?.Trim(),
             PostalCode = employee.PostalCode?.Trim()
-          }, commandType: CommandType.StoredProcedure);
-        return affectedRows;
+          }, commandType: CommandType.StoredProcedure);      
       }
+
+      affectedRows += this.SaveEmployeeRooms(employee);
+
+      return affectedRows;
+    }
+
+    /// <summary>
+    /// Saves the rooms of a employee in the connection table.
+    /// </summary>
+    /// <param name="employee">The employee to save.</param>
+    /// <returns>The amount of affected rows.</returns>
+    private int SaveEmployeeRooms(IEmployee employee)
+    {
+      if (employee == null)
+        return 0;
+
+      if (!employee.Rooms.Any())
+        return 0;
+
+      string sql = "SaveEmployeeRooms";
+
+      int affectedRows = 0;
+
+      int? employeeID = this.GetEmployeeDatabaseID(employee);
+
+      if (employeeID == null) return 0;
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+
+        foreach (int id in employee.Rooms)
+        {
+          affectedRows += connection.Execute(sql,
+            new
+            {
+              R_ID = id,
+              E_ID = (int)employeeID,
+            }, commandType: CommandType.StoredProcedure);
+        }
+      }
+
+      return affectedRows;
+    }
+
+    /// <summary>
+    /// Gets a employee's database ID.
+    /// </summary>
+    /// <param name="employee">The employee</param>
+    /// <returns>The ID or null.</returns>
+    private int? GetEmployeeDatabaseID(IEmployee employee)
+    {
+      if (employee == null) return null;
+
+      string sql = "GetEmployeeID";
+
+      int? id = null;
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        id = connection.ExecuteScalar<int?>(sql,
+          new
+          {
+            Matchcode = employee.Matchcode?.ToUpper()
+          }, commandType: CommandType.StoredProcedure);
+      }
+
+      return id;
     }
 
     /// <inheritdoc/>
@@ -112,7 +180,33 @@
             E_ID = id
           }, commandType: CommandType.StoredProcedure);
 
+        if (employee != null)
+        {
+          employee.Rooms = this.GetEmployeeRooms(id);
+        }
+
         return employee;
+      }
+    }
+
+    /// <summary>
+    /// Gets the IDs of the rooms associated with the employee.
+    /// </summary>
+    /// <param name="id">The employee id.</param>
+    /// <returns></returns>
+    private IEnumerable<int> GetEmployeeRooms(int id)
+    {
+      string sql = "GetEmployeeRooms";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        IEnumerable<int> rooms = connection.Query<int>(sql,
+          new
+          {
+            E_ID = id
+          }, commandType: CommandType.StoredProcedure);
+
+        return rooms;
       }
     }
 
@@ -221,13 +315,22 @@
     public IEnumerable<IEmployee> GetEmployees()
     {
       string sql = "GetAllEmployees";
+      List<IEmployee> employees = new List<IEmployee>();
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        IEnumerable<IEmployee> employees = connection.Query<Employee>(sql, commandType: CommandType.StoredProcedure);
-
-        return employees;
+        employees = new List<IEmployee>(connection.Query<Employee>(sql, commandType: CommandType.StoredProcedure));
       }
+
+      if (employees?.Any() == true)
+      {
+        for (int i = 0; i < employees.Count(); i++)
+        {
+          employees[i].Rooms = this.GetEmployeeRooms((int)employees[i].ID);
+        }
+      }
+
+      return employees;
     }
 
     #endregion Employee

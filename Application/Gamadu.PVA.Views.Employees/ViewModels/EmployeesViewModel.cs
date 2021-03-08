@@ -60,6 +60,13 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
       set { this.SetProperty(ref this.availableRooms, value); }
     }
 
+    private ObservableCollection<IRoom> selectedEmployeeRooms;
+    public ObservableCollection<IRoom> SelectedEmployeeRooms
+    {
+      get { return this.selectedEmployeeRooms; }
+      set { this.SetProperty(ref this.selectedEmployeeRooms, value); }
+    }
+
     private IEmployee selectedEmployee;
     public IEmployee SelectedEmployee
     {
@@ -169,6 +176,30 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
       this.AvailableRooms = new ObservableCollection<IRoom>(this.DataAccess.GetRooms());
     }
 
+    /// <summary>
+    /// Gets all available rooms from the database.
+    /// </summary>
+    protected void RefreshSelectedEmployeeRooms()
+    {
+      if (this.SelectedEmployee?.Rooms?.Any() != true)
+      {
+        this.SelectedEmployeeRooms = null;
+        return;
+      }
+
+      this.SelectedEmployeeRooms = new ObservableCollection<IRoom>(this.AvailableRooms.Where(r => this.SelectedEmployee.Rooms.Contains((int)r.ID)));
+    }
+
+    /// <summary>
+    /// Contains the routine when the selected employee changed.
+    /// </summary>
+    private void SelectedEmployeeChanged()
+    {
+      this.RefreshCommands();
+
+      this.RefreshSelectedEmployeeRooms();
+    }
+
     #endregion Refresh Data Methods
 
     #region Refresh Commands Methods
@@ -186,11 +217,12 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     #region Event Handler
 
-    private void EmployeesViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    private async void EmployeesViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
       if (e.PropertyName.Equals(nameof(this.SelectedEmployee), System.StringComparison.OrdinalIgnoreCase))
       {
-        this.RefreshCommands();
+        await Task.Run(this.SelectedEmployeeChanged);
+        return;
       }
     }
 
@@ -222,6 +254,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     private async void OnSaveCommand()
     {
       await Task.Run(() => this.DataAccess.SaveOrUpdateEmployee(this.SelectedEmployee));
+      this.RefreshCommand.Execute();
     }
 
     private bool CanSaveCommand()

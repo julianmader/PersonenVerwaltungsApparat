@@ -167,7 +167,33 @@
             R_ID = id
           }, commandType: CommandType.StoredProcedure);
 
+        if (room != null)
+        {
+          room.Employees = this.GetRoomEmployees(id);
+        }
+
         return room;
+      }
+    }
+
+    /// <summary>
+    /// Gets the IDs of the employees associated with the room.
+    /// </summary>
+    /// <param name="id">The room id.</param>
+    /// <returns></returns>
+    private IEnumerable<int> GetRoomEmployees(int id)
+    {
+      string sql = "GetRoomEmployees";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        IEnumerable<int> employees = connection.Query<int>(sql,
+          new
+          {
+            R_ID = id
+          }, commandType: CommandType.StoredProcedure);
+
+        return employees;
       }
     }
 
@@ -276,13 +302,23 @@
     public IEnumerable<IRoom> GetRooms()
     {
       string sql = "GetAllRooms";
+      List<IRoom> rooms = new List<IRoom>();
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        IEnumerable<IRoom> rooms = connection.Query<Room>(sql, commandType: CommandType.StoredProcedure);
-
-        return rooms;
+        rooms = new List<IRoom>(connection.Query<Room>(sql, commandType: CommandType.StoredProcedure));
       }
+
+      if (rooms?.Any() == true)
+      {
+        for (int i = 0; i < rooms.Count(); i++)
+        {
+          rooms[i].Employees = this.GetRoomEmployees((int)rooms[i].ID);
+        }
+      }
+
+      return rooms;
+
     }
 
     #endregion Room
