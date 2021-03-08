@@ -36,6 +36,13 @@ INSERT INTO `tb_departments` (`D_ID`, `Matchcode`, `Name`, `CostCenter`, `Manage
 (1, 'DEP1', 'NiceDepartment', '1000', NULL, 'Beste');
 
 --
+-- Daten für Tabelle `tb_positions`
+--
+
+INSERT INTO `tb_positions` (`P_ID`, `Matchcode`, `Name`, `Description`) VALUES
+(1, 'POS1', 'BestePosition', '1 nice Position');
+
+--
 -- Daten für Tabelle `tb_employees`
 --
 
@@ -43,12 +50,6 @@ INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`
 (1, 'JGA', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-04-20', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
 (4, 'JMA', 1, 'Julian', 'Mader', '2021-03-05', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
---
--- Daten für Tabelle `tb_positions`
---
-
-INSERT INTO `tb_positions` (`P_ID`, `Matchcode`, `Name`, `Description`) VALUES
-(1, 'POS1', 'BestePosition', '1 nice Position');
 
 --
 -- Daten für Tabelle `tb_rooms`
