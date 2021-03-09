@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Mrz 2021 um 17:03
+-- Erstellungszeit: 09. Mrz 2021 um 16:29
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.2
 
@@ -42,8 +42,9 @@ INSERT INTO `tb_departments` (`D_ID`, `Matchcode`, `Name`, `CostCenter`, `Manage
 --
 
 INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`, `Birth`, `PhoneNumber`, `Email`, `Department`, `Position`, `Contract`, `AdditionalInformation`, `Street`, `StreetNumber`, `City`, `PostalCode`) VALUES
-(1, 'JGA', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-01-01', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
-(4, 'JMA', 1, 'Julian', 'Mader', '2000-07-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'JG', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-01-01', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
+(4, 'JM', 1, 'Julian', 'Mader', '2000-07-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'VG', 1, 'Valentin', 'Besserberlet', '2021-03-09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Daten für Tabelle `tb_positions`
@@ -65,7 +66,11 @@ INSERT INTO `tb_rooms` (`R_ID`, `Matchcode`, `Name`, `RoomNumber`, `FloorNumber`
 --
 
 INSERT INTO `tb_roomsemployees` (`R_ID`, `E_ID`) VALUES
-(2, 1);
+(1, 1),
+(1, 4),
+(1, 5),
+(2, 1),
+(2, 4);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
