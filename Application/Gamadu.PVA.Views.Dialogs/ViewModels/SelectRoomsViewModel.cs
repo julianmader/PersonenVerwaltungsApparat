@@ -82,7 +82,7 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
     }
 
     /// <summary>
-    /// Handles the selected rooms event.
+    /// Handles the received send selected rooms event.
     /// </summary>
     /// <param name="args"></param>
     protected void SelectedRoomsEventHandler(SendSelectedRoomsEventArgs args)
