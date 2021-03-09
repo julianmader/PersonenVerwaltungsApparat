@@ -57,7 +57,6 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
     public SelectRoomsViewModel(IContainerProvider container)
     {
       this.ContainerProvider = container;
-      this.EventAggregator = this.ContainerProvider.Resolve<IEventAggregator>();
 
       this.SetDataAccess("MySQL");
 
