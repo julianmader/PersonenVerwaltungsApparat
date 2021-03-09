@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+  xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
   Title="{Binding Title}"
@@ -17,23 +18,27 @@
   WindowState="Maximized"
   mc:Ignorable="d">
 
-  <dragablz:TabablzControl>
-    <TabItem Header="EMPLOYEES">
-      <ContentControl Margin="5" prism:RegionManager.RegionName="EmployeesRegion" />
-    </TabItem>
-    <TabItem Header="DEPARTMENTS">
-      <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />
-    </TabItem>
-    <TabItem Header="POSITIONS">
-      <ContentControl Margin="5" prism:RegionManager.RegionName="PositionsRegion" />
-    </TabItem>
-    <TabItem Header="CONTRACTS">
-      <ContentControl Margin="5" prism:RegionManager.RegionName="ContractsRegion" />
-    </TabItem>
-    <TabItem Header="RESOURCES">
-      <ContentControl prism:RegionManager.RegionName="ResourcesRegion" />
-    </TabItem>
-    <TabItem Header="SETTINGS" />
-  </dragablz:TabablzControl>
+  <materialdesign:DialogHost CloseOnClickAway="True" Identifier="RootDialog">
+
+    <dragablz:TabablzControl>
+      <TabItem Header="EMPLOYEES">
+        <ContentControl Margin="5" prism:RegionManager.RegionName="EmployeesRegion" />
+      </TabItem>
+      <TabItem Header="DEPARTMENTS">
+        <ContentControl Margin="5" prism:RegionManager.RegionName="DepartmentsRegion" />
+      </TabItem>
+      <TabItem Header="POSITIONS">
+        <ContentControl Margin="5" prism:RegionManager.RegionName="PositionsRegion" />
+      </TabItem>
+      <TabItem Header="CONTRACTS">
+        <ContentControl Margin="5" prism:RegionManager.RegionName="ContractsRegion" />
+      </TabItem>
+      <TabItem Header="RESOURCES">
+        <ContentControl prism:RegionManager.RegionName="ResourcesRegion" />
+      </TabItem>
+      <TabItem Header="SETTINGS" />
+    </dragablz:TabablzControl>
+
+  </materialdesign:DialogHost>
 
 </Window>

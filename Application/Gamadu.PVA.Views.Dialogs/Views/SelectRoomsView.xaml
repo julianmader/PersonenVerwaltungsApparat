@@ -6,6 +6,7 @@
   xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
+  xmlns:system="clr-namespace:System;assembly=mscorlib"
   prism:ViewModelLocator.AutoWireViewModel="True"
   Foreground="AntiqueWhite"
   mc:Ignorable="d">
@@ -36,7 +37,33 @@
         Style="{StaticResource MaterialDesignHeadline6TextBlock}"
         Text="Rooms" />
 
-      <DataGrid Grid.Row="2" />
+      <DataGrid
+        Grid.Row="2"
+        CanUserAddRows="False"
+        CanUserDeleteRows="False"
+        CanUserSortColumns="True"
+        HeadersVisibility="All"
+        ItemsSource="{Binding CheckableRooms}">
+        <DataGrid.Columns>
+          <DataGridCheckBoxColumn
+            Binding="{Binding IsChecked}"
+            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+            IsReadOnly="False" />
+          <DataGridTextColumn
+            Binding="{Binding ID}"
+            Header="ID"
+            IsReadOnly="True" />
+          <DataGridTextColumn
+            Binding="{Binding Matchcode}"
+            Header="Matchcode"
+            IsReadOnly="True" />
+          <DataGridTextColumn
+            Binding="{Binding Name}"
+            Header="Name"
+            IsReadOnly="True" />
+        </DataGrid.Columns>
+      </DataGrid>
 
       <Grid Grid.Row="4">
 
@@ -46,12 +73,24 @@
           <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Button Content="ACCEPT" Style="{DynamicResource MaterialDesignFlatButton}" />
+        <Button
+          Command="{Binding CloseCommand}"
+          Content="ACCEPT"
+          Style="{DynamicResource MaterialDesignFlatButton}">
+          <Button.CommandParameter>
+            <system:Boolean>True</system:Boolean>
+          </Button.CommandParameter>
+        </Button>
 
         <Button
           Grid.Column="2"
+          Command="{Binding CloseCommand}"
           Content="CANCEL"
-          Style="{DynamicResource MaterialDesignFlatButton}" />
+          Style="{DynamicResource MaterialDesignFlatButton}">
+          <Button.CommandParameter>
+            <system:Boolean>False</system:Boolean>
+          </Button.CommandParameter>
+        </Button>
 
       </Grid>
 

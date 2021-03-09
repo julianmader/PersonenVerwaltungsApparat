@@ -7,6 +7,7 @@ namespace Gamadu.PVA.Views.Employees
 {
   [Module(ModuleName = "EmployeesModule")]
   [ModuleDependency("MySQLModule")]
+  [ModuleDependency("DialogsModule")]
   public class EmployeesModule : IModule
   {
     public IRegionManager RegionManager { get; set; }

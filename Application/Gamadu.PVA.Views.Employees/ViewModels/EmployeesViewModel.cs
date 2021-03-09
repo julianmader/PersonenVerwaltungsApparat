@@ -1,12 +1,16 @@
 ﻿using Gamadu.PVA.Business.DataAccess;
+using Gamadu.PVA.Business.Events;
 using Gamadu.PVA.Business.Models;
+using MaterialDesignThemes.Wpf;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Gamadu.PVA.Views.Employees.ViewModels
 {
@@ -14,9 +18,11 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
   {
     #region Properties
 
-    public IContainerProvider ContainerProvider { get; set; }
+    protected IContainerProvider ContainerProvider { get; set; }
 
-    public IAllDataAccess DataAccess { get; set; }
+    protected IEventAggregator EventAggregator { get; set; }
+
+    protected IAllDataAccess DataAccess { get; set; }
 
     private bool isRefreshing;
     public bool IsRefreshing
@@ -82,13 +88,12 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     public EmployeesViewModel(IContainerProvider container)
     {
       this.ContainerProvider = container;
-
       this.PropertyChanged += this.EmployeesViewModel_PropertyChanged;
 
-      this.InitializeCommands();
-
       this.SetDataAccess("MySQL");
+      this.SetEventAggregator();
 
+      this.InitializeCommands();
       this.RefreshCommand.Execute();
     }
 
@@ -115,7 +120,46 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
       this.DeleteCommand = new DelegateCommand(this.OnDeleteCommand, this.CanDeleteCommand);
 
       this.NewCommand = new DelegateCommand(this.OnNewCommand);
+
+      this.EditSelectedRoomsCommand = new DelegateCommand(this.OnEditSelectedRoomsCommand, this.CanEditSelectedRoomsCommand);
     }
+
+    #region External Event Handling
+
+    /// <summary>
+    /// Sets the event aggregator and configures the event handling.
+    /// </summary>
+    protected void SetEventAggregator()
+    {
+      this.EventAggregator = this.ContainerProvider.Resolve<IEventAggregator>();
+
+      this.EventAggregator.GetEvent<SendSelectedRoomsEvent>().Subscribe(this.SelectedRoomsEventHandler);
+      this.EventAggregator.GetEvent<RequestSelectedRoomsEvent>().Subscribe(this.PublishSelectedRoomsEvent);
+    }
+
+    /// <summary>
+    /// Handles the selected rooms event.
+    /// </summary>
+    /// <param name="args"></param>
+    protected void SelectedRoomsEventHandler(SendSelectedRoomsEventArgs args)
+    {
+      if (args.Receiver == null || !args.Receiver.Equals("EmployeesViewModel")) return;
+
+      this.SelectedEmployee.Rooms = args.SelectedRoomsIDs;
+
+      this.RefreshSelectedEmployeeRooms();
+    }
+
+    /// <summary>
+    /// Publishes the selected rooms event.
+    /// </summary>
+    /// <param name="args">The event args.</param>
+    protected void PublishSelectedRoomsEvent(RequestSelectedRoomsEventArgs args)
+    {
+      this.EventAggregator.GetEvent<SendSelectedRoomsEvent>().Publish(new SendSelectedRoomsEventArgs() { Receiver = args.Sender, Sender = "EmployeesViewModel", SelectedRoomsIDs = this.SelectedEmployee.Rooms });
+    }
+
+    #endregion External Event Handling
 
     #region Refresh Data Methods
 
@@ -211,11 +255,12 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     {
       this.SaveCommand.RaiseCanExecuteChanged();
       this.DeleteCommand.RaiseCanExecuteChanged();
+      this.EditSelectedRoomsCommand.RaiseCanExecuteChanged();
     }
 
     #endregion Refresh Commands Methods
 
-    #region Event Handler
+    #region Internal Event Handler
 
     private async void EmployeesViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
@@ -226,7 +271,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
       }
     }
 
-    #endregion Event Handler
+    #endregion Internal Event Handler
 
     #endregion Methods
 
@@ -294,6 +339,22 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     }
 
     #endregion NewCommand
+
+    #region EditSelectedRoomsCommand
+
+    public DelegateCommand EditSelectedRoomsCommand { get; private set; }
+
+    private async void OnEditSelectedRoomsCommand()
+    {
+      await DialogHost.Show(this.ContainerProvider.Resolve<UserControl>("SelectRoomsView"), "RootDialog");
+    }
+
+    private bool CanEditSelectedRoomsCommand()
+    {
+      return this.SelectedEmployee != null;
+    }
+
+    #endregion EditSelectedRoomsCommand
 
     #endregion Commands
   }

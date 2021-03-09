@@ -9,7 +9,7 @@ namespace Gamadu.PVA.Views.Dialogs.Views
     {
         public SelectRoomsView()
         {
-            InitializeComponent();
+      this.InitializeComponent();
         }
     }
 }
