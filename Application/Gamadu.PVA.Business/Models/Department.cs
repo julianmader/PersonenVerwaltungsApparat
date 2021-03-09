@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Gamadu.PVA.Business.Models
+﻿namespace Gamadu.PVA.Business.Models
 {
   public class Department : IdentifiableBase, IDepartment
   {

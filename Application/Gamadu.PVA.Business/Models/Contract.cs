@@ -1,7 +1,6 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
   using System;
-  using System.Collections.Generic;
 
   public class Contract : IdentifiableBase, IContract
   {
