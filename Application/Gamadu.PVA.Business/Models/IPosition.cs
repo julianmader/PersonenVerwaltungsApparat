@@ -2,7 +2,7 @@
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IPosition : IIdentifiable, IMatchable
+  public interface IPosition : IIdentifiable, IMatchable, INameable
   {
     /// <summary>
     /// Gets or sets the value for the Description.
@@ -13,10 +13,5 @@ namespace Gamadu.PVA.Business.Models
     /// Gets or sets the value for the Employees.
     /// </summary>
     IEnumerable<int> Employees { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the Name.
-    /// </summary>
-    string Name { get; set; }
   }
 }

@@ -2,7 +2,7 @@
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IRoom : IIdentifiable, IMatchable
+  public interface IRoom : IIdentifiable, IMatchable, INameable
   {
     /// <summary>
     /// Gets or sets the value for the Description.
@@ -18,11 +18,6 @@ namespace Gamadu.PVA.Business.Models
     /// Gets or sets the value for the FloorNumber.
     /// </summary>
     int FloorNumber { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the Name.
-    /// </summary>
-    string Name { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the RoomNumber.

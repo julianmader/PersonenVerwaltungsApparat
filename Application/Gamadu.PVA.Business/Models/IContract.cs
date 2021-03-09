@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IContract : IIdentifiable, IMatchable
+  public interface IContract : IIdentifiable, IMatchable, INameable
   {
     /// <summary>
     /// Gets or sets the value for the Description.
@@ -24,11 +23,6 @@ namespace Gamadu.PVA.Business.Models
     /// Gets or sets the value for the Holidays.
     /// </summary>
     int Holidays { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the Name.
-    /// </summary>
-    string Name { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Salary.

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Gamadu.PVA.Business.Models
+﻿namespace Gamadu.PVA.Business.Models
 {
-  public interface IDepartment : IIdentifiable, IMatchable
+  public interface IDepartment : IIdentifiable, IMatchable, INameable
   {
     /// <summary>
     /// Gets or sets the value for the Cost Center
@@ -18,10 +16,5 @@ namespace Gamadu.PVA.Business.Models
     /// Gets or sets the value for the Manager
     /// </summary>
     int Manager { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value for the Name.
-    /// </summary>
-    string Name { get; set; }
   }
 }
