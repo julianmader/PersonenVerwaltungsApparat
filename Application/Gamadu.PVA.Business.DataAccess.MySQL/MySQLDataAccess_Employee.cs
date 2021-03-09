@@ -57,7 +57,7 @@
       if (!employee.Rooms.Any())
         return 0;
 
-      string sql = "SaveEmployeeRooms";
+      string sql = "SaveRoomEmployees";
 
       int affectedRows = 0;
 
@@ -112,9 +112,11 @@
     {
       string sql = "UpdateEmployee";
 
+      int affectedRows = 0;
+
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql,
+        affectedRows = connection.Execute(sql,
           new
           {
             E_ID = employee.ID,
@@ -134,8 +136,11 @@
             City = employee.City?.Trim(),
             PostalCode = employee.PostalCode?.Trim()
           }, commandType: CommandType.StoredProcedure);
-        return affectedRows;
       }
+
+      affectedRows += this.SaveEmployeeRooms(employee);
+
+      return affectedRows;
     }
 
     /// <inheritdoc/>
