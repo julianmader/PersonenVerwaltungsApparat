@@ -62,6 +62,7 @@
     <Compile Include="Models\IdentifiableBase.cs" />
     <Compile Include="Models\IDepartment.cs" />
     <Compile Include="Models\IEmployee.cs" />
+    <Compile Include="Models\INameable.cs" />
     <Compile Include="Models\IPosition.cs" />
     <Compile Include="Models\IRoom.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -77,5 +78,6 @@
       <Version>8.0.0.1909</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
