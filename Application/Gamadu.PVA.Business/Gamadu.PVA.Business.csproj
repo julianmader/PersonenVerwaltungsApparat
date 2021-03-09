@@ -49,6 +49,10 @@
     <Compile Include="DataAccess\IPositionDataAccess.cs" />
     <Compile Include="DataAccess\IEmployeeDataAccess.cs" />
     <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Events\RequestSelectedRoomsEvent.cs" />
+    <Compile Include="Events\RequestSelectedRoomsEventArgs.cs" />
+    <Compile Include="Events\SendSelectedRoomsEvent.cs" />
+    <Compile Include="Events\SendSelectedRoomsEventArgs.cs" />
     <Compile Include="Models\CheckableRoom.cs" />
     <Compile Include="Models\IMatchable.cs" />
     <Compile Include="Models\IIdentifiable.cs" />
