@@ -234,6 +234,25 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     #endregion Internal Event Handler
 
+    /// <summary>
+    /// Shows the select rooms dialog.
+    /// </summary>
+    private void ShowSelectRoomsDialog()
+    {
+      IDialogParameters dialogParameters = new DialogParameters();
+      dialogParameters.Add("selectedIDs", this.SelectedEmployee.Rooms);
+
+      this.DialogService.ShowDialog("SelectRoomsDialog", dialogParameters, cb =>
+      {
+        if (cb.Result == ButtonResult.OK)
+        {
+          this.SelectedEmployee.Rooms = cb.Parameters.GetValue<IEnumerable<int>>("selectedIDs");
+
+          this.RefreshSelectedEmployeeRooms();
+        }
+      });
+    }
+
     #endregion Methods
 
     #region Commands
@@ -306,19 +325,8 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     public DelegateCommand EditSelectedRoomsCommand { get; private set; }
 
     private void OnEditSelectedRoomsCommand()
-    {
-      IDialogParameters dialogParameters = new DialogParameters();
-      dialogParameters.Add("selectedIDs", this.SelectedEmployee.Rooms);
-
-      this.DialogService.ShowDialog("SelectRoomsDialog", dialogParameters, cb =>
-      {
-        if (cb.Result == ButtonResult.OK)
-        {
-          this.SelectedEmployee.Rooms = cb.Parameters.GetValue<IEnumerable<int>>("selectedIDs");
-
-          this.RefreshSelectedEmployeeRooms();
-        }
-      });
+    { 
+      this.ShowSelectRoomsDialog();
     }
 
     private bool CanEditSelectedRoomsCommand()
