@@ -1,42 +1,27 @@
 ﻿using Gamadu.PVA.Business.DataAccess;
-using Gamadu.PVA.Business.Events;
 using Gamadu.PVA.Business.Models;
-using MaterialDesignThemes.Wpf;
 using Prism.Commands;
-using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
+using Prism.Services.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Gamadu.PVA.Views.Dialogs.ViewModels
 {
-  public class SelectRoomsViewModel : BindableBase
+  public class SelectRoomsViewModel : BindableBase, IDialogAware
   {
     #region Properties
+
+    public event Action<IDialogResult> RequestClose;
 
     protected IContainerProvider ContainerProvider { get; set; }
 
     protected IRoomDataAccess DataAccess { get; set; }
 
-    protected IEventAggregator EventAggregator { get; set; }
-
-    protected string EventReceiver { get; set; }
-
-    /// <summary>
-    /// Backing field for <see cref="AvailableRooms"/>.
-    /// </summary>
-    private IEnumerable<IRoom> availableRooms;
-
-    /// <summary>
-    /// Gets or sets the value for the AvailableRooms.
-    /// </summary>
-    public IEnumerable<IRoom> AvailableRooms
-    {
-      get { return this.availableRooms; }
-      set { this.SetProperty(ref this.availableRooms, value); }
-    }
+    public string Title { get; }
 
     /// <summary>
     /// Backing field for <see cref="CheckableRooms"/>.
@@ -56,71 +41,16 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
 
     public SelectRoomsViewModel(IContainerProvider container)
     {
+      this.Title = "Select Rooms";
+
       this.ContainerProvider = container;
 
       this.SetDataAccess("MySQL");
 
       this.InitializeCommands();
-
-      this.SetEventAggregator();
-
-      this.PublishRequestSelectedRoomsEvent();
     }
 
     #region Methods
-
-    #region External Event Handling
-
-    /// <summary>
-    /// Sets the event aggregator and configures the event handling.
-    /// </summary>
-    protected void SetEventAggregator()
-    {
-      this.EventAggregator = this.ContainerProvider.Resolve<IEventAggregator>();
-
-      this.EventAggregator.GetEvent<SendSelectedRoomsEvent>().Subscribe(this.SelectedRoomsEventHandler);
-    }
-
-    /// <summary>
-    /// Handles the received send selected rooms event.
-    /// </summary>
-    /// <param name="args"></param>
-    protected void SelectedRoomsEventHandler(SendSelectedRoomsEventArgs args)
-    {
-      if (args.Receiver == null || !args.Receiver.Equals("SelectRoomsViewModel")) return;
-
-      this.EventReceiver = args.Sender;
-      this.SetCheckableRooms(args.SelectedRoomsIDs);
-    }
-
-    /// <summary>
-    /// Publishes the request for the selected rooms.
-    /// </summary>
-    protected void PublishRequestSelectedRoomsEvent()
-    {
-      this.EventAggregator.GetEvent<RequestSelectedRoomsEvent>().Publish(new RequestSelectedRoomsEventArgs { Receiver = "EmployeesViewModel", Sender = "SelectRoomsViewModel" });
-    }
-
-    /// <summary>
-    /// Publishes the selected rooms event.
-    /// </summary>
-    protected void PublishSelectedRoomsEvent()
-    {
-      SendSelectedRoomsEventArgs args = new SendSelectedRoomsEventArgs() { Receiver = this.EventReceiver};
-
-      if (this.CheckableRooms == null)
-      {
-        args.SelectedRoomsIDs = new List<int>();
-      }
-      else
-      {
-        args.SelectedRoomsIDs = this.CheckableRooms.Where(cr => cr.IsChecked)?.Select(cr => (int)cr.ID).ToList();
-      }
-
-      this.EventAggregator.GetEvent<SendSelectedRoomsEvent>().Publish(args);
-    }
-
-    #endregion External Event Handling
 
     /// <summary>
     /// Sets the data access.
@@ -140,26 +70,18 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
     }
 
     /// <summary>
-    /// Gets all available rooms from the database.
-    /// </summary>
-    protected void RefreshAvailableRooms()
-    {
-      this.AvailableRooms = this.DataAccess.GetRooms();
-    }
-
-    /// <summary>
     /// Sets the checkable rooms collection, based on the available rooms.
     /// </summary>
     /// <param name="selectedIDs">The selected rooms' ids</param>
     protected void SetCheckableRooms(IEnumerable<int> selectedIDs)
     {
-      this.RefreshAvailableRooms();
+      IEnumerable<IRoom> availableRooms = this.DataAccess.GetRooms();
 
-      if (this.AvailableRooms?.Any() == false) return;
+      if (availableRooms?.Any() == false) return;
 
       List<ICheckableRoom> temp = new List<ICheckableRoom>();
 
-      foreach (IRoom room in this.AvailableRooms)
+      foreach (IRoom room in availableRooms)
       {
         ICheckableRoom checkableRoom = this.ContainerProvider.Resolve<ICheckableRoom>();
 
@@ -191,10 +113,40 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
 
     private void OnCloseCommand(bool? accept)
     {
-      if ((bool)accept)
-        this.PublishSelectedRoomsEvent();
+      ButtonResult buttonResult = ButtonResult.None;
 
-      DialogHost.Close("RootDialog");
+      if ((bool)accept) buttonResult = ButtonResult.OK;
+      if (!(bool)accept) buttonResult = ButtonResult.Cancel;
+
+      IEnumerable<int> selectedIDs = this.CheckableRooms?.Where(cr => cr.IsChecked).Select(cr => (int)cr.ID).ToList();
+
+      IDialogParameters dialogParameters = new DialogParameters();
+      dialogParameters.Add("selectedIDs", selectedIDs);
+
+      IDialogResult dialogResult = new DialogResult(buttonResult, dialogParameters);
+
+      this.RaiseRequestClose(dialogResult);
+    }
+
+    public void RaiseRequestClose(IDialogResult dialogResult)
+    {
+      RequestClose?.Invoke(dialogResult);
+    }
+
+    public bool CanCloseDialog()
+    {
+      return true;
+    }
+
+    public void OnDialogClosed()
+    {
+    }
+
+    public void OnDialogOpened(IDialogParameters parameters)
+    {
+      IEnumerable<int> selectedIDs = parameters.GetValue<IEnumerable<int>>("selectedIDs");
+
+      this.SetCheckableRooms(selectedIDs);
     }
 
     #endregion CloseCommand

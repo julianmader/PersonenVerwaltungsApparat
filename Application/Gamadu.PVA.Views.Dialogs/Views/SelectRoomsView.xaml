@@ -24,21 +24,12 @@
     <Grid Margin="5">
 
       <Grid.RowDefinitions>
-        <RowDefinition Height="auto" />
-        <RowDefinition Height="5" />
         <RowDefinition />
         <RowDefinition Height="5" />
         <RowDefinition Height="auto" />
       </Grid.RowDefinitions>
 
-      <TextBlock
-        Margin="5"
-        VerticalAlignment="Center"
-        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-        Text="Rooms" />
-
       <DataGrid
-        Grid.Row="2"
         CanUserAddRows="False"
         CanUserDeleteRows="False"
         CanUserSortColumns="True"
@@ -65,7 +56,7 @@
         </DataGrid.Columns>
       </DataGrid>
 
-      <Grid Grid.Row="4">
+      <Grid Grid.Row="2">
 
         <Grid.ColumnDefinitions>
           <ColumnDefinition />

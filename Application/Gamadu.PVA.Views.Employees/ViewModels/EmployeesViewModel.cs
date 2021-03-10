@@ -1,16 +1,14 @@
 ﻿using Gamadu.PVA.Business.DataAccess;
-using Gamadu.PVA.Business.Events;
 using Gamadu.PVA.Business.Models;
-using MaterialDesignThemes.Wpf;
 using Prism.Commands;
-using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace Gamadu.PVA.Views.Employees.ViewModels
 {
@@ -20,9 +18,9 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     protected IContainerProvider ContainerProvider { get; set; }
 
-    protected IEventAggregator EventAggregator { get; set; }
-
     protected IAllDataAccess DataAccess { get; set; }
+
+    protected IDialogService DialogService { get; set; }
 
     private bool isRefreshing;
     public bool IsRefreshing
@@ -91,7 +89,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
       this.PropertyChanged += this.EmployeesViewModel_PropertyChanged;
 
       this.SetDataAccess("MySQL");
-      this.SetEventAggregator();
+      this.DialogService = this.ContainerProvider.Resolve<IDialogService>();
 
       this.InitializeCommands();
       this.RefreshCommand.Execute();
@@ -123,43 +121,6 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
       this.EditSelectedRoomsCommand = new DelegateCommand(this.OnEditSelectedRoomsCommand, this.CanEditSelectedRoomsCommand);
     }
-
-    #region External Event Handling
-
-    /// <summary>
-    /// Sets the event aggregator and configures the event handling.
-    /// </summary>
-    protected void SetEventAggregator()
-    {
-      this.EventAggregator = this.ContainerProvider.Resolve<IEventAggregator>();
-
-      this.EventAggregator.GetEvent<SendSelectedRoomsEvent>().Subscribe(this.SelectedRoomsEventHandler);
-      this.EventAggregator.GetEvent<RequestSelectedRoomsEvent>().Subscribe(this.PublishSelectedRoomsEvent);
-    }
-
-    /// <summary>
-    /// Handles the selected rooms event.
-    /// </summary>
-    /// <param name="args"></param>
-    protected void SelectedRoomsEventHandler(SendSelectedRoomsEventArgs args)
-    {
-      if (args.Receiver == null || !args.Receiver.Equals("EmployeesViewModel")) return;
-
-      this.SelectedEmployee.Rooms = args.SelectedRoomsIDs;
-
-      this.RefreshSelectedEmployeeRooms();
-    }
-
-    /// <summary>
-    /// Publishes the selected rooms event.
-    /// </summary>
-    /// <param name="args">The event args.</param>
-    protected void PublishSelectedRoomsEvent(RequestSelectedRoomsEventArgs args)
-    {
-      this.EventAggregator.GetEvent<SendSelectedRoomsEvent>().Publish(new SendSelectedRoomsEventArgs() { Receiver = args.Sender, Sender = "EmployeesViewModel", SelectedRoomsIDs = this.SelectedEmployee.Rooms });
-    }
-
-    #endregion External Event Handling
 
     #region Refresh Data Methods
 
@@ -221,7 +182,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     }
 
     /// <summary>
-    /// Gets all available rooms from the database.
+    /// Refreshes the selected rooms collection for the selected employee.
     /// </summary>
     protected void RefreshSelectedEmployeeRooms()
     {
@@ -264,7 +225,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     private async void EmployeesViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-      if (e.PropertyName.Equals(nameof(this.SelectedEmployee), System.StringComparison.OrdinalIgnoreCase))
+      if (e.PropertyName.Equals(nameof(this.SelectedEmployee), StringComparison.OrdinalIgnoreCase))
       {
         await Task.Run(this.SelectedEmployeeChanged);
         return;
@@ -344,9 +305,20 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     public DelegateCommand EditSelectedRoomsCommand { get; private set; }
 
-    private async void OnEditSelectedRoomsCommand()
+    private void OnEditSelectedRoomsCommand()
     {
-      await DialogHost.Show(this.ContainerProvider.Resolve<UserControl>("SelectRoomsView"), "RootDialog");
+      IDialogParameters dialogParameters = new DialogParameters();
+      dialogParameters.Add("selectedIDs", this.SelectedEmployee.Rooms);
+
+      this.DialogService.ShowDialog("SelectRoomsDialog", dialogParameters, cb =>
+      {
+        if (cb.Result == ButtonResult.OK)
+        {
+          this.SelectedEmployee.Rooms = cb.Parameters.GetValue<IEnumerable<int>>("selectedIDs");
+
+          this.RefreshSelectedEmployeeRooms();
+        }
+      });
     }
 
     private bool CanEditSelectedRoomsCommand()
