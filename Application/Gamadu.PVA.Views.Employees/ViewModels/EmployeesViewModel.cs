@@ -325,7 +325,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     public DelegateCommand EditSelectedRoomsCommand { get; private set; }
 
     private void OnEditSelectedRoomsCommand()
-    { 
+    {
       this.ShowSelectRoomsDialog();
     }
 
