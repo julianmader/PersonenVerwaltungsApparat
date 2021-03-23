@@ -12,7 +12,7 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the End.
     /// </summary>
-    DateTime End { get; set; }
+    DateTime? End { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the End.
@@ -22,26 +22,31 @@ namespace Gamadu.PVA.Business.Models
     /// <summary>
     /// Gets or sets the value for the Holidays.
     /// </summary>
-    int Holidays { get; set; }
+    int? Holidays { get; set; }
+
+    /// <summary>
+    /// Gets or sets the value for the employee.
+    /// </summary>
+    int? Employee { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Salary.
     /// </summary>
-    int Salary { get; set; }
+    int? Salary { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Start.
     /// </summary>
-    DateTime Start { get; set; }
+    DateTime? Start { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the TrailEnd.
     /// </summary>
-    DateTime TrailEnd { get; set; }
+    DateTime? TrailEnd { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the WorkTime.
     /// </summary>
-    int WorkTime { get; set; }
+    int? WorkTime { get; set; }
   }
 }

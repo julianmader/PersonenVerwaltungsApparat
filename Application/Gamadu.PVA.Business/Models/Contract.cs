@@ -14,32 +14,32 @@
     /// <summary>
     /// Backing field for <see cref="WorkTime"/>.
     /// </summary>
-    private int workTime;
+    private int? workTime;
 
     /// <summary>
     /// Backing field for <see cref="Holidays"/>.
     /// </summary>
-    private int holidays;
+    private int? holidays;
 
     /// <summary>
     /// Backing field for <see cref="Salary"/>.
     /// </summary>
-    private int salary;
+    private int? salary;
 
     /// <summary>
     /// Backing field for <see cref="TrailEnd"/>.
     /// </summary>
-    private DateTime trailEnd;
+    private DateTime? trailEnd;
 
     /// <summary>
     /// Backing field for <see cref="Start
     /// </summary>
-    private DateTime start;
+    private DateTime? start;
 
     /// <summary>
     /// Backing field for <see cref="End"/>.
     /// </summary>
-    private DateTime end;
+    private DateTime? end;
 
     /// <summary>
     /// Backing field for <see cref="HasEnd"/>.
@@ -50,6 +50,11 @@
     /// Backing field for <see cref="Description"/>.
     /// </summary>
     private string description;
+
+    /// <summary>
+    /// Backing field for <see cref="Employee"/>.
+    /// </summary>
+    private int? employee;
 
     #endregion Backing Fields
 
@@ -63,35 +68,35 @@
     }
 
     /// <inheritdoc/>
-    public int WorkTime
+    public int? WorkTime
     {
       get { return this.workTime; }
       set { this.SetProperty(ref this.workTime, value); }
     }
 
     /// <inheritdoc/>
-    public int Holidays
+    public int? Holidays
     {
       get { return this.holidays; }
       set { this.SetProperty(ref this.holidays, value); }
     }
 
     /// <inheritdoc/>
-    public int Salary
+    public int? Salary
     {
       get { return this.salary; }
       set { this.SetProperty(ref this.salary, value); }
     }
 
     /// <inheritdoc/>
-    public DateTime Start
+    public DateTime? Start
     {
       get { return this.start; }
       set { this.SetProperty(ref this.start, value); }
     }
 
     /// <inheritdoc/>
-    public DateTime End
+    public DateTime? End
     {
       get { return this.end; }
       set { this.SetProperty(ref this.end, value); }
@@ -105,7 +110,7 @@
     }
 
     /// <inheritdoc/>
-    public DateTime TrailEnd
+    public DateTime? TrailEnd
     {
       get { return this.trailEnd; }
       set { this.SetProperty(ref this.trailEnd, value); }
@@ -118,6 +123,22 @@
       set { this.SetProperty(ref this.description, value); }
     }
 
+    /// <inheritdoc/>
+    public int? Employee
+    {
+      get { return this.employee; }
+      set { this.SetProperty(ref this.employee, value); }
+    }
+
     #endregion Properties
+
+    #region Methods
+
+    public override string ToString()
+    {
+      return $"{this.Matchcode} - {this.Name}";
+    }
+
+    #endregion Methods
   }
 }
