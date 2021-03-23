@@ -4,6 +4,7 @@
   using Gamadu.PVA.Business.Models;
   using System.Collections.Generic;
   using System.Data;
+  using System.Linq;
 
   public partial class MySQLDataAccess
   {
@@ -13,10 +14,11 @@
     public int SaveContract(IContract contract)
     {
       string sql = "SaveContract";
+      int affectedRows = 0;
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql,
+        affectedRows = connection.Execute(sql,
           new
           {
             Matchcode = contract.Matchcode?.ToUpper(),
@@ -30,18 +32,74 @@
             Description = contract.Description,
             HasEnd = contract.HasEnd
           }, commandType: CommandType.StoredProcedure);
-        return affectedRows;
       }
+
+      affectedRows += this.SaveContractEmployee(contract);
+
+      return affectedRows;
+    }
+
+    /// <summary>
+    /// Saves the employee of a contract.
+    /// </summary>
+    /// <param name="contract">The contract to save.</param>
+    /// <returns>The amount of affected rows.</returns>
+    private int SaveContractEmployee(IContract contract)
+    {
+      if (contract == null)
+        return 0;
+
+      string sql = "SaveContractEmployees";
+
+      int? contractID = this.GetContractDatabaseID(contract);
+
+      if (contractID == null) return 0;
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        return connection.Execute(sql,
+          new
+          {
+            C_ID = (int)contractID,
+            E_ID = (int)contract.Employee
+          }, commandType: CommandType.StoredProcedure);
+      }
+    }
+
+    /// <summary>
+    /// Gets a contract's database ID.
+    /// </summary>
+    /// <param name="contract">The contract</param>
+    /// <returns>The ID or null.</returns>
+    private int? GetContractDatabaseID(IContract contract)
+    {
+      if (contract == null) return null;
+
+      string sql = "GetContractID";
+
+      int? id = null;
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        id = connection.ExecuteScalar<int?>(sql,
+          new
+          {
+            Matchcode = contract.Matchcode?.ToUpper()
+          }, commandType: CommandType.StoredProcedure);
+      }
+
+      return id;
     }
 
     /// <inheritdoc/>
     public int UpdateContract(IContract contract)
     {
       string sql = "UpdateContract";
+      int affectedRows = 0;
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql,
+        affectedRows = connection.Execute(sql,
           new
           {
             C_ID = contract.ID,
@@ -56,8 +114,11 @@
             Description = contract.Description,
             HasEnd = contract.HasEnd
           }, commandType: CommandType.StoredProcedure);
-        return affectedRows;
       }
+
+      affectedRows += this.SaveContractEmployee(contract);
+
+      return affectedRows;
     }
 
     /// <inheritdoc/>
@@ -102,7 +163,33 @@
             C_ID = id
           }, commandType: CommandType.StoredProcedure);
 
+        if (contract != null)
+        {
+          contract.Employee = this.GetContractEmployee(id);
+        }
+
         return contract;
+      }
+    }
+
+    /// <summary>
+    /// Gets the ID of the employee associated with the contract.
+    /// </summary>
+    /// <param name="id">The contract id.</param>
+    /// <returns></returns>
+    private int? GetContractEmployee(int id)
+    {
+      string sql = "GetContractEmployees";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        int? employee = connection.QueryFirst<int?>(sql,
+          new
+          {
+            C_ID = id
+          }, commandType: CommandType.StoredProcedure);
+
+        return employee;
       }
     }
 
@@ -198,13 +285,22 @@
     public IEnumerable<IContract> GetContracts()
     {
       string sql = "GetAllContracts";
+      List<IContract> contracts = new List<IContract>();
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        IEnumerable<IContract> contracts = connection.Query<Contract>(sql, commandType: CommandType.StoredProcedure);
-
-        return contracts;
+        contracts = new List<IContract>(connection.Query<Contract>(sql, commandType: CommandType.StoredProcedure));
       }
+
+      if (contracts?.Any() == true)
+      {
+        for (int i = 0; i < contracts.Count(); i++)
+        {
+          contracts[i].Employee = this.GetContractEmployee((int)contracts[i].ID);
+        }
+      }
+
+      return contracts;
     }
 
     /// <inheritdoc/>

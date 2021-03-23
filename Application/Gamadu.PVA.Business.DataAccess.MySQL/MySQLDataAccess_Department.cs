@@ -4,6 +4,7 @@
   using Gamadu.PVA.Business.Models;
   using System.Collections.Generic;
   using System.Data;
+  using System.Linq;
 
   public partial class MySQLDataAccess
   {
@@ -13,10 +14,11 @@
     public int SaveDepartment(IDepartment department)
     {
       string sql = "SaveDepartment";
+      int affectedRows = 0;
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql,
+        affectedRows = connection.Execute(sql,
           new
           {
             Matchcode = department.Matchcode?.ToUpper(),
@@ -25,18 +27,85 @@
             Manager = department.Manager,
             Description = department.Description?.Trim()
           }, commandType: CommandType.StoredProcedure);
-        return affectedRows;
       }
+
+      affectedRows += this.SaveDepartmentEmployees(department);
+
+      return affectedRows;
+    }
+
+    /// <summary>
+    /// Saves the employees of a department.
+    /// </summary>
+    /// <param name="department">The department to save.</param>
+    /// <returns>The amount of affected rows.</returns>
+    private int SaveDepartmentEmployees(IDepartment department)
+    {
+      if (department == null)
+        return 0;
+
+      if (!department.Employees.Any())
+        return 0;
+
+      string sql = "SaveDepartmentEmployees";
+
+      int affectedRows = 0;
+
+      int? departmentID = this.GetDepartmentDatabaseID(department);
+
+      if (departmentID == null) return 0;
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+
+        foreach (int id in department.Employees)
+        {
+          affectedRows += connection.Execute(sql,
+            new
+            {
+              D_ID = (int)departmentID,
+              E_ID = id,
+            }, commandType: CommandType.StoredProcedure);
+        }
+      }
+
+      return affectedRows;
+    }
+
+    /// <summary>
+    /// Gets a department's database ID.
+    /// </summary>
+    /// <param name="department">The department</param>
+    /// <returns>The ID or null.</returns>
+    private int? GetDepartmentDatabaseID(IDepartment department)
+    {
+      if (department == null) return null;
+
+      string sql = "GetDepartmentID";
+
+      int? id = null;
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        id = connection.ExecuteScalar<int?>(sql,
+          new
+          {
+            Matchcode = department.Matchcode?.ToUpper()
+          }, commandType: CommandType.StoredProcedure);
+      }
+
+      return id;
     }
 
     /// <inheritdoc/>
     public int UpdateDepartment(IDepartment department)
     {
       string sql = "UpdateDepartment";
+      int affectedRows = 0;
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int affectedRows = connection.Execute(sql,
+        affectedRows = connection.Execute(sql,
           new
           {
             D_ID = department.ID,
@@ -46,8 +115,11 @@
             Manager = department.Manager,
             Description = department.Description
           }, commandType: CommandType.StoredProcedure);
-        return affectedRows;
       }
+
+      affectedRows += this.SaveDepartmentEmployees(department);
+
+      return affectedRows;
     }
 
     /// <inheritdoc/>
@@ -91,7 +163,33 @@
             D_ID = id
           }, commandType: CommandType.StoredProcedure);
 
+        if (department != null)
+        {
+          department.Employees = this.GetDepartmentEmployees(id);
+        }
+
         return department;
+      }
+    }
+
+    /// <summary>
+    /// Gets the IDs of the employees associated with the department.
+    /// </summary>
+    /// <param name="id">The department id.</param>
+    /// <returns></returns>
+    private IEnumerable<int> GetDepartmentEmployees(int id)
+    {
+      string sql = "GetDepartmentEmployees";
+
+      using (IDbConnection connection = this.GetDbConnection())
+      {
+        IEnumerable<int> employees = connection.Query<int>(sql,
+          new
+          {
+            D_ID = id
+          }, commandType: CommandType.StoredProcedure);
+
+        return employees;
       }
     }
 
@@ -200,13 +298,22 @@
     public IEnumerable<IDepartment> GetDepartments()
     {
       string sql = "GetAllDepartments";
+      List<IDepartment> departments = new List<IDepartment>();
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        IEnumerable<IDepartment> departments = connection.Query<Department>(sql, commandType: CommandType.StoredProcedure);
-
-        return departments;
+        departments = new List<IDepartment>(connection.Query<Department>(sql, commandType: CommandType.StoredProcedure));
       }
+
+      if (departments?.Any() == true)
+      {
+        for (int i = 0; i < departments.Count(); i++)
+        {
+          departments[i].Employees = this.GetDepartmentEmployees((int)departments[i].ID);
+        }
+      }
+
+      return departments;
     }
 
     #endregion Department
