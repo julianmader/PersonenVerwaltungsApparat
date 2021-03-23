@@ -6,12 +6,22 @@
   {
     public static int SaveOrUpdateEmployee(this IAllDataAccess dataAccess, IEmployee employee)
     {
-      if (employee.ID == null)
-      {
-        return dataAccess.SaveEmployee(employee);
-      }
+      return employee.ID == null ? dataAccess.SaveEmployee(employee) : dataAccess.UpdateEmployee(employee);
+    }
 
-      return dataAccess.UpdateEmployee(employee);
+    public static int SaveOrUpdateDepartment(this IAllDataAccess dataAccess, IDepartment department)
+    {
+      return department.ID == null ? dataAccess.SaveDepartment(department) : dataAccess.UpdateDepartment(department);
+    }
+
+    public static int SaveOrUpdatePosition(this IAllDataAccess dataAccess, IPosition position)
+    {
+      return position.ID == null ? dataAccess.SavePosition(position) : dataAccess.UpdatePosition(position);
+    }
+
+    public static int SaveOrUpdateContract(this IAllDataAccess dataAccess, IContract contract)
+    {
+      return contract.ID == null ? dataAccess.SaveContract(contract) : dataAccess.UpdateContract(contract);
     }
   }
 }
