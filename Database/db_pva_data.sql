@@ -26,45 +26,45 @@ USE `db_pva`;
 --
 -- Daten für Tabelle `tb_contracts`
 --
-
+DELETE FROM tb_contracts;
 INSERT INTO `tb_contracts` (`C_ID`, `Matchcode`, `Name`, `WorkTime`, `Holidays`, `Salary`, `Start`, `End`, `TrailEnd`, `Description`, `HasEnd`) VALUES
 (1, 'CONT1', 'Nicer Vertrag', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Daten für Tabelle `tb_departments`
 --
-
+DELETE FROM tb_departments;
 INSERT INTO `tb_departments` (`D_ID`, `Matchcode`, `Name`, `CostCenter`, `Manager`, `Description`) VALUES
 (1, 'DEP1', 'NiceDepartment', '1000', NULL, 'Beste');
 
 --
--- Daten für Tabelle `tb_employees`
---
-
-INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`, `Birth`, `PhoneNumber`, `Email`, `Department`, `Position`, `Contract`, `AdditionalInformation`, `Street`, `StreetNumber`, `City`, `PostalCode`) VALUES
-(1, 'JG', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-01-01', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
-(4, 'JM', 1, 'Julian', 'Mader', '2000-07-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'VG', 1, 'Valentin', 'Besserberlet', '2021-03-09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
---
 -- Daten für Tabelle `tb_positions`
 --
-
+DELETE FROM tb_positions;
 INSERT INTO `tb_positions` (`P_ID`, `Matchcode`, `Name`, `Description`) VALUES
 (1, 'POS1', 'BestePosition', '1 nice Position');
 
 --
 -- Daten für Tabelle `tb_rooms`
 --
-
+DELETE FROM tb_rooms;
 INSERT INTO `tb_rooms` (`R_ID`, `Matchcode`, `Name`, `RoomNumber`, `FloorNumber`, `Size`, `Description`) VALUES
 (1, 'ROOM1', 'Nicer Room', NULL, NULL, NULL, NULL),
 (2, 'ROOM2', 'Nicer zweiter Room', NULL, NULL, NULL, NULL);
 
 --
+-- Daten für Tabelle `tb_employees`
+--
+DELETE FROM tb_employees;
+INSERT INTO `tb_employees` (`E_ID`, `Matchcode`, `Gender`, `Forename`, `Surname`, `Birth`, `PhoneNumber`, `Email`, `Department`, `Position`, `Contract`, `AdditionalInformation`, `Street`, `StreetNumber`, `City`, `PostalCode`) VALUES
+(1, 'JG', 1, 'Jeremy-Lee Hans Georg', 'Gassner', '2000-01-01', '0800 1234', 'jeremy@nice.de', 1, 1, 1, 'Ziemlich nice so', 'Hauptstraße', '3A', 'Nice Stadt', '87415'),
+(4, 'JM', 1, 'Julian', 'Mader', '2000-07-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'VG', 1, 'Valentin', 'Besserberlet', '2021-03-09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+--
 -- Daten für Tabelle `tb_roomsemployees`
 --
-
+DELETE FROM tb_roomsemployees;
 INSERT INTO `tb_roomsemployees` (`R_ID`, `E_ID`) VALUES
 (1, 1),
 (1, 4),
