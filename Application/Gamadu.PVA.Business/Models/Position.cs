@@ -47,5 +47,14 @@
     }
 
     #endregion Properties
+
+    #region Methods
+
+    public override string ToString()
+    {
+      return $"{this.Matchcode} - {this.Name}";
+    }
+
+    #endregion Methods
   }
 }
