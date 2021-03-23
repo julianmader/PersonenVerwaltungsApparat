@@ -38,13 +38,44 @@
       </Grid.RowDefinitions>
 
       <materialdesign:Card Grid.Row="0">
-        <TextBlock Margin="5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-          Positions
-        </TextBlock>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+          </Grid.ColumnDefinitions>
+
+          <TextBlock
+            Margin="5"
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Positions" />
+
+          <Button
+            Grid.Column="2"
+            Margin="5"
+            materialdesign:ButtonProgressAssist.IsIndeterminate="True"
+            materialdesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsRefreshing}"
+            materialdesign:ButtonProgressAssist.Value="0"
+            Command="{Binding RefreshCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+            <materialdesign:PackIcon
+              Width="24"
+              Height="24"
+              Kind="Refresh" />
+          </Button>
+
+        </Grid>
+
       </materialdesign:Card>
 
       <materialdesign:Card Grid.Row="2">
-        <ListBox />
+        <ListBox
+          Foreground="AntiqueWhite"
+          ItemsSource="{Binding AvailablePositions}"
+          SelectedItem="{Binding SelectedPosition}" />
       </materialdesign:Card>
 
     </Grid>
@@ -81,30 +112,56 @@
             <controls:IconTextBox
               Grid.Row="2"
               materialdesign:HintAssist.Hint="ID"
-              Icon="SqlPrimaryKey" />
+              Icon="SqlPrimaryKey"
+              IsHitTestVisible="False"
+              Text="{Binding SelectedPosition.ID}" />
 
             <controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
-              Icon="Identifier" />
+              Icon="Identifier"
+              Text="{Binding SelectedPosition.Matchcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Name"
-              Icon="Tag" />
+              Icon="Tag"
+              Text="{Binding SelectedPosition.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconExpander
               Grid.Row="8"
               Header="Description"
               Icon="Information">
-              <TextBox />
+              <TextBox Foreground="AntiqueWhite" Text="{Binding SelectedPosition.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </controls:IconExpander>
 
             <controls:IconExpander
               Grid.Row="10"
               Header="Employees"
               Icon="People">
-              <ListBox />
+              <Grid>
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="5" />
+                  <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <ListBox Foreground="AntiqueWhite" ItemsSource="{Binding SelectedPositionEmployees}" />
+
+                <Button
+                  Grid.Row="2"
+                  Margin="5"
+                  HorizontalAlignment="Right"
+                  Command="{Binding EditSelectedEmployeesCommand}"
+                  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                  <materialdesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Edit" />
+                </Button>
+
+              </Grid>
             </controls:IconExpander>
 
           </Grid>
@@ -121,22 +178,39 @@
           <ColumnDefinition Width="auto" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+        <Button
+          Grid.Column="2"
+          Command="{Binding NewCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+          <materialdesign:PackIcon
+            Width="24"
+            Height="24"
+            Kind="AddBox" />
+        </Button>
+
+        <Button
+          Grid.Column="4"
+          Command="{Binding SaveCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
             Kind="ContentSave" />
         </Button>
 
-        <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+        <Button
+          Grid.Column="6"
+          Command="{Binding DeleteCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
             Kind="Delete" />
         </Button>
-
       </Grid>
 
     </Grid>
