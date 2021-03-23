@@ -14,7 +14,11 @@ namespace Gamadu.PVA.Business
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
       containerRegistry.Register<IEmployee, Employee>();
+      containerRegistry.Register<ICheckableEmployee, CheckableEmployee>();
       containerRegistry.Register<ICheckableRoom, CheckableRoom>();
+      containerRegistry.Register<IDepartment, Department>();
+      containerRegistry.Register<IPosition, Position>();
+      containerRegistry.Register<IContract, Contract>();
     }
   }
 }
