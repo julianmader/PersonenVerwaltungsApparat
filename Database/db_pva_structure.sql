@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `db_pva`
 --
-CREATE DATABASE IF NOT EXISTS `db_pva` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+DROP DATABASE IF EXISTS db_pva;
+CREATE DATABASE `db_pva` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `db_pva`;
 
 DELIMITER $$
@@ -344,32 +345,6 @@ CREATE TABLE `tb_departments` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tb_employees`
---
-
-DROP TABLE IF EXISTS `tb_employees`;
-CREATE TABLE `tb_employees` (
-  `E_ID` int(11) NOT NULL,
-  `Matchcode` varchar(255) NOT NULL,
-  `Gender` int(11) NOT NULL DEFAULT 0 COMMENT '0: Neutral\r\n1: Male\r\n2: Female',
-  `Forename` varchar(255) DEFAULT NULL,
-  `Surname` varchar(255) DEFAULT NULL,
-  `Birth` date DEFAULT NULL,
-  `PhoneNumber` varchar(255) DEFAULT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  `Department` int(11) DEFAULT NULL,
-  `Position` int(11) DEFAULT NULL,
-  `Contract` int(11) DEFAULT NULL,
-  `AdditionalInformation` varchar(255) DEFAULT NULL,
-  `Street` varchar(255) DEFAULT NULL,
-  `StreetNumber` varchar(255) DEFAULT NULL,
-  `City` varchar(255) DEFAULT NULL,
-  `PostalCode` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Tabellenstruktur für Tabelle `tb_positions`
 --
 
@@ -396,6 +371,32 @@ CREATE TABLE `tb_rooms` (
   `FloorNumber` int(11) DEFAULT NULL,
   `Size` int(11) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `tb_employees`
+--
+
+DROP TABLE IF EXISTS `tb_employees`;
+CREATE TABLE `tb_employees` (
+  `E_ID` int(11) NOT NULL,
+  `Matchcode` varchar(255) NOT NULL,
+  `Gender` int(11) NOT NULL DEFAULT 0 COMMENT '0: Neutral\r\n1: Male\r\n2: Female',
+  `Forename` varchar(255) DEFAULT NULL,
+  `Surname` varchar(255) DEFAULT NULL,
+  `Birth` date DEFAULT NULL,
+  `PhoneNumber` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL,
+  `Department` int(11) DEFAULT NULL,
+  `Position` int(11) DEFAULT NULL,
+  `Contract` int(11) DEFAULT NULL,
+  `AdditionalInformation` varchar(255) DEFAULT NULL,
+  `Street` varchar(255) DEFAULT NULL,
+  `StreetNumber` varchar(255) DEFAULT NULL,
+  `City` varchar(255) DEFAULT NULL,
+  `PostalCode` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
