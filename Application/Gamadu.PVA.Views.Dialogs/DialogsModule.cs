@@ -6,7 +6,7 @@ namespace Gamadu.PVA.Views.Dialogs
 {
   [Module(ModuleName = "DialogsModule")]
   public class DialogsModule : IModule
-    {
+  {
     public void OnInitialized(IContainerProvider containerProvider)
     {
     }
@@ -14,6 +14,7 @@ namespace Gamadu.PVA.Views.Dialogs
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
       containerRegistry.RegisterDialog<SelectRoomsView>("SelectRoomsDialog");
+      containerRegistry.RegisterDialog<SelectEmployeesView>("SelectEmployeesDialog");
     }
   }
 }
