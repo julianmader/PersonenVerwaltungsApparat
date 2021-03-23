@@ -1,4 +1,6 @@
-﻿namespace Gamadu.PVA.Business.Models
+﻿using System.Collections.Generic;
+
+namespace Gamadu.PVA.Business.Models
 {
   public class Department : IdentifiableBase, IDepartment
   {
@@ -17,12 +19,17 @@
     /// <summary>
     /// Backing field for <see cref="Manager"/>
     /// </summary>
-    private int manager;
+    private int? manager;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
     /// </summary>
     private string description;
+
+    /// <summary>
+    /// Backing field for <see cref="Employees"/>.
+    /// </summary>
+    private IEnumerable<int> employees;
 
     #endregion Backing Fields
 
@@ -43,7 +50,7 @@
     }
 
     /// <inheritdoc/>
-    public int Manager
+    public int? Manager
     {
       get { return this.manager; }
       set { this.SetProperty(ref this.manager, value); }
@@ -56,6 +63,22 @@
       set { this.SetProperty(ref this.description, value); }
     }
 
+    /// <inheritdoc/>
+    public IEnumerable<int> Employees
+    {
+      get { return this.employees; }
+      set { this.SetProperty(ref this.employees, value); }
+    }
+
     #endregion Properties
+
+    #region Methods
+
+    public override string ToString()
+    {
+      return $"{this.Matchcode} - {this.Name}";
+    }
+
+    #endregion Methods
   }
 }

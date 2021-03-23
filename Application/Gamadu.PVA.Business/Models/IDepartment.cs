@@ -1,4 +1,6 @@
-﻿namespace Gamadu.PVA.Business.Models
+﻿using System.Collections.Generic;
+
+namespace Gamadu.PVA.Business.Models
 {
   public interface IDepartment : IIdentifiable, IMatchable, INameable
   {
@@ -15,6 +17,11 @@
     /// <summary>
     /// Gets or sets the value for the Manager
     /// </summary>
-    int Manager { get; set; }
+    int? Manager { get; set; }
+
+    /// <summary>
+    /// Gets or sets the employees for the department.
+    /// </summary>
+    IEnumerable<int> Employees { get; set; }
   }
 }
