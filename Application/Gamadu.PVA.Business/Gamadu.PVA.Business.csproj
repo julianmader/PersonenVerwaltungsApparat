@@ -53,7 +53,9 @@
     <Compile Include="Events\RequestSelectedRoomsEventArgs.cs" />
     <Compile Include="Events\SendSelectedRoomsEvent.cs" />
     <Compile Include="Events\SendSelectedRoomsEventArgs.cs" />
+    <Compile Include="Models\CheckableEmployee.cs" />
     <Compile Include="Models\CheckableRoom.cs" />
+    <Compile Include="Models\ICheckableEmployee.cs" />
     <Compile Include="Models\IMatchable.cs" />
     <Compile Include="Models\IIdentifiable.cs" />
     <Compile Include="Models\Contract.cs" />
