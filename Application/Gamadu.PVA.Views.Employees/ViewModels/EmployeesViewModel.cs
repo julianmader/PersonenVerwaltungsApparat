@@ -315,6 +315,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     {
       await Task.Run(() => this.SelectedEmployee = this.ContainerProvider.Resolve<IEmployee>());
 
+      this.SelectedEmployee.Rooms = new List<int>();
       this.SelectedEmployee.Birth = DateTime.Now;
     }
 
