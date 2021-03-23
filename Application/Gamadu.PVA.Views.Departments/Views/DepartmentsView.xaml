@@ -38,13 +38,44 @@
       </Grid.RowDefinitions>
 
       <materialdesign:Card Grid.Row="0">
-        <TextBlock Margin="5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-          Departments
-        </TextBlock>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+          </Grid.ColumnDefinitions>
+
+          <TextBlock
+            Margin="5"
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Departments" />
+
+          <Button
+            Grid.Column="2"
+            Margin="5"
+            materialdesign:ButtonProgressAssist.IsIndeterminate="True"
+            materialdesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsRefreshing}"
+            materialdesign:ButtonProgressAssist.Value="0"
+            Command="{Binding RefreshCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+            <materialdesign:PackIcon
+              Width="24"
+              Height="24"
+              Kind="Refresh" />
+          </Button>
+
+        </Grid>
+
       </materialdesign:Card>
 
       <materialdesign:Card Grid.Row="2">
-        <ListBox />
+        <ListBox
+          Foreground="AntiqueWhite"
+          ItemsSource="{Binding AvailableDepartments}"
+          SelectedItem="{Binding SelectedDepartment}" />
       </materialdesign:Card>
 
     </Grid>
@@ -85,40 +116,70 @@
             <controls:IconTextBox
               Grid.Row="2"
               materialdesign:HintAssist.Hint="ID"
-              Icon="SqlPrimaryKey" />
+              Icon="SqlPrimaryKey"
+              IsHitTestVisible="False"
+              Text="{Binding SelectedDepartment.ID}" />
 
             <controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
-              Icon="Identifier" />
+              Icon="Identifier"
+              Text="{Binding SelectedDepartment.Matchcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Name"
-              Icon="Tag" />
+              Icon="Tag"
+              Text="{Binding SelectedDepartment.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="8"
               materialdesign:HintAssist.Hint="Cost Center"
-              Icon="FormatListNumbered" />
+              Icon="FormatListNumbered"
+              Text="{Binding SelectedDepartment.CostCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconComboBox
               Grid.Row="10"
               materialdesign:HintAssist.Hint="Manager"
-              Icon="Person" />
+              Icon="Person"
+              ItemsSource="{Binding AvailableEmployees}"
+              SelectedValue="{Binding SelectedDepartment.Manager, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              SelectedValuePath="ID" />
 
             <controls:IconExpander
               Grid.Row="12"
               Header="Description"
               Icon="Information">
-              <TextBox />
+              <TextBox Foreground="AntiqueWhite" Text="{Binding SelectedDepartment.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </controls:IconExpander>
 
             <controls:IconExpander
               Grid.Row="14"
               Header="Employees"
               Icon="People">
-              <ListBox />
+              <Grid>
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="5" />
+                  <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <ListBox Foreground="AntiqueWhite" ItemsSource="{Binding SelectedDepartmentEmployees}" />
+
+                <Button
+                  Grid.Row="2"
+                  Margin="5"
+                  HorizontalAlignment="Right"
+                  Command="{Binding EditSelectedEmployeesCommand}"
+                  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                  <materialdesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Edit" />
+                </Button>
+
+              </Grid>
             </controls:IconExpander>
 
           </Grid>
@@ -135,22 +196,39 @@
           <ColumnDefinition Width="auto" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+        <Button
+          Grid.Column="2"
+          Command="{Binding NewCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+          <materialdesign:PackIcon
+            Width="24"
+            Height="24"
+            Kind="AddBox" />
+        </Button>
+
+        <Button
+          Grid.Column="4"
+          Command="{Binding SaveCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
             Kind="ContentSave" />
         </Button>
 
-        <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+        <Button
+          Grid.Column="6"
+          Command="{Binding DeleteCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
             Kind="Delete" />
         </Button>
-
       </Grid>
 
     </Grid>
