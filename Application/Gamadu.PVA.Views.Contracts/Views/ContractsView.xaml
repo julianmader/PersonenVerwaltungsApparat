@@ -37,15 +37,45 @@
       </Grid.RowDefinitions>
 
       <materialdesign:Card Grid.Row="0">
-        <TextBlock Margin="5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-          Contracts
-        </TextBlock>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="auto" />
+          </Grid.ColumnDefinitions>
+
+          <TextBlock
+            Margin="5"
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Contracts" />
+
+          <Button
+            Grid.Column="2"
+            Margin="5"
+            materialdesign:ButtonProgressAssist.IsIndeterminate="True"
+            materialdesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsRefreshing}"
+            materialdesign:ButtonProgressAssist.Value="0"
+            Command="{Binding RefreshCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+            <materialdesign:PackIcon
+              Width="24"
+              Height="24"
+              Kind="Refresh" />
+          </Button>
+
+        </Grid>
+
       </materialdesign:Card>
 
       <materialdesign:Card Grid.Row="2">
-        <ListBox />
+        <ListBox
+          Foreground="AntiqueWhite"
+          ItemsSource="{Binding AvailableContracts}"
+          SelectedItem="{Binding SelectedContract}" />
       </materialdesign:Card>
-
     </Grid>
 
     <Grid Grid.Column="2">
@@ -92,59 +122,73 @@
             <controls:IconTextBox
               Grid.Row="2"
               materialdesign:HintAssist.Hint="ID"
-              Icon="SqlPrimaryKey" />
+              Icon="SqlPrimaryKey"
+              IsHitTestVisible="False"
+              Text="{Binding SelectedContract.ID}" />
 
             <controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
-              Icon="Identifier" />
+              Icon="Identifier"
+              Text="{Binding SelectedContract.Matchcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Name"
-              Icon="Tag" />
+              Icon="Tag"
+              Text="{Binding SelectedContract.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="8"
               materialdesign:HintAssist.Hint="Work Time"
-              Icon="Timer" />
+              Icon="Timer"
+              Text="{Binding SelectedContract.WorkTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="10"
               materialdesign:HintAssist.Hint="Holidays"
-              Icon="WeatherSunny" />
+              Icon="WeatherSunny"
+              Text="{Binding SelectedContract.Holidays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="12"
               materialdesign:HintAssist.Hint="Salary"
-              Icon="CashCheck" />
+              Icon="CashCheck"
+              Text="{Binding SelectedContract.Salary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconDatePicker
               Grid.Row="14"
               materialdesign:HintAssist.Hint="Start"
-              Icon="ClockStart" />
+              Icon="ClockStart"
+              SelectedDate="{Binding SelectedContract.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconCheckDatePicker
               Grid.Row="16"
               materialdesign:HintAssist.Hint="End"
               CheckBoxText="Limited"
-              Icon="ClockEnd" />
+              Icon="ClockEnd"
+              IsChecked="{Binding SelectedContract.HasEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              SelectedDate="{Binding SelectedContract.End, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconDatePicker
               Grid.Row="18"
               materialdesign:HintAssist.Hint="Trail End"
-              Icon="TickAll" />
+              Icon="TickAll"
+              SelectedDate="{Binding SelectedContract.TrailEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconComboBox
               Grid.Row="20"
               materialdesign:HintAssist.Hint="Employee"
-              Icon="Person" />
+              Icon="Person"
+              ItemsSource="{Binding AvailableEmployees}"
+              SelectedValue="{Binding SelectedContract.Employee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              SelectedValuePath="ID" />
 
             <controls:IconExpander
               Grid.Row="22"
               Header="Description"
               Icon="Information">
-              <TextBox />
+              <TextBox Foreground="AntiqueWhite" Text="{Binding SelectedContract.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </controls:IconExpander>
 
           </Grid>
@@ -161,22 +205,39 @@
           <ColumnDefinition Width="auto" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+        <Button
+          Grid.Column="2"
+          Command="{Binding NewCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+          <materialdesign:PackIcon
+            Width="24"
+            Height="24"
+            Kind="AddBox" />
+        </Button>
+
+        <Button
+          Grid.Column="4"
+          Command="{Binding SaveCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
             Kind="ContentSave" />
         </Button>
 
-        <Button Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+        <Button
+          Grid.Column="6"
+          Command="{Binding DeleteCommand}"
+          Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
           <materialdesign:PackIcon
             Width="24"
             Height="24"
             Kind="Delete" />
         </Button>
-
       </Grid>
 
     </Grid>
