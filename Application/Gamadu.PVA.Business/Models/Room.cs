@@ -14,17 +14,17 @@
     /// <summary>
     /// Backing field for <see cref="RoomNumber"/>.
     /// </summary>
-    private int roomNumber;
+    private int? roomNumber;
 
     /// <summary>
     /// Backing field for <see cref="FloorNumber"/>.
     /// </summary>
-    private int floorNumber;
+    private int? floorNumber;
 
     /// <summary>
     /// Backing field for <see cref="Size"/>.
     /// </summary>
-    private int size;
+    private int? size;
 
     /// <summary>
     /// Backing field for <see cref="Description"/>.
@@ -48,21 +48,21 @@
     }
 
     /// <inheritdoc/>
-    public int RoomNumber
+    public int? RoomNumber
     {
       get { return this.roomNumber; }
       set { this.SetProperty(ref this.roomNumber, value); }
     }
 
     /// <inheritdoc/>
-    public int FloorNumber
+    public int? FloorNumber
     {
       get { return this.floorNumber; }
       set { this.SetProperty(ref this.floorNumber, value); }
     }
 
     /// <inheritdoc/>
-    public int Size
+    public int? Size
     {
       get { return this.size; }
       set { this.SetProperty(ref this.size, value); }
