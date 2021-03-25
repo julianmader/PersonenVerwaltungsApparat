@@ -19,6 +19,7 @@ namespace Gamadu.PVA.Business
       containerRegistry.Register<IDepartment, Department>();
       containerRegistry.Register<IPosition, Position>();
       containerRegistry.Register<IContract, Contract>();
+      containerRegistry.Register<IRoom, Room>();
     }
   }
 }
