@@ -23,5 +23,10 @@
     {
       return contract.ID == null ? dataAccess.SaveContract(contract) : dataAccess.UpdateContract(contract);
     }
+
+    public static int SaveOrUpdateRoom(this IAllDataAccess dataAccess, IRoom room)
+    {
+      return room.ID == null ? dataAccess.SaveRoom(room) : dataAccess.UpdateRoom(room);
+    }
   }
 }
