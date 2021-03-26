@@ -1,8 +1,9 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
+  using Gamadu.PVA.Business.Models.Bases;
   using System.Collections.Generic;
 
-  public class Room : IdentifiableBase, IRoom
+  public class Room : ModelBase, IRoom
   {
     #region Backing Fields
 

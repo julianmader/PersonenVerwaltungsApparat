@@ -1,10 +1,11 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
   using Gamadu.PVA.Business.Enums;
+  using Gamadu.PVA.Business.Models.Bases;
   using System;
   using System.Collections.Generic;
 
-  public class Employee : IdentifiableBase, IEmployee
+  public class Employee : ValidateableModelBase<Employee>, IEmployee
   {
     #region Backing Fields
 
@@ -200,6 +201,8 @@
     {
       return $"{this.Matchcode} - {this.Forename} {this.Surname}";
     }
+
+    public override void Validate() => this.Validator.Validate(this);
 
     #endregion Methods
   }

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Gamadu.PVA.Business.Models.Bases;
+using System.Collections.Generic;
 
 namespace Gamadu.PVA.Business.Models
 {
-  public class Department : IdentifiableBase, IDepartment
+  public class Department : ModelBase, IDepartment
   {
     #region Backing Fields
 
