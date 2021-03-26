@@ -3,7 +3,9 @@ using Gamadu.PVA.Business.Models;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +19,8 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     protected IContainerProvider ContainerProvider { get; set; }
 
     protected IAllDataAccess DataAccess { get; set; }
+
+    protected IDialogService DialogService { get; set; }
 
     private bool isRefreshing;
     public bool IsRefreshing
@@ -39,6 +43,13 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
       set { this.SetProperty(ref this.availableContracts, value); }
     }
 
+    private ObservableCollection<IEmployee> selectedContractEmployees;
+    public ObservableCollection<IEmployee> SelectedContractEmployees
+    {
+      get { return this.selectedContractEmployees; }
+      set { this.SetProperty(ref this.selectedContractEmployees, value); }
+    }
+
     private IContract selectedContract;
     public IContract SelectedContract
     {
@@ -58,6 +69,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
       this.PropertyChanged += this.ContractsViewModel_PropertyChanged;
 
       this.SetDataAccess("MySQL");
+      this.DialogService = this.ContainerProvider.Resolve<IDialogService>();
 
       this.InitializeCommands();
       this.RefreshCommand.Execute();
@@ -86,6 +98,8 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
       this.DeleteCommand = new DelegateCommand(this.OnDeleteCommand, this.CanDeleteCommand);
 
       this.NewCommand = new DelegateCommand(this.OnNewCommand);
+
+      this.EditSelectedEmployeesCommand = new DelegateCommand(this.OnEditSelectedEmployeesCommand, this.CanEditSelectedEmployeesCommand);
     }
 
     #region Refresh Data Methods
@@ -121,11 +135,27 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     /// <summary>
+    /// Refreshes the selected rooms collection for the selected employee.
+    /// </summary>
+    protected void RefreshSelectedContractEmployees()
+    {
+      if (this.SelectedContract?.Employees?.Any() != true)
+      {
+        this.SelectedContractEmployees = null;
+        return;
+      }
+
+      this.SelectedContractEmployees = new ObservableCollection<IEmployee>(this.AvailableEmployees.Where(e => this.SelectedContract.Employees.Contains((int)e.ID)));
+    }
+
+    /// <summary>
     /// Contains the routine when the selected contract changed.
     /// </summary>
     private void SelectedContractChanged()
     {
       this.RefreshCommands();
+
+      this.RefreshSelectedContractEmployees();
     }
 
     #endregion Refresh Data Methods
@@ -139,6 +169,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     {
       this.SaveCommand.RaiseCanExecuteChanged();
       this.DeleteCommand.RaiseCanExecuteChanged();
+      this.EditSelectedEmployeesCommand.RaiseCanExecuteChanged();
     }
 
     #endregion Refresh Commands Methods
@@ -155,6 +186,25 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     #endregion Internal Event Handler
+
+    /// <summary>
+    /// Shows the select employees dialog.
+    /// </summary>
+    private void ShowSelectEmployeesDialog()
+    {
+      IDialogParameters dialogParameters = new DialogParameters();
+      dialogParameters.Add("selectedIDs", this.SelectedContract.Employees);
+
+      this.DialogService.ShowDialog("SelectEmployeesDialog", dialogParameters, cb =>
+      {
+        if (cb.Result == ButtonResult.OK)
+        {
+          this.SelectedContract.Employees = cb.Parameters.GetValue<IEnumerable<int>>("selectedIDs");
+
+          this.RefreshSelectedContractEmployees();
+        }
+      });
+    }
 
     #endregion Methods
 
@@ -220,6 +270,22 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     #endregion NewCommand
+
+    #region EditSelectedEmployeesCommand
+
+    public DelegateCommand EditSelectedEmployeesCommand { get; private set; }
+
+    private void OnEditSelectedEmployeesCommand()
+    {
+      this.ShowSelectEmployeesDialog();
+    }
+
+    private bool CanEditSelectedEmployeesCommand()
+    {
+      return this.SelectedContract != null;
+    }
+
+    #endregion EditSelectedEmployeesCommand
 
     #endregion Commands
   }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Gamadu.PVA.Business.Models
 {
@@ -25,9 +26,9 @@ namespace Gamadu.PVA.Business.Models
     int? Holidays { get; set; }
 
     /// <summary>
-    /// Gets or sets the value for the employee.
+    /// Gets or sets the value for the employees.
     /// </summary>
-    int? Employee { get; set; }
+    IEnumerable<int> Employees { get; set; }
 
     /// <summary>
     /// Gets or sets the value for the Salary.

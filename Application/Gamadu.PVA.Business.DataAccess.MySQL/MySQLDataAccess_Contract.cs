@@ -34,22 +34,27 @@
           }, commandType: CommandType.StoredProcedure);
       }
 
-      affectedRows += this.SaveContractEmployee(contract);
+      affectedRows += this.SaveContractEmployees(contract);
 
       return affectedRows;
     }
 
     /// <summary>
-    /// Saves the employee of a contract.
+    /// Saves the employees of a contract.
     /// </summary>
     /// <param name="contract">The contract to save.</param>
     /// <returns>The amount of affected rows.</returns>
-    private int SaveContractEmployee(IContract contract)
+    private int SaveContractEmployees(IContract contract)
     {
       if (contract == null)
         return 0;
 
+      if (!contract.Employees.Any())
+        return 0;
+
       string sql = "SaveContractEmployees";
+
+      int affectedRows = 0;
 
       int? contractID = this.GetContractDatabaseID(contract);
 
@@ -57,13 +62,19 @@
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        return connection.Execute(sql,
-          new
-          {
-            C_ID = (int)contractID,
-            E_ID = (int)contract.Employee
-          }, commandType: CommandType.StoredProcedure);
+
+        foreach (int id in contract.Employees)
+        {
+          affectedRows += connection.Execute(sql,
+            new
+            {
+              C_ID = (int)contractID,
+              E_ID = id,
+            }, commandType: CommandType.StoredProcedure);
+        }
       }
+
+      return affectedRows;
     }
 
     /// <summary>
@@ -116,7 +127,7 @@
           }, commandType: CommandType.StoredProcedure);
       }
 
-      affectedRows += this.SaveContractEmployee(contract);
+      affectedRows += this.SaveContractEmployees(contract);
 
       return affectedRows;
     }
@@ -165,7 +176,7 @@
 
         if (contract != null)
         {
-          contract.Employee = this.GetContractEmployee(id);
+          contract.Employees = this.GetContractEmployees(id);
         }
 
         return contract;
@@ -173,23 +184,23 @@
     }
 
     /// <summary>
-    /// Gets the ID of the employee associated with the contract.
+    /// Gets the IDs of the employees associated with the contract.
     /// </summary>
     /// <param name="id">The contract id.</param>
     /// <returns></returns>
-    private int? GetContractEmployee(int id)
+    private IEnumerable<int> GetContractEmployees(int id)
     {
       string sql = "GetContractEmployees";
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-        int? employee = connection.QueryFirst<int?>(sql,
+        IEnumerable<int> employees = connection.Query<int>(sql,
           new
           {
             C_ID = id
           }, commandType: CommandType.StoredProcedure);
 
-        return employee;
+        return employees;
       }
     }
 
@@ -296,7 +307,7 @@
       {
         for (int i = 0; i < contracts.Count(); i++)
         {
-          contracts[i].Employee = this.GetContractEmployee((int)contracts[i].ID);
+          contracts[i].Employees = this.GetContractEmployees((int)contracts[i].ID);
         }
       }
 

@@ -1,8 +1,10 @@
 ﻿namespace Gamadu.PVA.Business.Models
 {
+  using Gamadu.PVA.Business.Models.Bases;
   using System;
+  using System.Collections.Generic;
 
-  public class Contract : IdentifiableBase, IContract
+  public class Contract : ModelBase, IContract
   {
     #region Backing Fields
 
@@ -52,9 +54,9 @@
     private string description;
 
     /// <summary>
-    /// Backing field for <see cref="Employee"/>.
+    /// Backing field for <see cref="Employees"/>.
     /// </summary>
-    private int? employee;
+    private IEnumerable<int> employees;
 
     #endregion Backing Fields
 
@@ -124,10 +126,10 @@
     }
 
     /// <inheritdoc/>
-    public int? Employee
+    public IEnumerable<int> Employees
     {
-      get { return this.employee; }
-      set { this.SetProperty(ref this.employee, value); }
+      get { return this.employees; }
+      set { this.SetProperty(ref this.employees, value); }
     }
 
     #endregion Properties
