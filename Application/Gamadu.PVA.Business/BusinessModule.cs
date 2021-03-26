@@ -1,4 +1,6 @@
-﻿using Gamadu.PVA.Business.Models;
+﻿using FluentValidation;
+using Gamadu.PVA.Business.Models;
+using Gamadu.PVA.Business.Validators;
 using Prism.Ioc;
 using Prism.Modularity;
 
@@ -19,7 +21,9 @@ namespace Gamadu.PVA.Business
       containerRegistry.Register<IDepartment, Department>();
       containerRegistry.Register<IPosition, Position>();
       containerRegistry.Register<IContract, Contract>();
+
       containerRegistry.Register<IRoom, Room>();
+      containerRegistry.Register<IValidator<Employee>, EmployeeValidator>();
     }
   }
 }
