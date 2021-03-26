@@ -36,7 +36,7 @@
             StreetNumber = employee.StreetNumber?.Trim(),
             City = employee.City?.Trim(),
             PostalCode = employee.PostalCode?.Trim()
-          }, commandType: CommandType.StoredProcedure);      
+          }, commandType: CommandType.StoredProcedure);
       }
 
       affectedRows += this.SaveEmployeeRooms(employee);

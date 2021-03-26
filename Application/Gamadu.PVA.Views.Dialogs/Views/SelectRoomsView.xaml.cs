@@ -6,10 +6,10 @@ namespace Gamadu.PVA.Views.Dialogs.Views
   /// Interaction logic for SelectRoomsView.xaml
   /// </summary>
   public partial class SelectRoomsView : UserControl
+  {
+    public SelectRoomsView()
     {
-        public SelectRoomsView()
-        {
       this.InitializeComponent();
-        }
     }
+  }
 }
