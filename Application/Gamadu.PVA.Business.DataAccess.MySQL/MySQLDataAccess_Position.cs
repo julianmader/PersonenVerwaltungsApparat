@@ -159,6 +159,11 @@
             P_ID = id
           }, commandType: CommandType.StoredProcedure);
 
+        if (position != null)
+        {
+          position.Employees = this.GetPositionEmployees(id);
+        }
+
         return position;
       }
     }
