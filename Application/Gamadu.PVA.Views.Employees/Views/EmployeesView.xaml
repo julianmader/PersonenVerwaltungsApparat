@@ -186,7 +186,7 @@
               Grid.Row="12"
               materialdesign:HintAssist.Hint="Birth Date"
               Icon="Cake"
-              Text="{Binding SelectedEmployee.Birth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              SelectedDate="{Binding SelectedEmployee.Birth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="14"
