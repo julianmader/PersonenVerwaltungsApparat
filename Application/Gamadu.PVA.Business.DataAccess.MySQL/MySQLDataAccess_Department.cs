@@ -57,7 +57,6 @@
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-
         foreach (int id in department.Employees)
         {
           affectedRows += connection.Execute(sql,
@@ -307,7 +306,7 @@
 
       if (departments?.Any() == true)
       {
-        for (int i = 0; i < departments.Count(); i++)
+        for (int i = 0; i < departments.Count; i++)
         {
           departments[i].Employees = this.GetDepartmentEmployees((int)departments[i].ID);
         }
