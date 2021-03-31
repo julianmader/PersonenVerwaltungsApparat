@@ -1,10 +1,11 @@
 ﻿using Gamadu.PVA.Business.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IEmployee : IIdentifiable, IMatchable
+  public interface IEmployee : IIdentifiable, IMatchable, IValidateable<IEmployee>, INotifyPropertyChanged
   {
     /// <summary>
     /// Gets or sets the value for the AdditionalInformation.
