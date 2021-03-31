@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `db_pva`
 --
-CREATE DATABASE IF NOT EXISTS `db_pva` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+DROP DATABASE IF EXISTS db_pva;
+CREATE DATABASE `db_pva` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `db_pva`;
 
 DELIMITER $$
