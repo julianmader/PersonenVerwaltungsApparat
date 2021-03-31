@@ -8,7 +8,6 @@
   using System.Collections.Generic;
   using System.ComponentModel;
   using System.Linq;
-  using Unity;
 
   /// <summary>
   /// Contains the base methods for data validation and inherits from the <see cref="BindableBase"/>.
@@ -16,7 +15,6 @@
   /// <typeparam name="T">The type of the inherited class.</typeparam>
   public abstract class ValidateableModelBase<T> : ModelBase, IValidateable<T>
   {
-    [Dependency]
     public IValidator<T> Validator { get; set; }
 
     public bool HasErrors => (bool)this.ErrorsCollection?.Any();
