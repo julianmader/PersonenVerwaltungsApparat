@@ -31,7 +31,6 @@
     </ResourceDictionary>
   </UserControl.Resources>
 
-
   <Grid>
 
     <Grid.ColumnDefinitions>
@@ -77,9 +76,7 @@
               Height="24"
               Kind="Refresh" />
           </Button>
-
         </Grid>
-
       </materialdesign:Card>
 
       <materialdesign:Card Grid.Row="2">
@@ -88,7 +85,6 @@
           ItemsSource="{Binding AvailableEmployees}"
           SelectedItem="{Binding SelectedEmployee}" />
       </materialdesign:Card>
-
     </Grid>
 
     <Grid Grid.Column="2">
@@ -161,44 +157,59 @@
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
               Icon="Identifier"
-              Text="{Binding SelectedEmployee.Matchcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              Text="{Binding SelectedEmployee.Matchcode,
+                             Mode=TwoWay,
+                             UpdateSourceTrigger=PropertyChanged,
+                             ValidatesOnDataErrors=True}" />
 
             <controls:IconComboBox
               Grid.Row="6"
               materialdesign:HintAssist.Hint="Gender"
               Icon="GenderMaleFemale"
               ItemsSource="{Binding Source={StaticResource GenderEnum}}"
-              SelectedItem="{Binding SelectedEmployee.Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              SelectedItem="{Binding SelectedEmployee.Gender,
+                                     Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="8"
               materialdesign:HintAssist.Hint="Forename"
               Icon="AccountBoxOutline"
-              Text="{Binding SelectedEmployee.Forename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              Text="{Binding SelectedEmployee.Forename,
+                             Mode=TwoWay,
+                             UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="10"
               materialdesign:HintAssist.Hint="Surname"
               Icon="AccountBox"
-              Text="{Binding SelectedEmployee.Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              Text="{Binding SelectedEmployee.Surname,
+                             Mode=TwoWay,
+                             UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconDatePicker
               Grid.Row="12"
               materialdesign:HintAssist.Hint="Birth Date"
               Icon="Cake"
-              SelectedDate="{Binding SelectedEmployee.Birth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              SelectedDate="{Binding SelectedEmployee.Birth,
+                                     Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="14"
               materialdesign:HintAssist.Hint="Phone Number"
               Icon="Phone"
-              Text="{Binding SelectedEmployee.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              Text="{Binding SelectedEmployee.PhoneNumber,
+                             Mode=TwoWay,
+                             UpdateSourceTrigger=PropertyChanged}" />
 
             <controls:IconTextBox
               Grid.Row="16"
               materialdesign:HintAssist.Hint="E-Mail"
               Icon="Email"
-              Text="{Binding SelectedEmployee.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+              Text="{Binding SelectedEmployee.Email,
+                             Mode=TwoWay,
+                             UpdateSourceTrigger=PropertyChanged}" />
 
             <Grid Grid.Row="18">
 
@@ -212,14 +223,17 @@
                 Grid.Column="0"
                 materialdesign:HintAssist.Hint="Street"
                 Icon="RoadVariant"
-                Text="{Binding SelectedEmployee.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding SelectedEmployee.Street,
+                               Mode=TwoWay,
+                               UpdateSourceTrigger=PropertyChanged}" />
 
               <controls:IconTextBox
                 Grid.Column="2"
                 materialdesign:HintAssist.Hint="Number"
                 Icon="Counter"
-                Text="{Binding SelectedEmployee.StreetNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
+                Text="{Binding SelectedEmployee.StreetNumber,
+                               Mode=TwoWay,
+                               UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
             <Grid Grid.Row="20">
@@ -234,14 +248,17 @@
                 Grid.Column="0"
                 materialdesign:HintAssist.Hint="City"
                 Icon="City"
-                Text="{Binding SelectedEmployee.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding SelectedEmployee.City,
+                               Mode=TwoWay,
+                               UpdateSourceTrigger=PropertyChanged}" />
 
               <controls:IconTextBox
                 Grid.Column="2"
                 materialdesign:HintAssist.Hint="Postal Code"
                 Icon="Counter"
-                Text="{Binding SelectedEmployee.PostalCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
+                Text="{Binding SelectedEmployee.PostalCode,
+                               Mode=TwoWay,
+                               UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
             <controls:IconComboBox
@@ -250,7 +267,9 @@
               DisplayMemberPath="Name"
               Icon="AlphaDBoxOutline"
               ItemsSource="{Binding AvailableDepartments}"
-              SelectedValue="{Binding SelectedEmployee.Department, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              SelectedValue="{Binding SelectedEmployee.Department,
+                                      Mode=TwoWay,
+                                      UpdateSourceTrigger=PropertyChanged}"
               SelectedValuePath="ID" />
 
             <controls:IconComboBox
@@ -259,7 +278,9 @@
               DisplayMemberPath="Name"
               Icon="AlphaPBoxOutline"
               ItemsSource="{Binding AvailablePositions}"
-              SelectedValue="{Binding SelectedEmployee.Position, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              SelectedValue="{Binding SelectedEmployee.Position,
+                                      Mode=TwoWay,
+                                      UpdateSourceTrigger=PropertyChanged}"
               SelectedValuePath="ID" />
 
             <controls:IconComboBox
@@ -268,7 +289,9 @@
               DisplayMemberPath="Name"
               Icon="AlphaCBoxOutline"
               ItemsSource="{Binding AvailableContracts}"
-              SelectedValue="{Binding SelectedEmployee.Contract, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              SelectedValue="{Binding SelectedEmployee.Contract,
+                                      Mode=TwoWay,
+                                      UpdateSourceTrigger=PropertyChanged}"
               SelectedValuePath="ID" />
 
             <controls:IconExpander
@@ -296,7 +319,6 @@
                     Height="24"
                     Kind="Edit" />
                 </Button>
-
               </Grid>
             </controls:IconExpander>
 
@@ -306,11 +328,8 @@
               Icon="Information">
               <TextBox Foreground="AntiqueWhite" Text="{Binding SelectedEmployee.AdditionalInformation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </controls:IconExpander>
-
           </Grid>
-
         </Grid>
-
       </ScrollViewer>
 
       <Grid Grid.Row="2" Margin="5,0,5,5">
@@ -355,9 +374,6 @@
             Kind="Delete" />
         </Button>
       </Grid>
-
     </Grid>
-
   </Grid>
-
 </UserControl>
