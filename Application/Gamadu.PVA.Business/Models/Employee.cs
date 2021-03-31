@@ -5,7 +5,7 @@
   using System;
   using System.Collections.Generic;
 
-  public class Employee : ValidateableModelBase<Employee>, IEmployee
+  public class Employee : ValidateableModelBase<IEmployee>, IEmployee
   {
     #region Backing Fields
 
@@ -202,7 +202,7 @@
       return $"{this.Matchcode} - {this.Forename} {this.Surname}";
     }
 
-    public override void Validate() => this.Validator.Validate(this);
+    public override void Validate() => this.Validate(this);
 
     #endregion Methods
   }
