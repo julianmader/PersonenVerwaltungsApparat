@@ -3,7 +3,7 @@
   using FluentValidation;
   using Gamadu.PVA.Business.Models;
 
-  public class EmployeeValidator : AbstractValidator<Employee>
+  public class EmployeeValidator : AbstractValidator<IEmployee>
   {
     public EmployeeValidator()
     {
