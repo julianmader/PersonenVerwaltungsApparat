@@ -16,7 +16,10 @@
 
   <Style BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" TargetType="{x:Type dragablz:TabablzControl}" />
 
+  <ControlTemplate x:Key="EmptyTemplate" />
+
   <Style BasedOn="{StaticResource MaterialDesignDatePicker}" TargetType="{x:Type controls:IconCheckDatePicker}">
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource EmptyTemplate}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="controls:IconCheckDatePicker">
@@ -54,7 +57,8 @@
                 Grid.Column="3"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                IsEnabled="{Binding ElementName=IsEnabledCheckBox, Path=IsChecked}"
+                IsEnabled="{Binding ElementName=IsEnabledCheckBox,
+                                    Path=IsChecked}"
                 SelectedDate="{TemplateBinding SelectedDate}"
                 SelectedDateFormat="Short" />
 
@@ -63,19 +67,26 @@
                 Grid.Column="5"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}">
+                IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                    Path=IsChecked,
+                                    UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock Opacity="0.5" Text="{TemplateBinding CheckBoxText}" />
               </CheckBox>
-
             </Grid>
           </materialdesign:Card>
-
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="True">
+        <Setter Property="Foreground" Value="OrangeRed" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)/ErrorContent}" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
 
   <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="{x:Type controls:IconTextBox}">
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource EmptyTemplate}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="controls:IconTextBox">
@@ -111,17 +122,24 @@
                 Grid.Column="3"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
-
+                Text="{Binding RelativeSource={RelativeSource TemplatedParent},
+                               Path=Text,
+                               UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
           </materialdesign:Card>
-
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="True">
+        <Setter Property="Foreground" Value="OrangeRed" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)/ErrorContent}" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
 
   <Style BasedOn="{StaticResource MaterialDesignComboBox}" TargetType="{x:Type controls:IconComboBox}">
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource EmptyTemplate}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="controls:IconComboBox">
@@ -159,20 +177,33 @@
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
                 ItemsSource="{TemplateBinding ItemsSource}"
-                SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
-                SelectedValue="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedValue, UpdateSourceTrigger=PropertyChanged}"
-                SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedValuePath, UpdateSourceTrigger=PropertyChanged}"
-                Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
-
+                SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                       Path=SelectedItem,
+                                       UpdateSourceTrigger=PropertyChanged}"
+                SelectedValue="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                        Path=SelectedValue,
+                                        UpdateSourceTrigger=PropertyChanged}"
+                SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                            Path=SelectedValuePath,
+                                            UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding RelativeSource={RelativeSource TemplatedParent},
+                               Path=Text,
+                               UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
           </materialdesign:Card>
-
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="True">
+        <Setter Property="Foreground" Value="OrangeRed" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)/ErrorContent}" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
 
   <Style BasedOn="{StaticResource MaterialDesignDatePicker}" TargetType="{x:Type controls:IconDatePicker}">
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource EmptyTemplate}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="controls:IconDatePicker">
@@ -208,17 +239,24 @@
                 Grid.Column="3"
                 FontSize="16"
                 Foreground="{TemplateBinding Foreground}"
-                SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedDate, UpdateSourceTrigger=PropertyChanged}" />
-
+                SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                       Path=SelectedDate,
+                                       UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
           </materialdesign:Card>
-
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="True">
+        <Setter Property="Foreground" Value="OrangeRed" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)/ErrorContent}" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
 
   <Style BasedOn="{StaticResource MaterialDesignExpander}" TargetType="{x:Type controls:IconExpander}">
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource EmptyTemplate}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="controls:IconExpander">
@@ -259,17 +297,20 @@
                 </Expander.Header>
                 <ContentPresenter />
               </Expander>
-
             </Grid>
           </materialdesign:Card>
-
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="True">
+        <Setter Property="Foreground" Value="OrangeRed" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)/ErrorContent}" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
 
   <Style TargetType="{x:Type materialdesign:Card}">
     <Setter Property="Background" Value="{StaticResource MaterialDesignDarkBackground}" />
   </Style>
-
 </ResourceDictionary>
