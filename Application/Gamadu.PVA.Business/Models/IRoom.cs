@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IRoom : IIdentifiable, IMatchable, INameable
+  public interface IRoom : IIdentifiable, IMatchable, INameable, IValidateable<IRoom>, INotifyPropertyChanged
   {
     /// <summary>
     /// Gets or sets the value for the Description.

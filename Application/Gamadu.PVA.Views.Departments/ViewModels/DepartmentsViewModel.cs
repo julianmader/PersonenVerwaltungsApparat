@@ -1,4 +1,5 @@
-﻿using Gamadu.PVA.Business.DataAccess;
+﻿using FluentValidation;
+using Gamadu.PVA.Business.DataAccess;
 using Gamadu.PVA.Business.Models;
 using Prism.Commands;
 using Prism.Ioc;
@@ -23,6 +24,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     protected IDialogService DialogService { get; set; }
 
     private bool isRefreshing;
+
     public bool IsRefreshing
     {
       get { return this.isRefreshing; }
@@ -30,6 +32,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     }
 
     private ObservableCollection<IEmployee> availableEmployees;
+
     public ObservableCollection<IEmployee> AvailableEmployees
     {
       get { return this.availableEmployees; }
@@ -37,6 +40,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     }
 
     private ObservableCollection<IDepartment> availableDepartments;
+
     public ObservableCollection<IDepartment> AvailableDepartments
     {
       get { return this.availableDepartments; }
@@ -44,6 +48,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     }
 
     private ObservableCollection<IEmployee> selectedDepartmentEmployees;
+
     public ObservableCollection<IEmployee> SelectedDepartmentEmployees
     {
       get { return this.selectedDepartmentEmployees; }
@@ -51,6 +56,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     }
 
     private IDepartment selectedDepartment;
+
     public IDepartment SelectedDepartment
     {
       get { return this.selectedDepartment; }
@@ -153,6 +159,12 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     /// </summary>
     private void SelectedDepartmentChanged()
     {
+      if (this.SelectedDepartment != null)
+      {
+        this.SelectedDepartment.Validator = this.ContainerProvider.Resolve<IValidator<IDepartment>>();
+        this.SelectedDepartment.PropertyChanged += this.SelectedDepartment_PropertyChanged;
+      }
+
       this.RefreshCommands();
 
       this.RefreshSelectedDepartmentEmployees();
@@ -183,6 +195,13 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
         await Task.Run(this.SelectedDepartmentChanged);
         return;
       }
+    }
+
+    private async void SelectedDepartment_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      await Task.Run(() => this.SelectedDepartment.Validate());
+
+      this.RefreshCommands();
     }
 
     #endregion Internal Event Handler
@@ -237,7 +256,8 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
 
     private bool CanSaveCommand()
     {
-      return this.SelectedDepartment != null;
+      return this.SelectedDepartment != null &&
+        !this.SelectedDepartment.HasErrors;
     }
 
     #endregion SaveCommand

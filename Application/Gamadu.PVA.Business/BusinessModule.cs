@@ -21,9 +21,13 @@ namespace Gamadu.PVA.Business
       containerRegistry.Register<IDepartment, Department>();
       containerRegistry.Register<IPosition, Position>();
       containerRegistry.Register<IContract, Contract>();
-
       containerRegistry.Register<IRoom, Room>();
+
       containerRegistry.Register<IValidator<IEmployee>, EmployeeValidator>();
+      containerRegistry.Register<IValidator<IContract>, ContractValidator>();
+      containerRegistry.Register<IValidator<IDepartment>, DepartmentValidator>();
+      containerRegistry.Register<IValidator<IPosition>, PositionValidator>();
+      containerRegistry.Register<IValidator<IRoom>, RoomValidator>();
     }
   }
 }

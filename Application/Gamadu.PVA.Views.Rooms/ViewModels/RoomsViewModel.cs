@@ -1,4 +1,5 @@
-﻿using Gamadu.PVA.Business.DataAccess;
+﻿using FluentValidation;
+using Gamadu.PVA.Business.DataAccess;
 using Gamadu.PVA.Business.Models;
 using Prism.Commands;
 using Prism.Ioc;
@@ -23,6 +24,7 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     protected IDialogService DialogService { get; set; }
 
     private bool isRefreshing;
+
     public bool IsRefreshing
     {
       get { return this.isRefreshing; }
@@ -30,6 +32,7 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     }
 
     private ObservableCollection<IEmployee> availableEmployees;
+
     public ObservableCollection<IEmployee> AvailableEmployees
     {
       get { return this.availableEmployees; }
@@ -37,6 +40,7 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     }
 
     private ObservableCollection<IRoom> availableRooms;
+
     public ObservableCollection<IRoom> AvailableRooms
     {
       get { return this.availableRooms; }
@@ -44,6 +48,7 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     }
 
     private ObservableCollection<IEmployee> selectedRoomEmployees;
+
     public ObservableCollection<IEmployee> SelectedRoomEmployees
     {
       get { return this.selectedRoomEmployees; }
@@ -51,6 +56,7 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     }
 
     private IRoom selectedRoom;
+
     public IRoom SelectedRoom
     {
       get { return this.selectedRoom; }
@@ -153,6 +159,12 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
     /// </summary>
     private void SelectedRoomChanged()
     {
+      if (this.SelectedRoom != null)
+      {
+        this.SelectedRoom.Validator = this.ContainerProvider.Resolve<IValidator<IRoom>>();
+        this.SelectedRoom.PropertyChanged += this.SelectedRoom_PropertyChanged;
+      }
+
       this.RefreshCommands();
 
       this.RefreshSelectedRoomEmployees();
@@ -183,6 +195,13 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
         await Task.Run(this.SelectedRoomChanged);
         return;
       }
+    }
+
+    private async void SelectedRoom_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      await Task.Run(() => this.SelectedRoom.Validate());
+
+      this.RefreshCommands();
     }
 
     #endregion Internal Event Handler
@@ -237,7 +256,8 @@ namespace Gamadu.PVA.Views.Rooms.ViewModels
 
     private bool CanSaveCommand()
     {
-      return this.SelectedRoom != null;
+      return this.SelectedRoom != null &&
+        !this.SelectedRoom.HasErrors;
     }
 
     #endregion SaveCommand

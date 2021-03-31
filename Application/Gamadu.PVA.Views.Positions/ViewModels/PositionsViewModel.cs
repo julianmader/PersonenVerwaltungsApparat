@@ -1,4 +1,5 @@
-﻿using Gamadu.PVA.Business.DataAccess;
+﻿using FluentValidation;
+using Gamadu.PVA.Business.DataAccess;
 using Gamadu.PVA.Business.Models;
 using Prism.Commands;
 using Prism.Ioc;
@@ -23,6 +24,7 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
     protected IDialogService DialogService { get; set; }
 
     private bool isRefreshing;
+
     public bool IsRefreshing
     {
       get { return this.isRefreshing; }
@@ -30,6 +32,7 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
     }
 
     private ObservableCollection<IEmployee> availableEmployees;
+
     public ObservableCollection<IEmployee> AvailableEmployees
     {
       get { return this.availableEmployees; }
@@ -37,6 +40,7 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
     }
 
     private ObservableCollection<IPosition> availablePositions;
+
     public ObservableCollection<IPosition> AvailablePositions
     {
       get { return this.availablePositions; }
@@ -44,6 +48,7 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
     }
 
     private ObservableCollection<IEmployee> selectedPositionEmployees;
+
     public ObservableCollection<IEmployee> SelectedPositionEmployees
     {
       get { return this.selectedPositionEmployees; }
@@ -51,6 +56,7 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
     }
 
     private IPosition selectedPosition;
+
     public IPosition SelectedPosition
     {
       get { return this.selectedPosition; }
@@ -153,6 +159,12 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
     /// </summary>
     private void SelectedPositionChanged()
     {
+      if (this.SelectedPosition != null)
+      {
+        this.SelectedPosition.Validator = this.ContainerProvider.Resolve<IValidator<IPosition>>();
+        this.SelectedPosition.PropertyChanged += this.SelectedPosition_PropertyChanged;
+      }
+
       this.RefreshCommands();
 
       this.RefreshSelectedPositionEmployees();
@@ -183,6 +195,13 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
         await Task.Run(this.SelectedPositionChanged);
         return;
       }
+    }
+
+    private async void SelectedPosition_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      await Task.Run(() => this.SelectedPosition.Validate());
+
+      this.RefreshCommands();
     }
 
     #endregion Internal Event Handler
@@ -237,7 +256,8 @@ namespace Gamadu.PVA.Views.Positions.ViewModels
 
     private bool CanSaveCommand()
     {
-      return this.SelectedPosition != null;
+      return this.SelectedPosition != null &&
+        !this.SelectedPosition.HasErrors;
     }
 
     #endregion SaveCommand

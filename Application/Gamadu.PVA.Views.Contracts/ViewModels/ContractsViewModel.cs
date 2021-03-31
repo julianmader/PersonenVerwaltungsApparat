@@ -1,4 +1,5 @@
-﻿using Gamadu.PVA.Business.DataAccess;
+﻿using FluentValidation;
+using Gamadu.PVA.Business.DataAccess;
 using Gamadu.PVA.Business.Models;
 using Prism.Commands;
 using Prism.Ioc;
@@ -23,6 +24,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     protected IDialogService DialogService { get; set; }
 
     private bool isRefreshing;
+
     public bool IsRefreshing
     {
       get { return this.isRefreshing; }
@@ -30,6 +32,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     private ObservableCollection<IEmployee> availableEmployees;
+
     public ObservableCollection<IEmployee> AvailableEmployees
     {
       get { return this.availableEmployees; }
@@ -37,6 +40,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     private ObservableCollection<IContract> availableContracts;
+
     public ObservableCollection<IContract> AvailableContracts
     {
       get { return this.availableContracts; }
@@ -44,6 +48,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     private ObservableCollection<IEmployee> selectedContractEmployees;
+
     public ObservableCollection<IEmployee> SelectedContractEmployees
     {
       get { return this.selectedContractEmployees; }
@@ -51,6 +56,7 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     }
 
     private IContract selectedContract;
+
     public IContract SelectedContract
     {
       get { return this.selectedContract; }
@@ -153,6 +159,12 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
     /// </summary>
     private void SelectedContractChanged()
     {
+      if (this.SelectedContract != null)
+      {
+        this.SelectedContract.Validator = this.ContainerProvider.Resolve<IValidator<IContract>>();
+        this.SelectedContract.PropertyChanged += this.SelectedContract_PropertyChanged;
+      }
+
       this.RefreshCommands();
 
       this.RefreshSelectedContractEmployees();
@@ -183,6 +195,13 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
         await Task.Run(this.SelectedContractChanged);
         return;
       }
+    }
+
+    private async void SelectedContract_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      await Task.Run(() => this.SelectedContract.Validate());
+
+      this.RefreshCommands();
     }
 
     #endregion Internal Event Handler
@@ -237,7 +256,8 @@ namespace Gamadu.PVA.Views.Contracts.ViewModels
 
     private bool CanSaveCommand()
     {
-      return this.SelectedContract != null;
+      return this.SelectedContract != null &&
+        !this.SelectedContract.HasErrors;
     }
 
     #endregion SaveCommand

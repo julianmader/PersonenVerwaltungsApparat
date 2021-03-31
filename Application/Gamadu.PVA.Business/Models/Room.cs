@@ -3,7 +3,7 @@
   using Gamadu.PVA.Business.Models.Bases;
   using System.Collections.Generic;
 
-  public class Room : ModelBase, IRoom
+  public class Room : ValidateableModelBase<IRoom>, IRoom
   {
     #region Backing Fields
 
@@ -91,6 +91,8 @@
     {
       return $"{this.Matchcode} - {this.Name}";
     }
+
+    public override void Validate() => this.Validate(this);
 
     #endregion Methods
   }

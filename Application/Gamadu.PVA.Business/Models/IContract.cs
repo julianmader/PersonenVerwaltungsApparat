@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Gamadu.PVA.Business.Models
 {
-  public interface IContract : IIdentifiable, IMatchable, INameable
+  public interface IContract : IIdentifiable, IMatchable, INameable, IValidateable<IContract>, INotifyPropertyChanged
   {
     /// <summary>
     /// Gets or sets the value for the Description.

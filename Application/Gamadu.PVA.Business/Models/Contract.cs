@@ -4,7 +4,7 @@
   using System;
   using System.Collections.Generic;
 
-  public class Contract : ModelBase, IContract
+  public class Contract : ValidateableModelBase<IContract>, IContract
   {
     #region Backing Fields
 
@@ -140,6 +140,8 @@
     {
       return $"{this.Matchcode} - {this.Name}";
     }
+
+    public override void Validate() => this.Validate(this);
 
     #endregion Methods
   }

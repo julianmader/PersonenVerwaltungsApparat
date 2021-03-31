@@ -3,7 +3,7 @@
   using Gamadu.PVA.Business.Models.Bases;
   using System.Collections.Generic;
 
-  public class Position : ModelBase, IPosition
+  public class Position : ValidateableModelBase<IPosition>, IPosition
   {
     #region Backing Fields
 
@@ -55,6 +55,8 @@
     {
       return $"{this.Matchcode} - {this.Name}";
     }
+
+    public override void Validate() => this.Validate(this);
 
     #endregion Methods
   }
