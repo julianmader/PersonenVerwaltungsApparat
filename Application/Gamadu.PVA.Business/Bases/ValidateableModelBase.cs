@@ -53,18 +53,21 @@
         return;
       }
 
-      this.PreviousErrorsCollection = this.ErrorsCollection;
-
-      this.ErrorsCollection = new Dictionary<string, IEnumerable<string>>();
-
-      ValidationResult validationResult = this.Validator.Validate(instance);
-
-      IEnumerable<ValidationFailure> validationFailures = validationResult.Errors;
+      IEnumerable<ValidationFailure> validationFailures = this.Validator.Validate(instance).Errors;
 
       if (validationFailures == null)
       {
         return;
       }
+
+      this.FillErrorsCollection(validationFailures);
+
+      this.OnErrorsChanged(this.ErrorsCollection.Keys);
+    }
+
+    private void FillErrorsCollection(IEnumerable<ValidationFailure> validationFailures)
+    {
+      this.ErrorsCollection = new Dictionary<string, IEnumerable<string>>();
 
       foreach (ValidationFailure failure in validationFailures)
       {
@@ -82,8 +85,6 @@
 
         this.ErrorsCollection.Add(failure.PropertyName, new List<string>() { failure.ErrorMessage });
       }
-
-      this.CallOnErrorsChangedForChangedErrors();
     }
 
     public abstract void Validate();
@@ -91,42 +92,12 @@
     /// <summary>
     /// Calls the <see cref="OnErrorsChanged(string)"/> for each error which has really changed.
     /// </summary>
-    protected void CallOnErrorsChangedForChangedErrors()
+    /// <param name="propertyNames">The property names.</param>
+    protected void OnErrorsChanged(IEnumerable<string> propertyNames)
     {
-      if (this.PreviousErrorsCollection.Count == 0)
+      foreach (string propertyName in propertyNames)
       {
-        foreach (string propertyName in this.ErrorsCollection.Keys)
-        {
-          this.OnErrorsChanged(propertyName);
-        }
-
-        return;
-      }
-
-      foreach (string propertyName in this.ErrorsCollection.Keys)
-      {
-        if (this.PreviousErrorsCollection.Keys.Contains(propertyName))
-        {
-          foreach (string errorMessage in this.ErrorsCollection[propertyName])
-          {
-            if (!this.PreviousErrorsCollection[propertyName].Contains(errorMessage))
-            {
-              this.OnErrorsChanged(propertyName);
-            }
-          }
-
-          continue;
-        }
-
         this.OnErrorsChanged(propertyName);
-      }
-
-      foreach (string propertyName in this.PreviousErrorsCollection.Keys)
-      {
-        if (!this.ErrorsCollection.Keys.Contains(propertyName))
-        {
-          this.OnErrorsChanged(propertyName);
-        }
       }
     }
 
