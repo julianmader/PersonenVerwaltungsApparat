@@ -17,23 +17,20 @@
   {
     public IValidator<T> Validator { get; set; }
 
-    public bool HasErrors => (bool)this.ErrorsCollection?.Any();
+    public bool HasErrors => this.ErrorsCollection?.Any() == true;
 
     private IDictionary<string, IEnumerable<string>> ErrorsCollection { get; set; }
-
-    private IDictionary<string, IEnumerable<string>> PreviousErrorsCollection { get; set; }
-
-    public ValidateableModelBase()
-    {
-      this.ErrorsCollection = new Dictionary<string, IEnumerable<string>>();
-      this.PreviousErrorsCollection = new Dictionary<string, IEnumerable<string>>();
-    }
 
     public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
     /// <inheritdoc/>
     public IEnumerable GetErrors(string propertyName = null)
     {
+      if (this.ErrorsCollection == null)
+      {
+        return new List<string>();
+      }
+
       if (propertyName != null)
       {
         this.ErrorsCollection.TryGetValue(propertyName, out IEnumerable<string> errors);
@@ -46,6 +43,10 @@
       }
     }
 
+    /// <summary>
+    /// Validates the passed instance
+    /// </summary>
+    /// <param name="instance"></param>
     public void Validate(T instance)
     {
       if (this.Validator == null)
