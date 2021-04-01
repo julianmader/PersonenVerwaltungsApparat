@@ -1,4 +1,4 @@
-﻿namespace Gamadu.PVA.Business.Models.Bases
+﻿namespace Gamadu.PVA.Core.Models.Bases
 {
   using Prism.Mvvm;
   using System;

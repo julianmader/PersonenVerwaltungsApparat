@@ -1,4 +1,4 @@
-﻿namespace Gamadu.PVA.Business.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
   using FluentValidation;
   using System.ComponentModel;

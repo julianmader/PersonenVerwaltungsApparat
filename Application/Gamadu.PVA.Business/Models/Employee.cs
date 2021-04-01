@@ -1,7 +1,7 @@
-﻿namespace Gamadu.PVA.Business.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
-  using Gamadu.PVA.Business.Enums;
-  using Gamadu.PVA.Business.Models.Bases;
+  using Gamadu.PVA.Core.Enums;
+  using Gamadu.PVA.Core.Models.Bases;
   using System;
   using System.Collections.Generic;
 

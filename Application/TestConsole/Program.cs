@@ -1,13 +1,13 @@
 ﻿namespace TestConsole
 {
-  using Gamadu.PVA.Business.DataAccess;
-  using Gamadu.PVA.Business.DataAccess.MySQL;
-  using Gamadu.PVA.Business.Models;
+  using Gamadu.PVA.Core.DataAccess;
+  using Gamadu.PVA.Core.DataAccess.MySQL;
+  using Gamadu.PVA.Core.Models;
   using System.Collections.Generic;
 
-  class Program
+  internal class Program
   {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
       IAllDataAccess dataAccess = new MySQLDataAccess("localhost", "db_pva", "root", string.Empty);
 
@@ -22,18 +22,18 @@
       System.Console.ReadLine();
     }
 
-    static void SaveEmployee(IAllDataAccess dataAccess)
+    private static void SaveEmployee(IAllDataAccess dataAccess)
     {
       IEmployee employee = new Employee()
       {
         Matchcode = "Test1",
-        Gender = Gamadu.PVA.Business.Enums.Gender.Male
+        Gender = Gamadu.PVA.Core.Enums.Gender.Male
       };
 
       System.Console.WriteLine(dataAccess.SaveEmployee(employee));
     }
 
-    static void UpdateEmployee(IAllDataAccess dataAccess)
+    private static void UpdateEmployee(IAllDataAccess dataAccess)
     {
       IEmployee employee = new Employee()
       {
@@ -44,17 +44,17 @@
       System.Console.WriteLine(dataAccess.UpdateEmployee(employee));
     }
 
-    static void DeleteEmployee(IAllDataAccess dataAccess)
+    private static void DeleteEmployee(IAllDataAccess dataAccess)
     {
       System.Console.WriteLine(dataAccess.DeleteEmployee(10));
     }
 
-    static void DeleteAllEmployees(IAllDataAccess dataAccess)
+    private static void DeleteAllEmployees(IAllDataAccess dataAccess)
     {
       System.Console.WriteLine(dataAccess.DeleteEmployees());
     }
 
-    static void GetAllEmployees(IAllDataAccess dataAccess)
+    private static void GetAllEmployees(IAllDataAccess dataAccess)
     {
       IEnumerable<IEmployee> employees = dataAccess.GetEmployees();
 
@@ -65,7 +65,7 @@
       }
     }
 
-    static void GetEmployee(IAllDataAccess dataAccess)
+    private static void GetEmployee(IAllDataAccess dataAccess)
     {
       IEmployee employee = dataAccess.GetEmployee(1);
 

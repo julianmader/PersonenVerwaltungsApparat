@@ -1,7 +1,7 @@
-﻿namespace Gamadu.PVA.Business.DataAccess.MySQL
+﻿namespace Gamadu.PVA.Core.DataAccess.MySQL
 {
   using Dapper;
-  using Gamadu.PVA.Business.Models;
+  using Gamadu.PVA.Core.Models;
   using System.Collections.Generic;
   using System.Data;
   using System.Linq;
@@ -59,7 +59,6 @@
 
       using (IDbConnection connection = this.GetDbConnection())
       {
-
         foreach (int id in room.Employees)
         {
           affectedRows += connection.Execute(sql,
@@ -318,7 +317,6 @@
       }
 
       return rooms;
-
     }
 
     #endregion Room

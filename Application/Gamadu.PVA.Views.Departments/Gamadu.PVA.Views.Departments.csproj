@@ -92,9 +92,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gamadu.PVA.Business\Gamadu.PVA.Business.csproj">
+    <ProjectReference Include="..\Gamadu.PVA.Business\Gamadu.PVA.Core.csproj">
       <Project>{656BCE80-AB8A-4DD3-806D-578C3BBAE98B}</Project>
-      <Name>Gamadu.PVA.Business</Name>
+      <Name>Gamadu.PVA.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gamadu.PVA.Resources\Gamadu.PVA.Resources.csproj">
       <Project>{795d6cd2-6b0b-4adf-8409-bb504c2e15a8}</Project>

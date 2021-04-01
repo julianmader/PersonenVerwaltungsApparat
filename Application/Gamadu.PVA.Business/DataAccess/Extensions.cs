@@ -1,6 +1,6 @@
-﻿namespace Gamadu.PVA.Business.DataAccess
+﻿namespace Gamadu.PVA.Core.DataAccess
 {
-  using Gamadu.PVA.Business.Models;
+  using Gamadu.PVA.Core.Models;
 
   public static class Extensions
   {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Gamadu.PVA.Business.Events
+namespace Gamadu.PVA.Core.Events
 {
   public class SendSelectedRoomsEventArgs
   {

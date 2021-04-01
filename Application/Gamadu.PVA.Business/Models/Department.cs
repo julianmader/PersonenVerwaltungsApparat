@@ -1,7 +1,7 @@
-﻿using Gamadu.PVA.Business.Models.Bases;
+﻿using Gamadu.PVA.Core.Models.Bases;
 using System.Collections.Generic;
 
-namespace Gamadu.PVA.Business.Models
+namespace Gamadu.PVA.Core.Models
 {
   public class Department : ValidateableModelBase<IDepartment>, IDepartment
   {

@@ -1,4 +1,4 @@
-﻿namespace Gamadu.PVA.Business.Events
+﻿namespace Gamadu.PVA.Core.Events
 {
   using Prism.Events;
 

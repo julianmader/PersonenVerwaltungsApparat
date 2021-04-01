@@ -50,13 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gamadu.PVA.Business.DataAccess.MySQL\Gamadu.PVA.Business.DataAccess.MySQL.csproj">
+    <ProjectReference Include="..\Gamadu.PVA.Business.DataAccess.MySQL\Gamadu.PVA.Core.DataAccess.MySQL.csproj">
       <Project>{a1477ff8-577e-48c3-9c33-9b1f43d2189d}</Project>
-      <Name>Gamadu.PVA.Business.DataAccess.MySQL</Name>
+      <Name>Gamadu.PVA.Core.DataAccess.MySQL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gamadu.PVA.Business\Gamadu.PVA.Business.csproj">
+    <ProjectReference Include="..\Gamadu.PVA.Business\Gamadu.PVA.Core.csproj">
       <Project>{656bce80-ab8a-4dd3-806d-578c3bbae98b}</Project>
-      <Name>Gamadu.PVA.Business</Name>
+      <Name>Gamadu.PVA.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

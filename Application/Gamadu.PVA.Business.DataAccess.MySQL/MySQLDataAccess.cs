@@ -1,4 +1,4 @@
-﻿namespace Gamadu.PVA.Business.DataAccess.MySQL
+﻿namespace Gamadu.PVA.Core.DataAccess.MySQL
 {
   using MySql.Data.MySqlClient;
   using System.Configuration;

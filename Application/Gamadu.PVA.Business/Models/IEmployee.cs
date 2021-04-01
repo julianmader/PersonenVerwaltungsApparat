@@ -1,9 +1,9 @@
-﻿using Gamadu.PVA.Business.Enums;
+﻿using Gamadu.PVA.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Gamadu.PVA.Business.Models
+namespace Gamadu.PVA.Core.Models
 {
   public interface IEmployee : IIdentifiable, IMatchable, IValidateable<IEmployee>, INotifyPropertyChanged
   {

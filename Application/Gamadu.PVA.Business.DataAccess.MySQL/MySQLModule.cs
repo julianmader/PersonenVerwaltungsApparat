@@ -1,7 +1,7 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 
-namespace Gamadu.PVA.Business.DataAccess.MySQL
+namespace Gamadu.PVA.Core.DataAccess.MySQL
 {
   [Module(ModuleName = "MySQLModule")]
   public class MySQLModule : IModule

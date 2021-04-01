@@ -19,9 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Rooms", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Views.Positions", "Gamadu.PVA.Views.Positions\Gamadu.PVA.Views.Positions.csproj", "{D16B82F9-C4E7-4084-8701-141B3211CC8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Business", "Gamadu.PVA.Business\Gamadu.PVA.Business.csproj", "{656BCE80-AB8A-4DD3-806D-578C3BBAE98B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Core", "Gamadu.PVA.Business\Gamadu.PVA.Core.csproj", "{656BCE80-AB8A-4DD3-806D-578C3BBAE98B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Business.DataAccess.MySQL", "Gamadu.PVA.Business.DataAccess.MySQL\Gamadu.PVA.Business.DataAccess.MySQL.csproj", "{A1477FF8-577E-48C3-9C33-9B1F43D2189D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamadu.PVA.Core.DataAccess.MySQL", "Gamadu.PVA.Business.DataAccess.MySQL\Gamadu.PVA.Core.DataAccess.MySQL.csproj", "{A1477FF8-577E-48C3-9C33-9B1F43D2189D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{7919DC21-1D1E-4BB8-B95F-705DF14F9526}"
 EndProject

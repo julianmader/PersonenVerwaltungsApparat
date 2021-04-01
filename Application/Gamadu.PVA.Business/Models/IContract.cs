@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Gamadu.PVA.Business.Models
+namespace Gamadu.PVA.Core.Models
 {
   public interface IContract : IIdentifiable, IMatchable, INameable, IValidateable<IContract>, INotifyPropertyChanged
   {

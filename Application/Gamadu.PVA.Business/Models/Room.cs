@@ -1,6 +1,6 @@
-﻿namespace Gamadu.PVA.Business.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
-  using Gamadu.PVA.Business.Models.Bases;
+  using Gamadu.PVA.Core.Models.Bases;
   using System.Collections.Generic;
 
   public class Room : ValidateableModelBase<IRoom>, IRoom

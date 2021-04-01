@@ -1,7 +1,7 @@
-﻿namespace Gamadu.PVA.Business.Validators
+﻿namespace Gamadu.PVA.Core.Validators
 {
   using FluentValidation;
-  using Gamadu.PVA.Business.Models;
+  using Gamadu.PVA.Core.Models;
 
   public class ContractValidator : AbstractValidator<IContract>
   {

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using Gamadu.PVA.Business.DataAccess;
-using Gamadu.PVA.Business.Models;
+using Gamadu.PVA.Core.DataAccess;
+using Gamadu.PVA.Core.Models;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;

@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
-using Gamadu.PVA.Business.Models;
-using Gamadu.PVA.Business.Validators;
+using Gamadu.PVA.Core.Models;
+using Gamadu.PVA.Core.Validators;
 using Prism.Ioc;
 using Prism.Modularity;
 
-namespace Gamadu.PVA.Business
+namespace Gamadu.PVA.Core
 {
   [Module(ModuleName = "BusinessModule")]
   public class BusinessModule : IModule

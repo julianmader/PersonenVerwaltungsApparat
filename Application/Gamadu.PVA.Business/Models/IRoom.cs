@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Gamadu.PVA.Business.Models
+namespace Gamadu.PVA.Core.Models
 {
   public interface IRoom : IIdentifiable, IMatchable, INameable, IValidateable<IRoom>, INotifyPropertyChanged
   {
