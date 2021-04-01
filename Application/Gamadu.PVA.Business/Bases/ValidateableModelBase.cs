@@ -17,10 +17,12 @@
   {
     public IValidator<T> Validator { get; set; }
 
+    /// <inheritdoc/>
     public bool HasErrors => this.ErrorsCollection?.Any() == true;
 
     private IDictionary<string, IEnumerable<string>> ErrorsCollection { get; set; }
 
+    /// <inheritdoc/>
     public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
     /// <inheritdoc/>
