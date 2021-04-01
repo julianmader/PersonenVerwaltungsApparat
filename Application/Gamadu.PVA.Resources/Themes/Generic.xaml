@@ -18,6 +18,47 @@
 
   <ControlTemplate x:Key="EmptyTemplate" />
 
+  <Style TargetType="{x:Type controls:IconContentControl}">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:IconContentControl">
+
+          <materialdesign:Card
+            x:Name="IconContentControl"
+            Grid.Row="2"
+            Padding="5"
+            Background="{StaticResource MaterialDesignDarkBackground}">
+            <Grid>
+
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="5" />
+              </Grid.ColumnDefinitions>
+
+              <materialdesign:Card
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                ToolTip="{TemplateBinding materialdesign:HintAssist.Hint}"
+                ToolTipService.InitialShowDelay="0">
+                <materialdesign:PackIcon
+                  Width="24"
+                  Height="24"
+                  Foreground="{TemplateBinding Foreground}"
+                  Kind="{TemplateBinding Icon}"
+                  Opacity="0.5" />
+              </materialdesign:Card>
+
+              <ContentPresenter Grid.Column="3" materialdesign:HintAssist.Hint="{TemplateBinding materialdesign:HintAssist.Hint}" />
+            </Grid>
+          </materialdesign:Card>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
   <Style BasedOn="{StaticResource MaterialDesignDatePicker}" TargetType="{x:Type controls:IconCheckDatePicker}">
     <Setter Property="Validation.ErrorTemplate" Value="{StaticResource EmptyTemplate}" />
     <Setter Property="Template">
