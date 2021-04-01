@@ -1,9 +1,9 @@
-﻿using Prism.Ioc;
-using Prism.Modularity;
-using Prism.Regions;
-
-namespace Gamadu.PVA.Views.Rooms
+﻿namespace Gamadu.PVA.Views.Rooms
 {
+  using Prism.Ioc;
+  using Prism.Modularity;
+  using Prism.Regions;
+
   public class RoomsModule : IModule
   {
     public IRegionManager RegionManager { get; set; }

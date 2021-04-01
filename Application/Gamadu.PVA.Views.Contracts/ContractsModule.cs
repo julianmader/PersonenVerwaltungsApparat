@@ -1,9 +1,9 @@
-﻿using Prism.Ioc;
-using Prism.Modularity;
-using Prism.Regions;
-
-namespace Gamadu.PVA.Views.Contracts
+﻿namespace Gamadu.PVA.Views.Contracts
 {
+  using Prism.Ioc;
+  using Prism.Modularity;
+  using Prism.Regions;
+
   public class ContractsModule : IModule
   {
     public IRegionManager RegionManager { get; set; }

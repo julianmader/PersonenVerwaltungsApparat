@@ -122,16 +122,10 @@
     }
 
     /// <inheritdoc/>
-    public int DeleteDepartment(IIdentifiable id)
-    {
-      return this.DeleteDepartment((int)id.ID);
-    }
+    public int DeleteDepartment(IIdentifiable id) => this.DeleteDepartment((int)id.ID);
 
     /// <inheritdoc/>
-    public IDepartment GetDepartment(IIdentifiable id)
-    {
-      return this.GetDepartment((int)id.ID);
-    }
+    public IDepartment GetDepartment(IIdentifiable id) => this.GetDepartment((int)id.ID);
 
     /// <inheritdoc/>
     public int DeleteDepartment(int id)

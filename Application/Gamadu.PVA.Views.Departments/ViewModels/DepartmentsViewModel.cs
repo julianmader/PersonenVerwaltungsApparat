@@ -1,18 +1,18 @@
-﻿using FluentValidation;
-using Gamadu.PVA.Core.DataAccess;
-using Gamadu.PVA.Core.Models;
-using Prism.Commands;
-using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Gamadu.PVA.Views.Departments.ViewModels
+﻿namespace Gamadu.PVA.Views.Departments.ViewModels
 {
+  using FluentValidation;
+  using Gamadu.PVA.Core.DataAccess;
+  using Gamadu.PVA.Core.Models;
+  using Prism.Commands;
+  using Prism.Ioc;
+  using Prism.Mvvm;
+  using Prism.Services.Dialogs;
+  using System;
+  using System.Collections.Generic;
+  using System.Collections.ObjectModel;
+  using System.Linq;
+  using System.Threading.Tasks;
+
   public class DepartmentsViewModel : BindableBase
   {
     #region Properties
@@ -27,40 +27,40 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
 
     public bool IsRefreshing
     {
-      get { return this.isRefreshing; }
-      set { this.SetProperty(ref this.isRefreshing, value); }
+      get => this.isRefreshing;
+      set => this.SetProperty(ref this.isRefreshing, value);
     }
 
     private ObservableCollection<IEmployee> availableEmployees;
 
     public ObservableCollection<IEmployee> AvailableEmployees
     {
-      get { return this.availableEmployees; }
-      set { this.SetProperty(ref this.availableEmployees, value); }
+      get => this.availableEmployees;
+      set => this.SetProperty(ref this.availableEmployees, value);
     }
 
     private ObservableCollection<IDepartment> availableDepartments;
 
     public ObservableCollection<IDepartment> AvailableDepartments
     {
-      get { return this.availableDepartments; }
-      set { this.SetProperty(ref this.availableDepartments, value); }
+      get => this.availableDepartments;
+      set => this.SetProperty(ref this.availableDepartments, value);
     }
 
     private ObservableCollection<IEmployee> selectedDepartmentEmployees;
 
     public ObservableCollection<IEmployee> SelectedDepartmentEmployees
     {
-      get { return this.selectedDepartmentEmployees; }
-      set { this.SetProperty(ref this.selectedDepartmentEmployees, value); }
+      get => this.selectedDepartmentEmployees;
+      set => this.SetProperty(ref this.selectedDepartmentEmployees, value);
     }
 
     private IDepartment selectedDepartment;
 
     public IDepartment SelectedDepartment
     {
-      get { return this.selectedDepartment; }
-      set { this.SetProperty(ref this.selectedDepartment, value); }
+      get => this.selectedDepartment;
+      set => this.SetProperty(ref this.selectedDepartment, value);
     }
 
     #endregion Properties
@@ -87,10 +87,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     /// Sets the data access.
     /// </summary>
     /// <param name="identification">The identification string of the instance.</param>
-    protected void SetDataAccess(string identification = "")
-    {
-      this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
-    }
+    protected void SetDataAccess(string identification = "") => this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
 
     /// <summary>
     /// Initializes the commands.
@@ -135,10 +132,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     /// <summary>
     /// Gets all available employees from the database.
     /// </summary>
-    protected void RefreshAvailableEmployees()
-    {
-      this.AvailableEmployees = new ObservableCollection<IEmployee>(this.DataAccess.GetEmployees());
-    }
+    protected void RefreshAvailableEmployees() => this.AvailableEmployees = new ObservableCollection<IEmployee>(this.DataAccess.GetEmployees());
 
     /// <summary>
     /// Refreshes the selected rooms collection for the selected employee.
@@ -192,14 +186,14 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     {
       if (e.PropertyName.Equals(nameof(this.SelectedDepartment), StringComparison.OrdinalIgnoreCase))
       {
-        await Task.Run(this.SelectedDepartmentChanged);
+        await Task.Run(this.SelectedDepartmentChanged).ConfigureAwait(false);
         return;
       }
     }
 
     private async void SelectedDepartment_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-      await Task.Run(() => this.SelectedDepartment.Validate());
+      await Task.Run(() => this.SelectedDepartment.Validate()).ConfigureAwait(false);
 
       this.RefreshCommands();
     }
@@ -211,8 +205,10 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     /// </summary>
     private void ShowSelectEmployeesDialog()
     {
-      IDialogParameters dialogParameters = new DialogParameters();
-      dialogParameters.Add("selectedIDs", this.SelectedDepartment.Employees);
+      IDialogParameters dialogParameters = new DialogParameters
+      {
+        { "selectedIDs", this.SelectedDepartment.Employees }
+      };
 
       this.DialogService.ShowDialog("SelectEmployeesDialog", dialogParameters, cb =>
       {
@@ -237,7 +233,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
     {
       this.IsRefreshing = true;
 
-      await Task.Run(this.RefreshAllData);
+      await Task.Run(this.RefreshAllData).ConfigureAwait(false);
 
       this.IsRefreshing = false;
     }
@@ -250,15 +246,11 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
 
     private async void OnSaveCommand()
     {
-      await Task.Run(() => this.DataAccess.SaveOrUpdateDepartment(this.SelectedDepartment));
+      await Task.Run(() => this.DataAccess.SaveOrUpdateDepartment(this.SelectedDepartment)).ConfigureAwait(false);
       this.RefreshCommand.Execute();
     }
 
-    private bool CanSaveCommand()
-    {
-      return this.SelectedDepartment != null &&
-        !this.SelectedDepartment.HasErrors;
-    }
+    private bool CanSaveCommand() => this.SelectedDepartment?.HasErrors == false;
 
     #endregion SaveCommand
 
@@ -266,17 +258,9 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
 
     public DelegateCommand DeleteCommand { get; private set; }
 
-    private async void OnDeleteCommand()
-    {
-      await Task.Run(() => this.DataAccess.DeleteDepartment(this.SelectedDepartment));
-    }
+    private async void OnDeleteCommand() => await Task.Run(() => this.DataAccess.DeleteDepartment(this.SelectedDepartment)).ConfigureAwait(false);
 
-    private bool CanDeleteCommand()
-    {
-      if (this.SelectedDepartment == null) return false;
-
-      return this.SelectedDepartment.ID != null;
-    }
+    private bool CanDeleteCommand() => this.SelectedDepartment?.ID != null;
 
     #endregion DeleteCommand
 
@@ -286,7 +270,7 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
 
     private async void OnNewCommand()
     {
-      await Task.Run(() => this.SelectedDepartment = this.ContainerProvider.Resolve<IDepartment>());
+      await Task.Run(() => this.SelectedDepartment = this.ContainerProvider.Resolve<IDepartment>()).ConfigureAwait(false);
 
       this.SelectedDepartment.Employees = new List<int>();
     }
@@ -297,15 +281,9 @@ namespace Gamadu.PVA.Views.Departments.ViewModels
 
     public DelegateCommand EditSelectedEmployeesCommand { get; private set; }
 
-    private void OnEditSelectedEmployeesCommand()
-    {
-      this.ShowSelectEmployeesDialog();
-    }
+    private void OnEditSelectedEmployeesCommand() => this.ShowSelectEmployeesDialog();
 
-    private bool CanEditSelectedEmployeesCommand()
-    {
-      return this.SelectedDepartment != null;
-    }
+    private bool CanEditSelectedEmployeesCommand() => this.SelectedDepartment != null;
 
     #endregion EditSelectedEmployeesCommand
 

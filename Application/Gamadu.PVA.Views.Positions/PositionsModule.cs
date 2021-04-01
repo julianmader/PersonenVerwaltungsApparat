@@ -1,9 +1,9 @@
-﻿using Prism.Ioc;
-using Prism.Modularity;
-using Prism.Regions;
-
-namespace Gamadu.PVA.Views.Positions
+﻿namespace Gamadu.PVA.Views.Positions
 {
+  using Prism.Ioc;
+  using Prism.Modularity;
+  using Prism.Regions;
+
   public class PositionsModule : IModule
   {
     public IRegionManager RegionManager { get; set; }

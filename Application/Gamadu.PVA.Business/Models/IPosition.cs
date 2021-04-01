@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace Gamadu.PVA.Core.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
+  using System.Collections.Generic;
+  using System.ComponentModel;
+
   public interface IPosition : IIdentifiable, IMatchable, INameable, IValidateable<IPosition>, INotifyPropertyChanged
   {
     /// <summary>

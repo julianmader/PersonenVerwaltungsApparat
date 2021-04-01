@@ -126,16 +126,10 @@
     }
 
     /// <inheritdoc/>
-    public int DeleteRoom(IIdentifiable id)
-    {
-      return this.DeleteRoom((int)id.ID);
-    }
+    public int DeleteRoom(IIdentifiable id) => this.DeleteRoom((int)id.ID);
 
     /// <inheritdoc/>
-    public IRoom GetRoom(IIdentifiable id)
-    {
-      return this.GetRoom((int)id.ID);
-    }
+    public IRoom GetRoom(IIdentifiable id) => this.GetRoom((int)id.ID);
 
     /// <inheritdoc/>
     public int DeleteRoom(int id)

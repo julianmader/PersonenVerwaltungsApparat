@@ -55,9 +55,6 @@
     /// <summary>
     /// Creates the <see cref="IDbConnection"/> object.
     /// </summary>
-    private IDbConnection GetDbConnection()
-    {
-      return new MySqlConnection(this.connectionString);
-    }
+    private IDbConnection GetDbConnection() => new MySqlConnection(this.connectionString);
   }
 }

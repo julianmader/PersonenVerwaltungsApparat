@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace Gamadu.PVA.Core.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
+  using System;
+  using System.Collections.Generic;
+  using System.ComponentModel;
+
   public interface IContract : IIdentifiable, IMatchable, INameable, IValidateable<IContract>, INotifyPropertyChanged
   {
     /// <summary>

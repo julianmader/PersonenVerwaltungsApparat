@@ -132,16 +132,10 @@
     }
 
     /// <inheritdoc/>
-    public int DeleteContract(IIdentifiable id)
-    {
-      return this.DeleteContract((int)id.ID);
-    }
+    public int DeleteContract(IIdentifiable id) => this.DeleteContract((int)id.ID);
 
     /// <inheritdoc/>
-    public IContract GetContract(IIdentifiable id)
-    {
-      return this.GetContract((int)id.ID);
-    }
+    public IContract GetContract(IIdentifiable id) => this.GetContract((int)id.ID);
 
     /// <inheritdoc/>
     public int DeleteContract(int id)

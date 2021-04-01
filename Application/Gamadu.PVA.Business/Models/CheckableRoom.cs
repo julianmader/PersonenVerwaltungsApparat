@@ -10,8 +10,8 @@
     /// <inheritdoc/>
     public bool IsChecked
     {
-      get { return this.isChecked; }
-      set { this.SetProperty(ref this.isChecked, value); }
+      get => this.isChecked;
+      set => this.SetProperty(ref this.isChecked, value);
     }
   }
 }

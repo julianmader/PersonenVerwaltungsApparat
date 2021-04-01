@@ -1,10 +1,10 @@
-﻿using Gamadu.PVA.Views.Employees.Views;
-using Prism.Ioc;
-using Prism.Modularity;
-using Prism.Regions;
-
-namespace Gamadu.PVA.Views.Employees
+﻿namespace Gamadu.PVA.Views.Employees
 {
+  using Gamadu.PVA.Views.Employees.Views;
+  using Prism.Ioc;
+  using Prism.Modularity;
+  using Prism.Regions;
+
   [Module(ModuleName = "EmployeesModule")]
   [ModuleDependency("MySQLModule")]
   [ModuleDependency("DialogsModule")]

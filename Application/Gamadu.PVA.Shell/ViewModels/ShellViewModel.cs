@@ -11,8 +11,8 @@
     /// </summary>
     public string Title
     {
-      get { return this.title; }
-      set { this.SetProperty(ref this.title, value); }
+      get => this.title;
+      set => this.SetProperty(ref this.title, value);
     }
 
     public ShellViewModel()

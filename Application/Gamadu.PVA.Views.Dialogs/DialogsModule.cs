@@ -1,9 +1,9 @@
-﻿using Gamadu.PVA.Views.Dialogs.Views;
-using Prism.Ioc;
-using Prism.Modularity;
-
-namespace Gamadu.PVA.Views.Dialogs
+﻿namespace Gamadu.PVA.Views.Dialogs
 {
+  using Gamadu.PVA.Views.Dialogs.Views;
+  using Prism.Ioc;
+  using Prism.Modularity;
+
   [Module(ModuleName = "DialogsModule")]
   public class DialogsModule : IModule
   {

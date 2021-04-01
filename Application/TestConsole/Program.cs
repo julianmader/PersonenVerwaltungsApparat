@@ -5,7 +5,7 @@
   using Gamadu.PVA.Core.Models;
   using System.Collections.Generic;
 
-  internal class Program
+  internal static class Program
   {
     private static void Main(string[] args)
     {
@@ -44,15 +44,9 @@
       System.Console.WriteLine(dataAccess.UpdateEmployee(employee));
     }
 
-    private static void DeleteEmployee(IAllDataAccess dataAccess)
-    {
-      System.Console.WriteLine(dataAccess.DeleteEmployee(10));
-    }
+    private static void DeleteEmployee(IAllDataAccess dataAccess) => System.Console.WriteLine(dataAccess.DeleteEmployee(10));
 
-    private static void DeleteAllEmployees(IAllDataAccess dataAccess)
-    {
-      System.Console.WriteLine(dataAccess.DeleteEmployees());
-    }
+    private static void DeleteAllEmployees(IAllDataAccess dataAccess) => System.Console.WriteLine(dataAccess.DeleteEmployees());
 
     private static void GetAllEmployees(IAllDataAccess dataAccess)
     {

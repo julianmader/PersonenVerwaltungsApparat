@@ -13,8 +13,8 @@
     /// <inheritdoc/>
     public int? ID
     {
-      get { return this.id; }
-      set { this.SetProperty(ref this.id, value); }
+      get => this.id;
+      set => this.SetProperty(ref this.id, value);
     }
 
     /// <summary>
@@ -25,25 +25,14 @@
     /// <inheritdoc/>
     public string Matchcode
     {
-      get { return this.matchcode; }
-      set { this.SetProperty(ref this.matchcode, value); }
+      get => this.matchcode;
+      set => this.SetProperty(ref this.matchcode, value);
     }
 
     /// <inheritdoc/>
-    public int CompareTo(IIdentifiable other)
-    {
-      if (this.ID < other.ID)
-      {
-        return -1;
-      }
-
-      return 1;
-    }
+    public int CompareTo(IIdentifiable other) => this.ID < other.ID ? -1 : 1;
 
     /// <inheritdoc/>
-    public bool Equals(IIdentifiable other)
-    {
-      return this.ID == other.ID;
-    }
+    public bool Equals(IIdentifiable other) => this.ID == other.ID;
   }
 }

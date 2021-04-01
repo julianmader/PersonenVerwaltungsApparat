@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Gamadu.PVA.Core.Events
+﻿namespace Gamadu.PVA.Core.Events
 {
+  using System.Collections.Generic;
+
   public class SendSelectedRoomsEventArgs
   {
     public IEnumerable<int> SelectedRoomsIDs { get; set; }

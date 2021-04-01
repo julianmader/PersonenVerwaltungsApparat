@@ -1,8 +1,8 @@
-﻿using Gamadu.PVA.Core.Models.Bases;
-using System.Collections.Generic;
-
-namespace Gamadu.PVA.Core.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
+  using Gamadu.PVA.Core.Models.Bases;
+  using System.Collections.Generic;
+
   public class Department : ValidateableModelBase<IDepartment>, IDepartment
   {
     #region Backing Fields
@@ -39,46 +39,43 @@ namespace Gamadu.PVA.Core.Models
     /// <inheritdoc/>
     public string Name
     {
-      get { return this.name; }
-      set { this.SetProperty(ref this.name, value); }
+      get => this.name;
+      set => this.SetProperty(ref this.name, value);
     }
 
     /// <inheritdoc/>
     public string CostCenter
     {
-      get { return this.costCenter; }
-      set { this.SetProperty(ref this.costCenter, value); }
+      get => this.costCenter;
+      set => this.SetProperty(ref this.costCenter, value);
     }
 
     /// <inheritdoc/>
     public int? Manager
     {
-      get { return this.manager; }
-      set { this.SetProperty(ref this.manager, value); }
+      get => this.manager;
+      set => this.SetProperty(ref this.manager, value);
     }
 
     /// <inheritdoc/>
     public string Description
     {
-      get { return this.description; }
-      set { this.SetProperty(ref this.description, value); }
+      get => this.description;
+      set => this.SetProperty(ref this.description, value);
     }
 
     /// <inheritdoc/>
     public IEnumerable<int> Employees
     {
-      get { return this.employees; }
-      set { this.SetProperty(ref this.employees, value); }
+      get => this.employees;
+      set => this.SetProperty(ref this.employees, value);
     }
 
     #endregion Properties
 
     #region Methods
 
-    public override string ToString()
-    {
-      return $"{this.Matchcode} - {this.Name}";
-    }
+    public override string ToString() => $"{this.Matchcode} - {this.Name}";
 
     public override void Validate() => this.Validate(this);
 

@@ -1,16 +1,16 @@
-﻿using Gamadu.PVA.Core.DataAccess;
-using Gamadu.PVA.Core.Models;
-using Prism.Commands;
-using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-namespace Gamadu.PVA.Views.Dialogs.ViewModels
+﻿namespace Gamadu.PVA.Views.Dialogs.ViewModels
 {
+  using Gamadu.PVA.Core.DataAccess;
+  using Gamadu.PVA.Core.Models;
+  using Prism.Commands;
+  using Prism.Ioc;
+  using Prism.Mvvm;
+  using Prism.Services.Dialogs;
+  using System;
+  using System.Collections.Generic;
+  using System.Collections.ObjectModel;
+  using System.Linq;
+
   public class SelectEmployeesViewModel : BindableBase, IDialogAware
   {
     #region Properties
@@ -33,8 +33,8 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
     /// </summary>
     public ObservableCollection<ICheckableEmployee> CheckableEmployees
     {
-      get { return this.checkableEmployees; }
-      set { this.SetProperty(ref this.checkableEmployees, value); }
+      get => this.checkableEmployees;
+      set => this.SetProperty(ref this.checkableEmployees, value);
     }
 
     #endregion Properties
@@ -56,18 +56,12 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
     /// Sets the data access.
     /// </summary>
     /// <param name="identification">The identification string of the instance.</param>
-    protected void SetDataAccess(string identification = "")
-    {
-      this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
-    }
+    protected void SetDataAccess(string identification = "") => this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
 
     /// <summary>
     /// Initializes the commands.
     /// </summary>
-    private void InitializeCommands()
-    {
-      this.CloseCommand = new DelegateCommand<bool?>(this.OnCloseCommand);
-    }
+    private void InitializeCommands() => this.CloseCommand = new DelegateCommand<bool?>(this.OnCloseCommand);
 
     /// <summary>
     /// Sets the checkable employees collection, based on the available employees.
@@ -85,10 +79,7 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
       {
         ICheckableEmployee checkableEmployee = this.ContainerProvider.Resolve<ICheckableEmployee>();
 
-        if (selectedIDs != null)
-          checkableEmployee.IsChecked = selectedIDs.Contains((int)employee.ID);
-        else
-          checkableEmployee.IsChecked = false;
+        checkableEmployee.IsChecked = selectedIDs?.Contains((int)employee.ID) == true;
         checkableEmployee.ID = employee.ID;
         checkableEmployee.Matchcode = employee.Matchcode;
         checkableEmployee.Forename = employee.Forename;
@@ -115,23 +106,19 @@ namespace Gamadu.PVA.Views.Dialogs.ViewModels
 
       IEnumerable<int> selectedIDs = this.CheckableEmployees?.Where(ce => ce.IsChecked).Select(cr => (int)cr.ID).ToList();
 
-      IDialogParameters dialogParameters = new DialogParameters();
-      dialogParameters.Add("selectedIDs", selectedIDs);
+      IDialogParameters dialogParameters = new DialogParameters
+      {
+        { "selectedIDs", selectedIDs }
+      };
 
       IDialogResult dialogResult = new DialogResult(buttonResult, dialogParameters);
 
       this.RaiseRequestClose(dialogResult);
     }
 
-    public void RaiseRequestClose(IDialogResult dialogResult)
-    {
-      RequestClose?.Invoke(dialogResult);
-    }
+    public void RaiseRequestClose(IDialogResult dialogResult) => RequestClose?.Invoke(dialogResult);
 
-    public bool CanCloseDialog()
-    {
-      return true;
-    }
+    public bool CanCloseDialog() => true;
 
     public void OnDialogClosed()
     {

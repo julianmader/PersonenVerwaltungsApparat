@@ -118,16 +118,10 @@
     }
 
     /// <inheritdoc/>
-    public int DeletePosition(IIdentifiable id)
-    {
-      return this.DeletePosition((int)id.ID);
-    }
+    public int DeletePosition(IIdentifiable id) => this.DeletePosition((int)id.ID);
 
     /// <inheritdoc/>
-    public IPosition GetPosition(IIdentifiable id)
-    {
-      return this.GetPosition((int)id.ID);
-    }
+    public IPosition GetPosition(IIdentifiable id) => this.GetPosition((int)id.ID);
 
     /// <inheritdoc/>
     public int DeletePosition(int id)

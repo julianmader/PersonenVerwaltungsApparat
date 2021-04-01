@@ -1,9 +1,9 @@
-﻿using Prism.Ioc;
-using Prism.Modularity;
-using Prism.Regions;
-
-namespace Gamadu.PVA.Views.Resources
+﻿namespace Gamadu.PVA.Views.Resources
 {
+  using Prism.Ioc;
+  using Prism.Modularity;
+  using Prism.Regions;
+
   public class ResourcesModule : IModule
   {
     public IRegionManager RegionManager { get; set; }

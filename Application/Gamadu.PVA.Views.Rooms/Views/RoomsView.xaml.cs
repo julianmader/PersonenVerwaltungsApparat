@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace Gamadu.PVA.Views.Rooms.Views
+﻿namespace Gamadu.PVA.Views.Rooms.Views
 {
+  using System.Windows.Controls;
+
   /// <summary>
   /// Interaction logic for RoomsView.xaml
   /// </summary>

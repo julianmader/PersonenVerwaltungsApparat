@@ -1,8 +1,8 @@
-﻿using Prism.Ioc;
-using Prism.Modularity;
-
-namespace Gamadu.PVA.Core.DataAccess.MySQL
+﻿namespace Gamadu.PVA.Core.DataAccess.MySQL
 {
+  using Prism.Ioc;
+  using Prism.Modularity;
+
   [Module(ModuleName = "MySQLModule")]
   public class MySQLModule : IModule
   {
@@ -10,9 +10,6 @@ namespace Gamadu.PVA.Core.DataAccess.MySQL
     {
     }
 
-    public void RegisterTypes(IContainerRegistry containerRegistry)
-    {
-      containerRegistry.Register<IAllDataAccess, MySQLDataAccess>("MySQL");
-    }
+    public void RegisterTypes(IContainerRegistry containerRegistry) => containerRegistry.Register<IAllDataAccess, MySQLDataAccess>("MySQL");
   }
 }

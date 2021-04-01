@@ -91,116 +91,113 @@
     /// <inheritdoc/>
     public Gender Gender
     {
-      get { return this.gender; }
-      set { this.SetProperty(ref this.gender, value); }
+      get => this.gender;
+      set => this.SetProperty(ref this.gender, value);
     }
 
     /// <inheritdoc/>
     public string Forename
     {
-      get { return this.forename; }
-      set { this.SetProperty(ref this.forename, value); }
+      get => this.forename;
+      set => this.SetProperty(ref this.forename, value);
     }
 
     /// <inheritdoc/>
     public string Surname
     {
-      get { return this.surname; }
-      set { this.SetProperty(ref this.surname, value); }
+      get => this.surname;
+      set => this.SetProperty(ref this.surname, value);
     }
 
     /// <inheritdoc/>
     public DateTime Birth
     {
-      get { return this.birth; }
-      set { this.SetProperty(ref this.birth, value); }
+      get => this.birth;
+      set => this.SetProperty(ref this.birth, value);
     }
 
     /// <inheritdoc/>
     public string PhoneNumber
     {
-      get { return this.phoneNumber; }
-      set { this.SetProperty(ref this.phoneNumber, value); }
+      get => this.phoneNumber;
+      set => this.SetProperty(ref this.phoneNumber, value);
     }
 
     /// <inheritdoc/>
     public string Email
     {
-      get { return this.email; }
-      set { this.SetProperty(ref this.email, value); }
+      get => this.email;
+      set => this.SetProperty(ref this.email, value);
     }
 
     /// <inheritdoc/>
     public int? Department
     {
-      get { return this.department; }
-      set { this.SetProperty(ref this.department, value); }
+      get => this.department;
+      set => this.SetProperty(ref this.department, value);
     }
 
     /// <inheritdoc/>
     public int? Position
     {
-      get { return this.position; }
-      set { this.SetProperty(ref this.position, value); }
+      get => this.position;
+      set => this.SetProperty(ref this.position, value);
     }
 
     /// <inheritdoc/>
     public int? Contract
     {
-      get { return this.contract; }
-      set { this.SetProperty(ref this.contract, value); }
+      get => this.contract;
+      set => this.SetProperty(ref this.contract, value);
     }
 
     /// <inheritdoc/>
     public IEnumerable<int> Rooms
     {
-      get { return this.rooms; }
-      set { this.SetProperty(ref this.rooms, value); }
+      get => this.rooms;
+      set => this.SetProperty(ref this.rooms, value);
     }
 
     /// <inheritdoc/>
     public string AdditionalInformation
     {
-      get { return this.additionalInformation; }
-      set { this.SetProperty(ref this.additionalInformation, value); }
+      get => this.additionalInformation;
+      set => this.SetProperty(ref this.additionalInformation, value);
     }
 
     /// <inheritdoc/>
     public string Street
     {
-      get { return this.street; }
-      set { this.SetProperty(ref this.street, value); }
+      get => this.street;
+      set => this.SetProperty(ref this.street, value);
     }
 
     /// <inheritdoc/>
     public string StreetNumber
     {
-      get { return this.streetNumber; }
-      set { this.SetProperty(ref this.streetNumber, value); }
+      get => this.streetNumber;
+      set => this.SetProperty(ref this.streetNumber, value);
     }
 
     /// <inheritdoc/>
     public string City
     {
-      get { return this.city; }
-      set { this.SetProperty(ref this.city, value); }
+      get => this.city;
+      set => this.SetProperty(ref this.city, value);
     }
 
     /// <inheritdoc/>
     public string PostalCode
     {
-      get { return this.postalCode; }
-      set { this.SetProperty(ref this.postalCode, value); }
+      get => this.postalCode;
+      set => this.SetProperty(ref this.postalCode, value);
     }
 
     #endregion Properties
 
     #region Methods
 
-    public override string ToString()
-    {
-      return $"{this.Matchcode} - {this.Forename} {this.Surname}";
-    }
+    public override string ToString() => $"{this.Matchcode} - {this.Forename} {this.Surname}";
 
     public override void Validate() => this.Validate(this);
 

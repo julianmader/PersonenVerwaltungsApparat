@@ -1,18 +1,18 @@
-﻿using FluentValidation;
-using Gamadu.PVA.Core.DataAccess;
-using Gamadu.PVA.Core.Models;
-using Prism.Commands;
-using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Gamadu.PVA.Views.Employees.ViewModels
+﻿namespace Gamadu.PVA.Views.Employees.ViewModels
 {
+  using FluentValidation;
+  using Gamadu.PVA.Core.DataAccess;
+  using Gamadu.PVA.Core.Models;
+  using Prism.Commands;
+  using Prism.Ioc;
+  using Prism.Mvvm;
+  using Prism.Services.Dialogs;
+  using System;
+  using System.Collections.Generic;
+  using System.Collections.ObjectModel;
+  using System.Linq;
+  using System.Threading.Tasks;
+
   public class EmployeesViewModel : BindableBase
   {
     #region Properties
@@ -27,64 +27,64 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     public bool IsRefreshing
     {
-      get { return this.isRefreshing; }
-      set { this.SetProperty(ref this.isRefreshing, value); }
+      get => this.isRefreshing;
+      set => this.SetProperty(ref this.isRefreshing, value);
     }
 
     private ObservableCollection<IEmployee> availableEmployees;
 
     public ObservableCollection<IEmployee> AvailableEmployees
     {
-      get { return this.availableEmployees; }
-      set { this.SetProperty(ref this.availableEmployees, value); }
+      get => this.availableEmployees;
+      set => this.SetProperty(ref this.availableEmployees, value);
     }
 
     private ObservableCollection<IDepartment> availableDepartments;
 
     public ObservableCollection<IDepartment> AvailableDepartments
     {
-      get { return this.availableDepartments; }
-      set { this.SetProperty(ref this.availableDepartments, value); }
+      get => this.availableDepartments;
+      set => this.SetProperty(ref this.availableDepartments, value);
     }
 
     private ObservableCollection<IPosition> availablePositions;
 
     public ObservableCollection<IPosition> AvailablePositions
     {
-      get { return this.availablePositions; }
-      set { this.SetProperty(ref this.availablePositions, value); }
+      get => this.availablePositions;
+      set => this.SetProperty(ref this.availablePositions, value);
     }
 
     private ObservableCollection<IContract> availableContracts;
 
     public ObservableCollection<IContract> AvailableContracts
     {
-      get { return this.availableContracts; }
-      set { this.SetProperty(ref this.availableContracts, value); }
+      get => this.availableContracts;
+      set => this.SetProperty(ref this.availableContracts, value);
     }
 
     private ObservableCollection<IRoom> availableRooms;
 
     public ObservableCollection<IRoom> AvailableRooms
     {
-      get { return this.availableRooms; }
-      set { this.SetProperty(ref this.availableRooms, value); }
+      get => this.availableRooms;
+      set => this.SetProperty(ref this.availableRooms, value);
     }
 
     private ObservableCollection<IRoom> selectedEmployeeRooms;
 
     public ObservableCollection<IRoom> SelectedEmployeeRooms
     {
-      get { return this.selectedEmployeeRooms; }
-      set { this.SetProperty(ref this.selectedEmployeeRooms, value); }
+      get => this.selectedEmployeeRooms;
+      set => this.SetProperty(ref this.selectedEmployeeRooms, value);
     }
 
     private IEmployee selectedEmployee;
 
     public IEmployee SelectedEmployee
     {
-      get { return this.selectedEmployee; }
-      set { this.SetProperty(ref this.selectedEmployee, value); }
+      get => this.selectedEmployee;
+      set => this.SetProperty(ref this.selectedEmployee, value);
     }
 
     #endregion Properties
@@ -110,10 +110,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     /// Sets the data access.
     /// </summary>
     /// <param name="identification">The identification string of the instance.</param>
-    protected void SetDataAccess(string identification = "")
-    {
-      this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
-    }
+    protected void SetDataAccess(string identification = "") => this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
 
     /// <summary>
     /// Initializes the commands.
@@ -161,34 +158,22 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     /// <summary>
     /// Gets all available departments from the database.
     /// </summary>
-    protected void RefreshAvailableDepartments()
-    {
-      this.AvailableDepartments = new ObservableCollection<IDepartment>(this.DataAccess.GetDepartments());
-    }
+    protected void RefreshAvailableDepartments() => this.AvailableDepartments = new ObservableCollection<IDepartment>(this.DataAccess.GetDepartments());
 
     /// <summary>
     /// Gets all available positions from the database.
     /// </summary>
-    protected void RefreshAvailablePositions()
-    {
-      this.AvailablePositions = new ObservableCollection<IPosition>(this.DataAccess.GetPositions());
-    }
+    protected void RefreshAvailablePositions() => this.AvailablePositions = new ObservableCollection<IPosition>(this.DataAccess.GetPositions());
 
     /// <summary>
     /// Gets all available contracts from the database.
     /// </summary>
-    protected void RefreshAvailableContracts()
-    {
-      this.AvailableContracts = new ObservableCollection<IContract>(this.DataAccess.GetContracts());
-    }
+    protected void RefreshAvailableContracts() => this.AvailableContracts = new ObservableCollection<IContract>(this.DataAccess.GetContracts());
 
     /// <summary>
     /// Gets all available rooms from the database.
     /// </summary>
-    protected void RefreshAvailableRooms()
-    {
-      this.AvailableRooms = new ObservableCollection<IRoom>(this.DataAccess.GetRooms());
-    }
+    protected void RefreshAvailableRooms() => this.AvailableRooms = new ObservableCollection<IRoom>(this.DataAccess.GetRooms());
 
     /// <summary>
     /// Refreshes the selected rooms collection for the selected employee.
@@ -242,14 +227,14 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     {
       if (e.PropertyName.Equals(nameof(this.SelectedEmployee), StringComparison.OrdinalIgnoreCase))
       {
-        await Task.Run(this.SelectedEmployeeChanged);
+        await Task.Run(this.SelectedEmployeeChanged).ConfigureAwait(false);
         return;
       }
     }
 
     private async void SelectedEmployee_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-      await Task.Run(() => this.SelectedEmployee.Validate());
+      await Task.Run(() => this.SelectedEmployee.Validate()).ConfigureAwait(false);
 
       this.RefreshCommands();
     }
@@ -261,8 +246,10 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     /// </summary>
     private void ShowSelectRoomsDialog()
     {
-      IDialogParameters dialogParameters = new DialogParameters();
-      dialogParameters.Add("selectedIDs", this.SelectedEmployee.Rooms);
+      IDialogParameters dialogParameters = new DialogParameters
+      {
+        { "selectedIDs", this.SelectedEmployee.Rooms }
+      };
 
       this.DialogService.ShowDialog("SelectRoomsDialog", dialogParameters, cb =>
       {
@@ -287,7 +274,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
     {
       this.IsRefreshing = true;
 
-      await Task.Run(this.RefreshAllData);
+      await Task.Run(this.RefreshAllData).ConfigureAwait(false);
 
       this.IsRefreshing = false;
     }
@@ -300,15 +287,11 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     private async void OnSaveCommand()
     {
-      await Task.Run(() => this.DataAccess.SaveOrUpdateEmployee(this.SelectedEmployee));
+      await Task.Run(() => this.DataAccess.SaveOrUpdateEmployee(this.SelectedEmployee)).ConfigureAwait(false);
       this.RefreshCommand.Execute();
     }
 
-    private bool CanSaveCommand()
-    {
-      return this.SelectedEmployee != null &&
-        !this.SelectedEmployee.HasErrors;
-    }
+    private bool CanSaveCommand() => this.SelectedEmployee?.HasErrors == false;
 
     #endregion SaveCommand
 
@@ -316,17 +299,9 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     public DelegateCommand DeleteCommand { get; private set; }
 
-    private async void OnDeleteCommand()
-    {
-      await Task.Run(() => this.DataAccess.DeleteEmployee(this.SelectedEmployee));
-    }
+    private async void OnDeleteCommand() => await Task.Run(() => this.DataAccess.DeleteEmployee(this.SelectedEmployee)).ConfigureAwait(false);
 
-    private bool CanDeleteCommand()
-    {
-      if (this.SelectedEmployee == null) return false;
-
-      return this.SelectedEmployee.ID != null;
-    }
+    private bool CanDeleteCommand() => this.SelectedEmployee?.ID != null;
 
     #endregion DeleteCommand
 
@@ -336,7 +311,7 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     private async void OnNewCommand()
     {
-      await Task.Run(() => this.SelectedEmployee = this.ContainerProvider.Resolve<IEmployee>());
+      await Task.Run(() => this.SelectedEmployee = this.ContainerProvider.Resolve<IEmployee>()).ConfigureAwait(false);
 
       this.SelectedEmployee.Rooms = new List<int>();
       this.SelectedEmployee.Birth = DateTime.Now;
@@ -348,15 +323,9 @@ namespace Gamadu.PVA.Views.Employees.ViewModels
 
     public DelegateCommand EditSelectedRoomsCommand { get; private set; }
 
-    private void OnEditSelectedRoomsCommand()
-    {
-      this.ShowSelectRoomsDialog();
-    }
+    private void OnEditSelectedRoomsCommand() => this.ShowSelectRoomsDialog();
 
-    private bool CanEditSelectedRoomsCommand()
-    {
-      return this.SelectedEmployee != null;
-    }
+    private bool CanEditSelectedRoomsCommand() => this.SelectedEmployee != null;
 
     #endregion EditSelectedRoomsCommand
 

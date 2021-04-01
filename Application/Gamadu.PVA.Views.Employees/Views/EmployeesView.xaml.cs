@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace Gamadu.PVA.Views.Employees.Views
+﻿namespace Gamadu.PVA.Views.Employees.Views
 {
+  using System.Windows.Controls;
+
   /// <summary>
   /// Interaction logic for EmployeesView.xaml
   /// </summary>

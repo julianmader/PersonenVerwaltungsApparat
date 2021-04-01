@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace Gamadu.PVA.Views.Positions.Views
+﻿namespace Gamadu.PVA.Views.Positions.Views
 {
+  using System.Windows.Controls;
+
   /// <summary>
   /// Interaction logic for PositionsView.xaml
   /// </summary>

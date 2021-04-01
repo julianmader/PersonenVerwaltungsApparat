@@ -1,7 +1,7 @@
-﻿using Prism.Events;
-
-namespace Gamadu.PVA.Core.Events
+﻿namespace Gamadu.PVA.Core.Events
 {
+  using Prism.Events;
+
   public class RequestSelectedRoomsEvent : PubSubEvent<RequestSelectedRoomsEventArgs>
   {
   }

@@ -13,20 +13,20 @@
 
     public PackIconKind Icon
     {
-      get { return (PackIconKind)this.GetValue(IconProperty); }
-      set { this.SetValue(IconProperty, value); }
+      get => (PackIconKind)this.GetValue(IconProperty);
+      set => this.SetValue(IconProperty, value);
     }
 
     public bool IsChecked
     {
-      get { return (bool)this.GetValue(IsCheckedProperty); }
-      set { this.SetValue(IsCheckedProperty, value); }
+      get => (bool)this.GetValue(IsCheckedProperty);
+      set => this.SetValue(IsCheckedProperty, value);
     }
 
     public string CheckBoxText
     {
-      get { return (string)this.GetValue(CheckBoxTextProperty); }
-      set { this.SetValue(CheckBoxTextProperty, value); }
+      get => (string)this.GetValue(CheckBoxTextProperty);
+      set => this.SetValue(CheckBoxTextProperty, value);
     }
 
     // Using a DependencyProperty as the backing store for CheckBoxText.  This enables animation, styling, binding, etc...

@@ -1,10 +1,10 @@
-﻿using Gamadu.PVA.Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace Gamadu.PVA.Core.Models
+﻿namespace Gamadu.PVA.Core.Models
 {
+  using Gamadu.PVA.Core.Enums;
+  using System;
+  using System.Collections.Generic;
+  using System.ComponentModel;
+
   public interface IEmployee : IIdentifiable, IMatchable, IValidateable<IEmployee>, INotifyPropertyChanged
   {
     /// <summary>

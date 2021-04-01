@@ -65,81 +65,78 @@
     /// <inheritdoc/>
     public string Name
     {
-      get { return this.name; }
-      set { this.SetProperty(ref this.name, value); }
+      get => this.name;
+      set => this.SetProperty(ref this.name, value);
     }
 
     /// <inheritdoc/>
     public int? WorkTime
     {
-      get { return this.workTime; }
-      set { this.SetProperty(ref this.workTime, value); }
+      get => this.workTime;
+      set => this.SetProperty(ref this.workTime, value);
     }
 
     /// <inheritdoc/>
     public int? Holidays
     {
-      get { return this.holidays; }
-      set { this.SetProperty(ref this.holidays, value); }
+      get => this.holidays;
+      set => this.SetProperty(ref this.holidays, value);
     }
 
     /// <inheritdoc/>
     public int? Salary
     {
-      get { return this.salary; }
-      set { this.SetProperty(ref this.salary, value); }
+      get => this.salary;
+      set => this.SetProperty(ref this.salary, value);
     }
 
     /// <inheritdoc/>
     public DateTime? Start
     {
-      get { return this.start; }
-      set { this.SetProperty(ref this.start, value); }
+      get => this.start;
+      set => this.SetProperty(ref this.start, value);
     }
 
     /// <inheritdoc/>
     public DateTime? End
     {
-      get { return this.end; }
-      set { this.SetProperty(ref this.end, value); }
+      get => this.end;
+      set => this.SetProperty(ref this.end, value);
     }
 
     /// <inheritdoc/>
     public bool HasEnd
     {
-      get { return this.hasEnd; }
-      set { this.SetProperty(ref this.hasEnd, value); }
+      get => this.hasEnd;
+      set => this.SetProperty(ref this.hasEnd, value);
     }
 
     /// <inheritdoc/>
     public DateTime? TrailEnd
     {
-      get { return this.trailEnd; }
-      set { this.SetProperty(ref this.trailEnd, value); }
+      get => this.trailEnd;
+      set => this.SetProperty(ref this.trailEnd, value);
     }
 
     /// <inheritdoc/>
     public string Description
     {
-      get { return this.description; }
-      set { this.SetProperty(ref this.description, value); }
+      get => this.description;
+      set => this.SetProperty(ref this.description, value);
     }
 
     /// <inheritdoc/>
     public IEnumerable<int> Employees
     {
-      get { return this.employees; }
-      set { this.SetProperty(ref this.employees, value); }
+      get => this.employees;
+      set => this.SetProperty(ref this.employees, value);
     }
 
     #endregion Properties
 
     #region Methods
 
-    public override string ToString()
-    {
-      return $"{this.Matchcode} - {this.Name}";
-    }
+    public override string ToString() => $"{this.Matchcode} - {this.Name}";
 
     public override void Validate() => this.Validate(this);
 

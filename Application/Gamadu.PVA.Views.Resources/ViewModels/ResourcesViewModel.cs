@@ -1,14 +1,14 @@
-﻿using Prism.Mvvm;
-
-namespace Gamadu.PVA.Views.Resources.ViewModels
+﻿namespace Gamadu.PVA.Views.Resources.ViewModels
 {
+  using Prism.Mvvm;
+
   public class ResourcesViewModel : BindableBase
   {
     private string _message;
     public string Message
     {
-      get { return this._message; }
-      set { this.SetProperty(ref this._message, value); }
+      get => this._message;
+      set => this.SetProperty(ref this._message, value);
     }
 
     public ResourcesViewModel()

@@ -134,9 +134,6 @@
     /// Invokes the <see cref="ErrorsChanged"/> event.
     /// </summary>
     /// <param name="propertyName">The name of the property which changed the error.</param>
-    protected void OnErrorsChanged(string propertyName)
-    {
-      this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
-    }
+    protected void OnErrorsChanged(string propertyName) => this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
   }
 }

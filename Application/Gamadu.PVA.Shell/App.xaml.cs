@@ -21,16 +21,10 @@
     }
 
     /// <inheritdoc/>
-    protected override IModuleCatalog CreateModuleCatalog()
-    {
-      return new DirectoryModuleCatalog() { ModulePath = @".\" };
-    }
+    protected override IModuleCatalog CreateModuleCatalog() => new DirectoryModuleCatalog() { ModulePath = @".\" };
 
     /// <inheritdoc/>
-    protected override Window CreateShell()
-    {
-      return this.Container.Resolve<ShellView>();
-    }
+    protected override Window CreateShell() => this.Container.Resolve<ShellView>();
 
     protected override void ConfigureViewModelLocator()
     {

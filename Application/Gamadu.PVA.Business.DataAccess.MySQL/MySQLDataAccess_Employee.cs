@@ -143,16 +143,10 @@
     }
 
     /// <inheritdoc/>
-    public int DeleteEmployee(IIdentifiable id)
-    {
-      return this.DeleteEmployee((int)id.ID);
-    }
+    public int DeleteEmployee(IIdentifiable id) => this.DeleteEmployee((int)id.ID);
 
     /// <inheritdoc/>
-    public IEmployee GetEmployee(IIdentifiable id)
-    {
-      return this.GetEmployee((int)id.ID);
-    }
+    public IEmployee GetEmployee(IIdentifiable id) => this.GetEmployee((int)id.ID);
 
     /// <inheritdoc/>
     public int DeleteEmployee(int id)
