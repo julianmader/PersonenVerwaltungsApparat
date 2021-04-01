@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\Extensions.cs" />
     <Compile Include="DataAccess\IContractDataAccess.cs" />
-    <Compile Include="DataAccess\IAllDataAccess.cs" />
+    <Compile Include="DataAccess\IBusinessObjectDataAccess.cs" />
     <Compile Include="DataAccess\IDepartmentDataAccess.cs" />
     <Compile Include="DataAccess\IRoomDataAccess.cs" />
     <Compile Include="DataAccess\IPositionDataAccess.cs" />
