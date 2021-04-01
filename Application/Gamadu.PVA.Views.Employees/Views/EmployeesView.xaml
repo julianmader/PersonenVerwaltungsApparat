@@ -12,6 +12,7 @@
   d:DesignWidth="900"
   prism:ViewModelLocator.AutoWireViewModel="True"
   FontFamily="{DynamicResource MaterialDesignFont}"
+  FontSize="16"
   Foreground="AntiqueWhite"
   mc:Ignorable="d">
 
@@ -136,31 +137,44 @@
               <RowDefinition Height="5" />
             </Grid.RowDefinitions>
 
-            <ContentControl>
-              <materialdesign:Card HorizontalAlignment="Center">
-                <Image
-                  MaxWidth="150"
-                  MaxHeight="150"
-                  Margin="5"
-                  Source="profile_picture_blank.png" />
-              </materialdesign:Card>
-            </ContentControl>
+            <materialdesign:Card HorizontalAlignment="Center">
+              <Image
+                MaxWidth="150"
+                MaxHeight="150"
+                Margin="5"
+                Source="profile_picture_blank.png" />
+            </materialdesign:Card>
 
-            <controls:IconTextBox
+            <!--<controls:IconTextBox
               Grid.Row="2"
               materialdesign:HintAssist.Hint="ID"
               Icon="SqlPrimaryKey"
               IsHitTestVisible="False"
-              Text="{Binding SelectedEmployee.ID}" />
+              Text="{Binding SelectedEmployee.ID}" />-->
 
-            <controls:IconTextBox
+            <controls:IconContentControl
+              Grid.Row="2"
+              materialdesign:HintAssist.Hint="ID"
+              Icon="SqlPrimaryKey"
+              IsHitTestVisible="False">
+              <TextBox Text="{Binding SelectedEmployee.ID}" />
+            </controls:IconContentControl>
+
+            <!--<controls:IconTextBox
               Grid.Row="4"
               materialdesign:HintAssist.Hint="Matchcode"
               Icon="Identifier"
               Text="{Binding SelectedEmployee.Matchcode,
                              Mode=TwoWay,
                              UpdateSourceTrigger=PropertyChanged,
-                             ValidatesOnDataErrors=True}" />
+                             ValidatesOnDataErrors=True}" />-->
+
+            <controls:IconContentControl
+              Grid.Row="4"
+              materialdesign:HintAssist.Hint="Matchcode"
+              Icon="Identifier">
+              <TextBox Text="{Binding SelectedEmployee.Matchcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            </controls:IconContentControl>
 
             <controls:IconComboBox
               Grid.Row="6"
