@@ -10,6 +10,6 @@
     {
     }
 
-    public void RegisterTypes(IContainerRegistry containerRegistry) => containerRegistry.Register<IAllDataAccess, MySQLDataAccess>("MySQL");
+    public void RegisterTypes(IContainerRegistry containerRegistry) => containerRegistry.Register<IBusinessObjectDataAccess, MySQLDataAccess>("MySQL");
   }
 }

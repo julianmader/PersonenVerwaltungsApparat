@@ -56,7 +56,7 @@
     /// Sets the data access.
     /// </summary>
     /// <param name="identification">The identification string of the instance.</param>
-    protected void SetDataAccess(string identification = "") => this.DataAccess = this.ContainerProvider.Resolve<IAllDataAccess>(identification);
+    protected void SetDataAccess(string identification = "") => this.DataAccess = this.ContainerProvider.Resolve<IBusinessObjectDataAccess>(identification);
 
     /// <summary>
     /// Initializes the commands.

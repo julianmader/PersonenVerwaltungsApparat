@@ -9,7 +9,7 @@
   {
     private static void Main(string[] args)
     {
-      IAllDataAccess dataAccess = new MySQLDataAccess("localhost", "db_pva", "root", string.Empty);
+      IBusinessObjectDataAccess dataAccess = new MySQLDataAccess("localhost", "db_pva", "root", string.Empty);
 
       SaveEmployee(dataAccess);
       //DeleteEmployee(dataAccess);
@@ -22,7 +22,7 @@
       System.Console.ReadLine();
     }
 
-    private static void SaveEmployee(IAllDataAccess dataAccess)
+    private static void SaveEmployee(IBusinessObjectDataAccess dataAccess)
     {
       IEmployee employee = new Employee()
       {
@@ -33,7 +33,7 @@
       System.Console.WriteLine(dataAccess.SaveEmployee(employee));
     }
 
-    private static void UpdateEmployee(IAllDataAccess dataAccess)
+    private static void UpdateEmployee(IBusinessObjectDataAccess dataAccess)
     {
       IEmployee employee = new Employee()
       {
@@ -44,11 +44,11 @@
       System.Console.WriteLine(dataAccess.UpdateEmployee(employee));
     }
 
-    private static void DeleteEmployee(IAllDataAccess dataAccess) => System.Console.WriteLine(dataAccess.DeleteEmployee(10));
+    private static void DeleteEmployee(IBusinessObjectDataAccess dataAccess) => System.Console.WriteLine(dataAccess.DeleteEmployee(10));
 
-    private static void DeleteAllEmployees(IAllDataAccess dataAccess) => System.Console.WriteLine(dataAccess.DeleteEmployees());
+    private static void DeleteAllEmployees(IBusinessObjectDataAccess dataAccess) => System.Console.WriteLine(dataAccess.DeleteEmployees());
 
-    private static void GetAllEmployees(IAllDataAccess dataAccess)
+    private static void GetAllEmployees(IBusinessObjectDataAccess dataAccess)
     {
       IEnumerable<IEmployee> employees = dataAccess.GetEmployees();
 
@@ -59,7 +59,7 @@
       }
     }
 
-    private static void GetEmployee(IAllDataAccess dataAccess)
+    private static void GetEmployee(IBusinessObjectDataAccess dataAccess)
     {
       IEmployee employee = dataAccess.GetEmployee(1);
 

@@ -4,7 +4,7 @@
   using System.Configuration;
   using System.Data;
 
-  public partial class MySQLDataAccess : IAllDataAccess
+  public partial class MySQLDataAccess : IBusinessObjectDataAccess
   {
     /// <summary>
     /// The connection string.
