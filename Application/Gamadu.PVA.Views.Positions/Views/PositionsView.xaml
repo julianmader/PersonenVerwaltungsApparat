@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:Gamadu.PVA.Resources.Controls;assembly=Gamadu.PVA.Resources"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
   xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
@@ -75,7 +76,13 @@
         <ListBox
           Foreground="AntiqueWhite"
           ItemsSource="{Binding AvailablePositions}"
-          SelectedItem="{Binding SelectedPosition}" />
+          SelectedItem="{Binding SelectedPosition}">
+          <i:Interaction.Triggers>
+            <i:EventTrigger EventName="PreviewMouseDown">
+              <prism:InvokeCommandAction Command="{Binding ListboxSelectionChangedCommand}" />
+            </i:EventTrigger>
+          </i:Interaction.Triggers>
+        </ListBox>
       </materialdesign:Card>
 
     </Grid>

@@ -15,6 +15,7 @@
     {
       containerRegistry.RegisterDialog<SelectRoomsView>("SelectRoomsDialog");
       containerRegistry.RegisterDialog<SelectEmployeesView>("SelectEmployeesDialog");
+      containerRegistry.RegisterDialog<SaveChangesView>("SaveChangesDialog");
     }
   }
 }

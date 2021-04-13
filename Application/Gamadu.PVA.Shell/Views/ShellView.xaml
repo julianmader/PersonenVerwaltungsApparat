@@ -14,9 +14,9 @@
   Background="{DynamicResource MaterialDesignPaper}"
   BorderBrush="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
+  Icon="PVA_Icon.ico"
   SizeToContent="WidthAndHeight"
-  WindowState="Maximized"
-  mc:Ignorable="d" Icon="PVA_Icon.ico">
+  mc:Ignorable="d">
 
   <materialdesign:DialogHost CloseOnClickAway="True" Identifier="RootDialog">
 

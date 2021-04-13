@@ -63,6 +63,14 @@
       set => this.SetProperty(ref this.selectedContract, value);
     }
 
+    private IContract compareSelectedContract;
+
+    public IContract CompareSelectedContract
+    {
+      get => this.compareSelectedContract;
+      set => this.SetProperty(ref this.compareSelectedContract, value);
+    }
+
     #endregion Properties
 
     /// <summary>
@@ -103,6 +111,8 @@
       this.NewCommand = new DelegateCommand(this.OnNewCommand);
 
       this.EditSelectedEmployeesCommand = new DelegateCommand(this.OnEditSelectedEmployeesCommand, this.CanEditSelectedEmployeesCommand);
+
+      this.ListboxSelectionChangedCommand = new DelegateCommand(this.OnListboxSelectionChangedCommand);
     }
 
     #region Refresh Data Methods
@@ -153,8 +163,11 @@
     /// </summary>
     private void SelectedContractChanged()
     {
+      this.CompareSelectedContract = null;
+
       if (this.SelectedContract != null)
       {
+        this.CompareSelectedContract = this.SelectedContract.MemberwiseCopy();
         this.SelectedContract.Validator = this.ContainerProvider.Resolve<IValidator<IContract>>();
         this.SelectedContract.PropertyChanged += this.SelectedContract_PropertyChanged;
       }
@@ -173,9 +186,10 @@
     /// </summary>
     private void RefreshCommands()
     {
-      this.SaveCommand.RaiseCanExecuteChanged();
-      this.DeleteCommand.RaiseCanExecuteChanged();
-      this.EditSelectedEmployeesCommand.RaiseCanExecuteChanged();
+      this.SaveCommand?.RaiseCanExecuteChanged();
+      this.DeleteCommand?.RaiseCanExecuteChanged();
+      this.EditSelectedEmployeesCommand?.RaiseCanExecuteChanged();
+      this.ListboxSelectionChangedCommand?.RaiseCanExecuteChanged();
     }
 
     #endregion Refresh Commands Methods
@@ -221,6 +235,24 @@
       });
     }
 
+    private void ShowSaveChangesDialog()
+    {
+      this.DialogService.ShowDialog("SaveChangesDialog", cb =>
+      {
+        if (cb.Result == ButtonResult.OK)
+        {
+          this.SaveCommand.Execute();
+          return;
+        }
+
+        if (cb.Result == ButtonResult.Cancel)
+        {
+          this.SelectedContract = this.CompareSelectedContract.MemberwiseCopy();
+          return;
+        }
+      });
+    }
+
     #endregion Methods
 
     #region Commands
@@ -250,7 +282,7 @@
       this.RefreshCommand.Execute();
     }
 
-    private bool CanSaveCommand() => this.SelectedContract?.HasErrors == false;
+    private bool CanSaveCommand() => this.SelectedContract?.HasErrors == false && this.SelectedContract?.Equals(this.CompareSelectedContract) == false;
 
     #endregion SaveCommand
 
@@ -268,8 +300,14 @@
 
     public DelegateCommand NewCommand { get; private set; }
 
-    private async void OnNewCommand() => await Task.Run(() => this.SelectedContract = this.ContainerProvider.Resolve<IContract>()).ConfigureAwait(false);
+    private async void OnNewCommand()
+    {
+      await Task.Run(() => this.SelectedContract = this.ContainerProvider.Resolve<IContract>()).ConfigureAwait(false);
 
+      this.SelectedContract.Employees = new List<int>();
+
+      this.CompareSelectedContract = this.SelectedContract.MemberwiseCopy();
+    }
     #endregion NewCommand
 
     #region EditSelectedEmployeesCommand
@@ -281,6 +319,20 @@
     private bool CanEditSelectedEmployeesCommand() => this.SelectedContract != null;
 
     #endregion EditSelectedEmployeesCommand
+
+    #region ListboxSelectionChangedCommand
+
+    public DelegateCommand ListboxSelectionChangedCommand { get; private set; }
+
+    private void OnListboxSelectionChangedCommand()
+    {
+      if (this.SelectedContract == null) return;
+
+      if (!this.SelectedContract.Equals(this.CompareSelectedContract))
+        this.ShowSaveChangesDialog();
+    }
+
+    #endregion ListboxSelectionChangedCommand
 
     #endregion Commands
   }

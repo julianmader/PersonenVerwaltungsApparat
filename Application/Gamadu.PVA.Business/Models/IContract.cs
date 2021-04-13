@@ -4,7 +4,7 @@
   using System.Collections.Generic;
   using System.ComponentModel;
 
-  public interface IContract : IIdentifiable, IMatchable, INameable, IValidateable<IContract>, INotifyPropertyChanged
+  public interface IContract : IIdentifiable, IMatchable, INameable, IValidateable<IContract>, INotifyPropertyChanged, IEquatable<IContract>
   {
     /// <summary>
     /// Gets or sets the value for the Description.
@@ -50,5 +50,7 @@
     /// Gets or sets the value for the WorkTime.
     /// </summary>
     int? WorkTime { get; set; }
+
+    IContract MemberwiseCopy();
   }
 }

@@ -1,9 +1,10 @@
 ﻿namespace Gamadu.PVA.Core.Models
 {
+  using System;
   using System.Collections.Generic;
   using System.ComponentModel;
 
-  public interface IRoom : IIdentifiable, IMatchable, INameable, IValidateable<IRoom>, INotifyPropertyChanged
+  public interface IRoom : IIdentifiable, IMatchable, INameable, IValidateable<IRoom>, INotifyPropertyChanged, IEquatable<IRoom>
   {
     /// <summary>
     /// Gets or sets the value for the Description.
@@ -29,5 +30,7 @@
     /// Gets or sets the value for the Size.
     /// </summary>
     int? Size { get; set; }
+
+    IRoom MemberwiseCopy();
   }
 }

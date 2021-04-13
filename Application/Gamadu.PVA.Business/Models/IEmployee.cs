@@ -5,7 +5,7 @@
   using System.Collections.Generic;
   using System.ComponentModel;
 
-  public interface IEmployee : IIdentifiable, IMatchable, IValidateable<IEmployee>, INotifyPropertyChanged
+  public interface IEmployee : IIdentifiable, IMatchable, IValidateable<IEmployee>, INotifyPropertyChanged, IEquatable<IEmployee>
   {
     /// <summary>
     /// Gets or sets the value for the AdditionalInformation.
@@ -81,5 +81,7 @@
     /// Gets or sets the value for the Surname.
     /// </summary>
     string Surname { get; set; }
+
+    IEmployee MemberwiseCopy();
   }
 }

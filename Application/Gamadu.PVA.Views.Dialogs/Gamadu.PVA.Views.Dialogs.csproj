@@ -63,8 +63,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\SaveChangesViewModel.cs" />
     <Compile Include="ViewModels\SelectEmployeesViewModel.cs" />
     <Compile Include="ViewModels\SelectRoomsViewModel.cs" />
+    <Compile Include="Views\SaveChangesView.xaml.cs">
+      <DependentUpon>SaveChangesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectEmployeesView.xaml.cs">
       <DependentUpon>SelectEmployeesView.xaml</DependentUpon>
     </Compile>
@@ -90,6 +94,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\SaveChangesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SelectEmployeesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +117,8 @@
       <Name>Gamadu.PVA.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\PVA_Icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

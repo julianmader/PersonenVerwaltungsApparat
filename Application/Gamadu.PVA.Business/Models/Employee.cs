@@ -4,6 +4,7 @@
   using Gamadu.PVA.Core.Models.Bases;
   using System;
   using System.Collections.Generic;
+  using System.Linq;
 
   public class Employee : ValidateableModelBase<IEmployee>, IEmployee
   {
@@ -200,6 +201,31 @@
     public override string ToString() => $"{this.Matchcode} - {this.Forename} {this.Surname}";
 
     public override void Validate() => this.Validate(this);
+
+    public bool Equals(IEmployee other)
+    {
+      if (other == null) return false;
+
+      if (this.Matchcode.ToUpper() != other.Matchcode.ToUpper()) return false;
+      if (this.Gender != other.Gender) return false;
+      if (this.Forename != other.Forename) return false;
+      if (this.Surname != other.Surname) return false;
+      if (this.Birth != other.Birth) return false;
+      if (this.PhoneNumber != other.PhoneNumber) return false;
+      if (this.Street != other.Street) return false;
+      if (this.StreetNumber != other.StreetNumber) return false;
+      if (this.City != other.City) return false;
+      if (this.PostalCode != other.PostalCode) return false;
+      if (this.Department != other.Department) return false;
+      if (this.Position != other.Position) return false;
+      if (this.Contract != other.Contract) return false;
+      if (this.AdditionalInformation != other.AdditionalInformation) return false;
+      if (!this.Rooms.SequenceEqual(other.Rooms)) return false;
+
+      return true;
+    }
+
+    public IEmployee MemberwiseCopy() => this.MemberwiseClone() as IEmployee;
 
     #endregion Methods
   }

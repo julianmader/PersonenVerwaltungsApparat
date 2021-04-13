@@ -2,6 +2,7 @@
 {
   using Gamadu.PVA.Core.Models.Bases;
   using System.Collections.Generic;
+  using System.Linq;
 
   public class Room : ValidateableModelBase<IRoom>, IRoom
   {
@@ -90,6 +91,23 @@
     public override string ToString() => $"{this.Matchcode} - {this.Name}";
 
     public override void Validate() => this.Validate(this);
+
+    public bool Equals(IRoom other)
+    {
+      if (other == null) return false;
+
+      if (this.Matchcode.ToUpper() != other.Matchcode.ToUpper()) return false;
+      if (this.Name != other.Name) return false;
+      if (this.Description != other.Description) return false;
+      if (this.FloorNumber != other.FloorNumber) return false;
+      if (this.RoomNumber != other.RoomNumber) return false;
+      if (this.Size != other.Size) return false;
+      if (!this.Employees.SequenceEqual(other.Employees)) return false;
+
+      return true;
+    }
+
+    public IRoom MemberwiseCopy() => this.MemberwiseClone() as IRoom;
 
     #endregion Methods
   }

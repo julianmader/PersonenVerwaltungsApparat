@@ -63,6 +63,14 @@
       set => this.SetProperty(ref this.selectedDepartment, value);
     }
 
+    private IDepartment compareSelectedDepartment;
+
+    public IDepartment CompareSelectedDepartment
+    {
+      get => this.compareSelectedDepartment;
+      set => this.SetProperty(ref this.compareSelectedDepartment, value);
+    }
+
     #endregion Properties
 
     /// <summary>
@@ -103,6 +111,8 @@
       this.NewCommand = new DelegateCommand(this.OnNewCommand);
 
       this.EditSelectedEmployeesCommand = new DelegateCommand(this.OnEditSelectedEmployeesCommand, this.CanEditSelectedEmployeesCommand);
+
+      this.ListboxSelectionChangedCommand = new DelegateCommand(this.OnListboxSelectionChangedCommand);
     }
 
     #region Refresh Data Methods
@@ -153,8 +163,11 @@
     /// </summary>
     private void SelectedDepartmentChanged()
     {
+      this.CompareSelectedDepartment = null;
+
       if (this.SelectedDepartment != null)
       {
+        this.CompareSelectedDepartment = this.SelectedDepartment.MemberwiseCopy();
         this.SelectedDepartment.Validator = this.ContainerProvider.Resolve<IValidator<IDepartment>>();
         this.SelectedDepartment.PropertyChanged += this.SelectedDepartment_PropertyChanged;
       }
@@ -173,9 +186,10 @@
     /// </summary>
     private void RefreshCommands()
     {
-      this.SaveCommand.RaiseCanExecuteChanged();
-      this.DeleteCommand.RaiseCanExecuteChanged();
-      this.EditSelectedEmployeesCommand.RaiseCanExecuteChanged();
+      this.SaveCommand?.RaiseCanExecuteChanged();
+      this.DeleteCommand?.RaiseCanExecuteChanged();
+      this.EditSelectedEmployeesCommand?.RaiseCanExecuteChanged();
+      this.ListboxSelectionChangedCommand?.RaiseCanExecuteChanged();
     }
 
     #endregion Refresh Commands Methods
@@ -221,6 +235,24 @@
       });
     }
 
+    private void ShowSaveChangesDialog()
+    {
+      this.DialogService.ShowDialog("SaveChangesDialog", cb =>
+      {
+        if (cb.Result == ButtonResult.OK)
+        {
+          this.SaveCommand.Execute();
+          return;
+        }
+
+        if (cb.Result == ButtonResult.Cancel)
+        {
+          this.SelectedDepartment = this.CompareSelectedDepartment.MemberwiseCopy();
+          return;
+        }
+      });
+    }
+
     #endregion Methods
 
     #region Commands
@@ -250,7 +282,7 @@
       this.RefreshCommand.Execute();
     }
 
-    private bool CanSaveCommand() => this.SelectedDepartment?.HasErrors == false;
+    private bool CanSaveCommand() => this.SelectedDepartment?.HasErrors == false & this.SelectedDepartment?.Equals(this.CompareSelectedDepartment) == false;
 
     #endregion SaveCommand
 
@@ -273,6 +305,8 @@
       await Task.Run(() => this.SelectedDepartment = this.ContainerProvider.Resolve<IDepartment>()).ConfigureAwait(false);
 
       this.SelectedDepartment.Employees = new List<int>();
+
+      this.CompareSelectedDepartment = this.SelectedDepartment.MemberwiseCopy();
     }
 
     #endregion NewCommand
@@ -286,6 +320,20 @@
     private bool CanEditSelectedEmployeesCommand() => this.SelectedDepartment != null;
 
     #endregion EditSelectedEmployeesCommand
+
+    #region ListboxSelectionChangedCommand
+
+    public DelegateCommand ListboxSelectionChangedCommand { get; private set; }
+
+    private void OnListboxSelectionChangedCommand()
+    {
+      if (this.SelectedDepartment == null) return;
+
+      if (!this.SelectedDepartment.Equals(this.CompareSelectedDepartment))
+        this.ShowSaveChangesDialog();
+    }
+
+    #endregion ListboxSelectionChangedCommand
 
     #endregion Commands
   }

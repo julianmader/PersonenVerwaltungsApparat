@@ -63,6 +63,14 @@
       set => this.SetProperty(ref this.selectedRoom, value);
     }
 
+    private IRoom compareSelectedRoom;
+
+    public IRoom CompareSelectedRoom
+    {
+      get => this.compareSelectedRoom;
+      set => this.SetProperty(ref this.compareSelectedRoom, value);
+    }
+
     #endregion Properties
 
     /// <summary>
@@ -103,6 +111,8 @@
       this.NewCommand = new DelegateCommand(this.OnNewCommand);
 
       this.EditSelectedEmployeesCommand = new DelegateCommand(this.OnEditSelectedEmployeesCommand, this.CanEditSelectedEmployeesCommand);
+
+      this.ListboxSelectionChangedCommand = new DelegateCommand(this.OnListboxSelectionChangedCommand);
     }
 
     #region Refresh Data Methods
@@ -153,10 +163,14 @@
     /// </summary>
     private void SelectedRoomChanged()
     {
+      this.compareSelectedRoom = null;
+
       if (this.SelectedRoom != null)
       {
+        this.CompareSelectedRoom = this.SelectedRoom.MemberwiseCopy();
         this.SelectedRoom.Validator = this.ContainerProvider.Resolve<IValidator<IRoom>>();
         this.SelectedRoom.PropertyChanged += this.SelectedRoom_PropertyChanged;
+        this.ListboxSelectionChangedCommand?.RaiseCanExecuteChanged();
       }
 
       this.RefreshCommands();
@@ -173,9 +187,10 @@
     /// </summary>
     private void RefreshCommands()
     {
-      this.SaveCommand.RaiseCanExecuteChanged();
-      this.DeleteCommand.RaiseCanExecuteChanged();
-      this.EditSelectedEmployeesCommand.RaiseCanExecuteChanged();
+      this.SaveCommand?.RaiseCanExecuteChanged();
+      this.DeleteCommand?.RaiseCanExecuteChanged();
+      this.EditSelectedEmployeesCommand?.RaiseCanExecuteChanged();
+      this.ListboxSelectionChangedCommand?.RaiseCanExecuteChanged();
     }
 
     #endregion Refresh Commands Methods
@@ -221,6 +236,24 @@
       });
     }
 
+    private void ShowSaveChangesDialog()
+    {
+      this.DialogService.ShowDialog("SaveChangesDialog", cb =>
+      {
+        if (cb.Result == ButtonResult.OK)
+        {
+          this.SaveCommand.Execute();
+          return;
+        }
+
+        if (cb.Result == ButtonResult.Cancel)
+        {
+          this.SelectedRoom = this.CompareSelectedRoom.MemberwiseCopy();
+          return;
+        }
+      });
+    }
+
     #endregion Methods
 
     #region Commands
@@ -250,7 +283,7 @@
       this.RefreshCommand.Execute();
     }
 
-    private bool CanSaveCommand() => this.SelectedRoom?.HasErrors == false;
+    private bool CanSaveCommand() => this.SelectedRoom?.HasErrors == false && this.SelectedRoom?.Equals(this.CompareSelectedRoom) == false;
 
     #endregion SaveCommand
 
@@ -273,6 +306,8 @@
       await Task.Run(() => this.SelectedRoom = this.ContainerProvider.Resolve<IRoom>()).ConfigureAwait(false);
 
       this.SelectedRoom.Employees = new List<int>();
+
+      this.CompareSelectedRoom = this.SelectedRoom.MemberwiseCopy();
     }
 
     #endregion NewCommand
@@ -286,6 +321,20 @@
     private bool CanEditSelectedEmployeesCommand() => this.SelectedRoom != null;
 
     #endregion EditSelectedEmployeesCommand
+
+    #region ListboxSelectionChangedCommand
+
+    public DelegateCommand ListboxSelectionChangedCommand { get; private set; }
+
+    private void OnListboxSelectionChangedCommand()
+    {
+      if (this.SelectedRoom == null) return;
+
+      if (!this.SelectedRoom.Equals(this.CompareSelectedRoom))
+        this.ShowSaveChangesDialog();
+    }
+
+    #endregion ListboxSelectionChangedCommand
 
     #endregion Commands
   }

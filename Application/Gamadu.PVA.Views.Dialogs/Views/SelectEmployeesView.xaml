@@ -11,6 +11,16 @@
   Foreground="AntiqueWhite"
   mc:Ignorable="d">
 
+  <prism:Dialog.WindowStyle>
+    <Style TargetType="Window">
+      <Setter Property="Icon" Value="PVA_Icon.ico" />
+      <Setter Property="ResizeMode" Value="NoResize" />
+      <Setter Property="ShowInTaskbar" Value="False" />
+      <Setter Property="SizeToContent" Value="WidthAndHeight" />
+      <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+    </Style>
+  </prism:Dialog.WindowStyle>
+
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>

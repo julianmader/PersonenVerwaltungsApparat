@@ -3,6 +3,7 @@
   using Gamadu.PVA.Core.Models.Bases;
   using System;
   using System.Collections.Generic;
+  using System.Linq;
 
   public class Contract : ValidateableModelBase<IContract>, IContract
   {
@@ -139,6 +140,27 @@
     public override string ToString() => $"{this.Matchcode} - {this.Name}";
 
     public override void Validate() => this.Validate(this);
+
+    public bool Equals(IContract other)
+    {
+      if (other == null) return false;
+
+      if (this.Matchcode.ToUpper() != other.Matchcode.ToUpper()) return false;
+      if (this.Name != other.Name) return false;
+      if (this.Description != other.Description) return false;
+      if (this.End != other.End) return false;
+      if (this.HasEnd != other.HasEnd) return false;
+      if (this.Holidays != other.Holidays) return false;
+      if (this.Salary != other.Salary) return false;
+      if (this.Start != other.Start) return false;
+      if (this.TrailEnd != other.TrailEnd) return false;
+      if (this.WorkTime != other.WorkTime) return false;
+      if (!this.Employees.SequenceEqual(other.Employees)) return false;
+
+      return true;
+    }
+
+    public IContract MemberwiseCopy() => this.MemberwiseClone() as IContract;
 
     #endregion Methods
   }

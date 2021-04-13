@@ -1,5 +1,5 @@
 ﻿<UserControl
-  x:Class="Gamadu.PVA.Views.Dialogs.Views.SelectRoomsView"
+  x:Class="Gamadu.PVA.Views.Dialogs.Views.SaveChangesView"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -39,32 +39,7 @@
         <RowDefinition Height="auto" />
       </Grid.RowDefinitions>
 
-      <DataGrid
-        CanUserAddRows="False"
-        CanUserDeleteRows="False"
-        CanUserSortColumns="True"
-        HeadersVisibility="All"
-        ItemsSource="{Binding CheckableRooms}">
-        <DataGrid.Columns>
-          <DataGridCheckBoxColumn
-            Binding="{Binding IsChecked}"
-            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-            IsReadOnly="False" />
-          <DataGridTextColumn
-            Binding="{Binding ID}"
-            Header="ID"
-            IsReadOnly="True" />
-          <DataGridTextColumn
-            Binding="{Binding Matchcode}"
-            Header="Matchcode"
-            IsReadOnly="True" />
-          <DataGridTextColumn
-            Binding="{Binding Name}"
-            Header="Name"
-            IsReadOnly="True" />
-        </DataGrid.Columns>
-      </DataGrid>
+      <Label Padding="10" Content="Do you want to save the changes?" />
 
       <Grid Grid.Row="2">
 
@@ -76,7 +51,7 @@
 
         <Button
           Command="{Binding CloseCommand}"
-          Content="ACCEPT"
+          Content="SAVE"
           Style="{DynamicResource MaterialDesignFlatButton}">
           <Button.CommandParameter>
             <system:Boolean>True</system:Boolean>
@@ -86,7 +61,7 @@
         <Button
           Grid.Column="2"
           Command="{Binding CloseCommand}"
-          Content="CANCEL"
+          Content="DISCARD"
           Style="{DynamicResource MaterialDesignFlatButton}">
           <Button.CommandParameter>
             <system:Boolean>False</system:Boolean>
